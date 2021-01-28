@@ -1,0 +1,6 @@
+.footer {
+    grid-area: footer;
+    height: 200px;
+    background-color: orangered;
+
+}

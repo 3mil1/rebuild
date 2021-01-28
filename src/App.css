@@ -1,0 +1,13 @@
+.content-page {
+    margin: 50px auto;
+    display: grid;
+    width: 1100px;
+
+    grid-template-rows: 60px 1fr;
+    grid-template-columns: 2fr 10fr;
+    grid-gap: 10px;
+
+}
+.content {
+    background-color: red;
+}
