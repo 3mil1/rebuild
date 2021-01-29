@@ -1,5 +1,5 @@
-.main {
+.profile {
     grid-area: main;
-    background: salmon;
+    background: seagreen;
     height: 100%;
 }

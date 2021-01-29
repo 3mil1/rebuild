@@ -1,13 +1,35 @@
-.content-page {
-    margin: 50px auto;
+.main-wrapper {
+    margin: 0 auto;
     display: grid;
-    width: 1100px;
-
-    grid-template-rows: 60px 1fr;
-    grid-template-columns: 2fr 10fr;
-    grid-gap: 10px;
-
+    grid-template-columns: 160px 110px 110px 110px 110px 110px 110px 110px 110px 110px 110px 110px 110px 160px;
+    grid-template-rows: 34px 60px 300px 300px 300px;
+    gap: 0px 20px;
+    grid-template-areas:
+    "empty-side2 empty-top empty-top empty-top empty-top empty-top empty-top empty-top empty-top empty-top empty-top empty-top empty-top empty-side1"
+    "empty-side2 header header header header header header header header header header header header empty-side1"
+    "empty-side2 content content content content content content content content content content content content empty-side1"
+    "empty-side2 content content content content content content content content content content content content empty-side1"
+    "empty-side2 footer footer footer footer footer footer footer footer footer footer footer footer empty-side1";
 }
-.content {
-    background-color: red;
+
+.main-wrapper-content {
+    grid-area: content;
 }
+
+.empty-top { grid-area: empty-top; }
+
+.empty-side2 { grid-area: empty-side2; }
+
+.empty-side1 { grid-area: empty-side1; }
+
+.Header { grid-area: header; }
+
+.Main { grid-area: main; }
+
+.Footer { grid-area: footer; }
+
+.Search { grid-area: search; }
+
+.Login { grid-area: login; }
+
+.Register { grid-area: register; }

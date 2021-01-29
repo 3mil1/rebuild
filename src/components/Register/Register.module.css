@@ -1,0 +1,5 @@
+.register {
+    grid-area: main;
+    background: cornflowerblue;
+    height: 100%;
+}

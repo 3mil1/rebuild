@@ -1,5 +1,5 @@
-.main {
+.search {
     grid-area: main;
-    background: salmon;
+    background: lightcoral;
     height: 100%;
 }
