@@ -1,35 +1,67 @@
+.background {
+    background: linear-gradient(180deg, #E1DEF0 0%, rgba(216, 225, 229, 0) 100%), #FFFFFF;
+}
+
+.container {
+    padding: 34px 80px 0 80px;
+}
+
 .main-wrapper {
+
+    padding: 0 80px 0 80px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 160px 110px 110px 110px 110px 110px 110px 110px 110px 110px 110px 110px 110px 160px;
-    grid-template-rows: 34px 60px 300px 300px 300px;
-    gap: 0px 20px;
+
     grid-template-areas:
-    "empty-side2 empty-top empty-top empty-top empty-top empty-top empty-top empty-top empty-top empty-top empty-top empty-top empty-top empty-side1"
-    "empty-side2 header header header header header header header header header header header header empty-side1"
-    "empty-side2 content content content content content content content content content content content content empty-side1"
-    "empty-side2 content content content content content content content content content content content content empty-side1"
-    "empty-side2 footer footer footer footer footer footer footer footer footer footer footer footer empty-side1";
+    'header'
+    'content'
+    'footer';
+
+    grid-template-rows: 80px 1fr 156px;
+    grid-template-columns: repeat(auto-fit, minmax(1fr, 1fr));
+
+
+    /*------------------Glass------------------*/
+    height: 100%;
+    border: 3px solid #ffff;
+    /*background: linear-gradient(*/
+    /*        to right bottom,*/
+    /*        rgba(255, 255, 255, 0.7),*/
+    /*        rgba(255, 255, 255, 0.3)*/
+    /*);*/
+
+
+    background: radial-gradient(100.91% 107.32% at 29.97% -5.17%,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.015) 75.17%,
+    rgba(255, 255, 255, 0) 100%);
+
+
+
+    border-radius: 2rem;
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(2rem);
+    background-clip: padding-box;
+
+
 }
 
 .main-wrapper-content {
     grid-area: content;
+    height: 1000px;
 }
 
-.empty-top { grid-area: empty-top; }
+.houses {
+    position: absolute;
+    top: 160px;
+    object-fit: cover;
+    width: 100%
+}
 
-.empty-side2 { grid-area: empty-side2; }
+.blobs {
+    position: absolute;
+    object-fit: cover;
+    width: 100%
 
-.empty-side1 { grid-area: empty-side1; }
+}
 
-.Header { grid-area: header; }
-
-.Main { grid-area: main; }
-
-.Footer { grid-area: footer; }
-
-.Search { grid-area: search; }
-
-.Login { grid-area: login; }
-
-.Register { grid-area: register; }

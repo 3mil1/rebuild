@@ -1,5 +1,33 @@
 .main {
     grid-area: main;
-    background: salmon;
-    height: 100%;
+
+    display: grid;
+    grid-template-areas:
+    'text pilt pilt'
+    'text pilt otsing';
+    grid-template-columns: 1fr 1fr;
+}
+
+.meiegaLeiad {
+    grid-area: text;
+
+    font-family: Helvetica Neue, serif;
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: rgba(255, 114, 62, 1);
+}
+
+.main img {
+    grid-area: pilt;
+    position: absolute;
+    object-fit: cover;
+    width: 50%
+}
+
+.search {
+    grid-area: otsing;
 }
