@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Main.module.css';
 import kusOnOtsing from '../../img/kusOnOtsing.png'
+import {Button, TextField} from "@material-ui/core";
 
 export const Main = () => {
     return (
@@ -11,14 +12,18 @@ export const Main = () => {
                     <div className={classes.subHeader}>We’ve helped over 2,500 job seekers to get into the most popular
                         tech teams.
                     </div>
-                    <button className={classes.register}>Registreeru</button>
-                    <span>Kuidas see töötab</span>
+                    <Button variant="contained"  className={classes.register}>
+                        Registreeru
+                    </Button>
+                    {/*<button className={classes.register}>Registreeru</button>*/}
+                    <Button>Kuidas see töötab &gt;</Button>
+                    {/*<span>Kuidas see töötab</span>*/}
                 </div>
                 <div>
                     <img src={kusOnOtsing} alt="kusOnOtsing"/>
                 </div>
                 <div className={classes.search}>
-                    <input type="text"/>
+                    <TextField id="standard-basic" label="Otsi Siit" />
                 </div>
             </div>
 

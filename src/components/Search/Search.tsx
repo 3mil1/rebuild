@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Search.module.css';
 import emptyStar from '../../img/Star_empty.svg'
+import firmaPilt from '../../img/EhitusFirmaPilt.jpg'
 
 export const Search = () => {
     return (
@@ -52,8 +53,10 @@ export const ResultCard = () => {
             <div className={classes.cardInfo}>
                 <div className={classes.leftSideInfo}>
                     <div className={classes.userInfo}>
-                        <div className={classes.userImg}></div>
-                        <div className={classes.userName}>Firma | Nimi</div>
+                        <div className={classes.userImg}>
+                            <img src={firmaPilt} alt="firmaPilt"/>
+                        </div>
+                        <div className={classes.userName}>EESTI EHITUSE JA KINNISVARA GRUPP </div>
                         <div className={classes.userRating}>
                             <img src={emptyStar} alt="emptyStar"/>
                             <img src={emptyStar} alt="emptyStar"/>
@@ -61,7 +64,7 @@ export const ResultCard = () => {
                             <img src={emptyStar} alt="emptyStar"/>
                             <img src={emptyStar} alt="emptyStar"/>
                         </div>
-                        <div className={classes.userDesc}>Desc</div>
+                        <div className={classes.userDesc}>Profiili kirjeldus lorem lorem lorem lorem  </div>
                     </div>
                     <div className={classes.hashtags}>
                         <div className={classes.hashtag}>

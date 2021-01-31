@@ -48,10 +48,16 @@
 
 .search {
     grid-area: otsing;
+    background: #FF455B!important;
+    border-radius: 98px!important;
+    color: white!important;
 }
 
 .register {
     margin-right: 15px;
+    background-color: rgba(33, 150, 243, 1) !important;
+    color: white!important;
+    border-radius: 87px!important;
 }
 
 .cards{
