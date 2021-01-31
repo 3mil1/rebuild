@@ -1,13 +1,13 @@
 import React from 'react';
 import classes from './Header.module.css';
 import logo from '../../img/RebuildLogo.png'
+import {NavLink} from "react-router-dom";
 
 export const Header = () => {
     return (
         <>
             <header className={classes.header}>
-                <img className={classes.logo} src={logo} alt="logo"/>
-
+                <NavLink to="/"><img className={classes.logo} src={logo} alt="logo"/></NavLink>
                 <Nav/>
             </header>
         </>
@@ -17,11 +17,12 @@ export const Header = () => {
 export const Nav = () => {
     return (
         <div className={classes.nav}>
-            <a href="#">Avaleht</a>
-            <a href="#">Registreeru</a>
-            <a href="#">Meist</a>
-            <a href="#">Lisa</a>
-            <a href="#">Otsi</a>
+            <NavLink exact activeClassName={classes.selected} to="/">Avaleht</NavLink>
+            <NavLink exact activeClassName={classes.selected} to="/register">Registreeru</NavLink>
+            <NavLink exact activeClassName={classes.selected} to="/login">LogIn</NavLink>
+            <NavLink exact activeClassName={classes.selected} to="/about">Meist</NavLink>
+            <NavLink exact activeClassName={classes.selected} to="/profile">Profile</NavLink>
+            <NavLink exact activeClassName={classes.selected} to="/search">Otsi</NavLink>
         </div>
     )
 }

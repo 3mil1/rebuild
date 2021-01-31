@@ -1,27 +1,33 @@
 .header {
     grid-area: header;
-
+    margin-top: 20px;
     display: grid;
     grid-auto-rows: auto;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 2.3fr .7fr;
     /*grid-template-columns: repeat(auto-fit, minmax(2fr, 2fr));*/
     align-items: center;
     text-align: center;
+    height: 100%;
 
+    justify-items: start;
 }
 
+
 .logo {
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 130px;
+    width: 100%;
+    height: auto;
+    max-width: 189px;
 }
 
 .nav {
-    display: grid;
-    grid-auto-rows: auto;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    text-align: center;
+    /*display: grid;*/
+    /*grid-auto-rows: auto;*/
+    /*grid-template-columns: 1fr 1fr 1fr 1fr 1fr;*/
+    /*text-align: center;*/
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .nav a {
@@ -31,3 +37,9 @@
     color: rgba(24, 25, 31, 1);
     text-decoration: none
 }
+
+.selected {
+    font-weight: bold!important;
+    color: rgba(45, 192, 150, 1)!important;
+}
+

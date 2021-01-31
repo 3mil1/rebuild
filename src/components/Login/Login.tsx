@@ -5,7 +5,17 @@ export const Login = () => {
     return (
         <>
             <div className={classes.login}>
-                Login
+                <div className={classes.loginText}>Log in</div>
+                <div className={classes.registerContainer}>
+                    <div className={classes.inputsContainer}>
+                        <div><input type="text"/></div>
+                        <div><input type="text"/></div>
+                    </div>
+                    <div>
+                        <button>Log In</button>
+                        <span>Forgot password?</span>
+                    </div>
+                </div>
             </div>
         </>
     )

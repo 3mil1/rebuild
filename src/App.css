@@ -43,12 +43,15 @@
     -webkit-backdrop-filter: blur(2rem);
     background-clip: padding-box;
 
-
+    max-width: 1170px;
 }
 
 .main-wrapper-content {
     grid-area: content;
-    height: 1000px;
+    margin-top: 40px;
+
+    /*kustutada parast*/
+    min-height: 1000px;
 }
 
 .houses {
