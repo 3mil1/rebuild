@@ -11,8 +11,6 @@
 
     counter-reset: item;
 
-    padding: 0 70px 0 70px;
-
     margin-bottom: 300px;
 }
 
@@ -74,7 +72,7 @@
 }
 
 .cards p {
-    text-align: center;
+    text-align: left;
     margin-left: 20px;
     margin-right: 20px;
 }
@@ -100,4 +98,72 @@
     margin-right: auto;
     display: block;
     margin-top: 35px;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .main {
+        grid-area: main;
+
+        display: grid;
+        grid-template-areas:
+        'text pilt';
+        grid-template-columns: 40% 60%;
+
+        grid-auto-flow: dense;
+
+        counter-reset: item;
+        margin-bottom: 200px;
+    }
+    .main img {
+        grid-area: pilt;
+        position: absolute;
+        object-fit: cover;
+        width: 45%;
+        z-index: -1;
+    }
+    .searchImg {
+        height: 30px;
+
+    }
+    .meiegaLeiad {
+        font-size: 50px;
+        line-height: 50px;
+    }
+    .search {
+        display: none;
+    }
+    .cards img {
+        height: 150px;
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        margin-top: 35px;
+    }
+    .cards {
+        width: auto;
+        margin: 0 auto;
+        display: grid;
+        grid-gap: 1rem;
+    }
+    .cards h1 {
+        margin-top: 10%;
+        text-align: center;
+        font-size: 30px;
+    }
+
+    .cards p {
+        text-align: left;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .card {
+        display: flex;
+        width: auto;
+        height: auto;
+        margin-bottom: 30px;
+        background: #DEFFE5;
+        box-shadow: 2px 5px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 30px;
+    }
 }

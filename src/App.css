@@ -68,3 +68,27 @@
 
 }
 
+@media (min-width: 320px) and (max-width: 480px) {
+    .background {
+        margin: 0 auto;
+        padding: 0 auto;
+    }
+    .container {
+        padding: 0;
+        min-width: 320px;
+    }
+    .main-wrapper {
+        padding: 0px;
+        margin: 0 auto;
+        display: grid;
+
+        grid-template-areas:
+        'header'
+        'content'
+        'footer';
+
+        grid-template-rows: 80px 1fr 156px;
+        grid-template-columns: repeat(auto-fit, minmax(1fr, 1fr));
+    }
+}
+

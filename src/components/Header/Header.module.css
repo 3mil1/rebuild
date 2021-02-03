@@ -43,3 +43,22 @@
     color: rgba(45, 192, 150, 1)!important;
 }
 
+@media (min-width: 320px) and (max-width: 480px) {
+    .header {
+        grid-area: header;
+        margin-top: 40px;
+        align-items: center;
+        text-align: center;
+    }
+    .nav a {
+        display: none;
+    }
+    .nav {
+        display: none;
+    }
+    .logo {
+        height: auto;
+        width: 100%;
+        text-align: center;
+    }
+}
