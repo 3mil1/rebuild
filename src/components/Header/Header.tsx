@@ -18,11 +18,11 @@ export const Nav = () => {
     return (
         <div className={classes.nav}>
             <NavLink exact activeClassName={classes.selected} to="/">Avaleht</NavLink>
-            <NavLink exact activeClassName={classes.selected} to="/register">Registreeru</NavLink>
-            <NavLink exact activeClassName={classes.selected} to="/login">LogIn</NavLink>
+            <NavLink exact activeClassName={classes.selected} to="/login">Logi</NavLink>
             <NavLink exact activeClassName={classes.selected} to="/about">Meist</NavLink>
             <NavLink exact activeClassName={classes.selected} to="/profile">Profile</NavLink>
             <NavLink exact activeClassName={classes.selected} to="/search">Otsi</NavLink>
+            <NavLink exact activeClassName={classes.selected} to="/register">Registreeri</NavLink>
         </div>
     )
 }

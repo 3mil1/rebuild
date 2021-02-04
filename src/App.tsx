@@ -3,13 +3,13 @@ import './App.css';
 import {Header} from "./components/Header/Header";
 import {Main} from "./components/Main/Main";
 import {Footer} from "./components/Footer/Footer";
-import {Login} from "./components/Login/Login";
 import {Profile} from "./components/Profile/Profile";
 import {Register} from "./components/Register/Register";
 import {Search} from "./components/Search/Search";
 import houses from './img/houses.png'
 import blobs from "./img/blobs.png"
 import {Route} from 'react-router-dom';
+import {Login} from "./components/Login/Login";
 
 function App() {
     return (
