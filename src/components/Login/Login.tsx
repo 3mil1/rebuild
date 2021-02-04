@@ -15,27 +15,36 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
 import {Visibility, VisibilityOff} from "@material-ui/icons";
+import {login} from "../../redux/auth-reducer";
+import {useDispatch} from "react-redux";
 
 
 export const Login = () => {
 
+    const dispatch = useDispatch()
 
-    // useEffect(() => {
-    //      authAPI.login( email = 'user@user.ee', password = 'user')
-    //         .then(response => {
-    //             console.log(response)
-    //         })
-    // });
 
     const {handleSubmit, errors: fieldsErrors, control} = useForm();
 
     const [togglePassword, setTogglePassword] = useState(true);
 
 
-    const onSubmit = (data: any) => {
-        console.log(data);
+    const onSubmit = (formData: any) => {
+        debugger
+        dispatch(login(formData.email, formData.password))
+
+
+        // authAPI.login( formData.email, formData.password)
+        //    .then(response => {
+        //        console.log(response)
+        //    })
     };
 
+
+    useEffect(() => {
+        //dispatch(login)
+
+    });
 
 
     return (
