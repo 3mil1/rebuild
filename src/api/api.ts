@@ -1,17 +1,24 @@
 import axios from "axios";
 
+
+
+
 const instance = axios.create({
     // withCredentials: true,
     baseURL: `http://localhost:3000/`,
+    headers: {
+        Cookie: "cookie1=value; cookie2=value; cookie3=value;"
+    }
 
 })
 
 export const authAPI = {
     auth() {
+        debugger
         return instance.get(`users/validate`)
-            .then(response => {
-                return response
-            })
+            // .then(response => {
+            //     return response
+            // })
     },
     login(email: string, password: string) {
         return instance.post(`auth/login`, {email, password})
