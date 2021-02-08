@@ -5,10 +5,7 @@ import axios from "axios";
 
 const instance = axios.create({
     // withCredentials: true,
-    baseURL: `http://localhost:3000/`,
-    headers: {
-        Cookie: "cookie1=value; cookie2=value; cookie3=value;"
-    }
+    baseURL: `http://localhost:3000/`
 
 })
 

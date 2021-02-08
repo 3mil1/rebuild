@@ -20,16 +20,15 @@ export const Header = () => {
 
 export const Nav = () => {
     const selector = useSelector((state: any) => state.auth)
-    debugger
 
     return (
         <div className={classes.nav}>
             <NavLink exact activeClassName={classes.selected} to="/">Avaleht</NavLink>
-            <NavLink exact activeClassName={classes.selected} to="/login">Logi</NavLink>
+
             <NavLink exact activeClassName={classes.selected} to="/about">Meist</NavLink>
             <NavLink exact activeClassName={classes.selected} to="/search">Otsi</NavLink>
             <NavLink exact activeClassName={classes.selected} to="/register">Registreeri</NavLink>
-            <NavLink exact activeClassName={classes.selected} to="/profile"> {selector.firstName && `| ${selector.firstName}`}</NavLink>
+            {selector.jwt_token ? <NavLink exact activeClassName={classes.selected} to="/profile"> {`| ${selector.firstName}`}</NavLink>:<NavLink exact activeClassName={classes.selected} to="/login">Logi</NavLink>}
         </div>
     )
 }

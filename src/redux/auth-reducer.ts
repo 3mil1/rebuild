@@ -65,7 +65,7 @@ export const setAuthUserDataAC = (userId: number | null, firstName: string | nul
         payload: {
             userId,
             firstName,
-            jwt_token: jwt_token,
+            jwt_token,
             isAuth
         }
     }
@@ -103,7 +103,7 @@ export const login = (email: string, password: string): ThunkType => {
         try {
             authAPI.login(email, password)
                 .then(response => {
-                    let {userId , firstName, jwt_token} = response.data
+                    let {userId , firstName, token: jwt_token} = response.data
                     dispatch(setAuthUserDataAC(userId , firstName, jwt_token,  true))
                 })
                 .catch((error) => {

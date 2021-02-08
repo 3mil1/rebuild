@@ -17,6 +17,8 @@ import IconButton from "@material-ui/core/IconButton";
 import {Visibility, VisibilityOff} from "@material-ui/icons";
 import {login} from "../../redux/auth-reducer";
 import {useDispatch, useSelector} from "react-redux";
+import {Redirect} from "react-router-dom";
+
 
 
 export const Login = () => {
@@ -34,10 +36,12 @@ export const Login = () => {
 
     };
 
-
     useEffect(() => {
     });
 
+    if (selector.auth.jwt_token) {
+        return <Redirect to={"/profile"} />
+    }
 
     return (
         <Container component="main" maxWidth="xs">
