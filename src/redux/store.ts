@@ -4,7 +4,7 @@ import {authReducer} from "./auth-reducer";
 
 
 const reducers = combineReducers({
-    app: authReducer
+    auth: authReducer
 })
 
 export const store = createStore(reducers, applyMiddleware(thunkMiddleWare))

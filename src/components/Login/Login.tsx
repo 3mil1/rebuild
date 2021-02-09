@@ -16,36 +16,32 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
 import {Visibility, VisibilityOff} from "@material-ui/icons";
 import {login} from "../../redux/auth-reducer";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {Redirect} from "react-router-dom";
+
 
 
 export const Login = () => {
 
+    const selector = useSelector((state: any) => state)
     const dispatch = useDispatch()
 
-
-    const {handleSubmit, errors: fieldsErrors, control} = useForm();
+    const {handleSubmit, errors: fieldsErrors, control, setError} = useForm();
 
     const [togglePassword, setTogglePassword] = useState(true);
 
 
-    const onSubmit = (formData: any) => {
-        debugger
+    const onSubmit = (formData: { email: string, password: string }) => {
         dispatch(login(formData.email, formData.password))
 
-
-        // authAPI.login( formData.email, formData.password)
-        //    .then(response => {
-        //        console.log(response)
-        //    })
     };
 
-
     useEffect(() => {
-        //dispatch(login)
-
     });
 
+    if (selector.auth.jwt_token) {
+        return <Redirect to={"/profile"} />
+    }
 
     return (
         <Container component="main" maxWidth="xs">
@@ -108,7 +104,7 @@ export const Login = () => {
                                                     onClick={() => setTogglePassword(!togglePassword)}
                                                     edge="end"
                                                 >
-                                                    {togglePassword ? <Visibility /> : <VisibilityOff />}
+                                                    {togglePassword ? <Visibility/> : <VisibilityOff/>}
                                                 </IconButton>
                                             </InputAdornment>
                                         ),
@@ -120,9 +116,9 @@ export const Login = () => {
                             rules={{
                                 required: 'Required'
                             }}
-
                         />
                     </FormControl>
+                    {selector.auth.error && ' Email or password is incorrect' }
                     <Button
                         type="submit"
                         fullWidth
@@ -146,7 +142,9 @@ export const Login = () => {
                     </Grid>
                 </form>
             </div>
+
         </Container>
     )
 }
+
 
