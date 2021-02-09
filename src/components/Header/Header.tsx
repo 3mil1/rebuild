@@ -25,10 +25,11 @@ export const Nav = () => {
         <div className={classes.nav}>
             <NavLink exact activeClassName={classes.selected} to="/">Avaleht</NavLink>
 
-            <NavLink exact activeClassName={classes.selected} to="/about">Meist</NavLink>
-            <NavLink exact activeClassName={classes.selected} to="/search">Otsi</NavLink>
-            <NavLink exact activeClassName={classes.selected} to="/register">Registreeri</NavLink>
-            {selector.jwt_token ? <NavLink exact activeClassName={classes.selected} to="/profile"> {`| ${selector.firstName}`}</NavLink>:<NavLink exact activeClassName={classes.selected} to="/login">Logi</NavLink>}
+            {/*ei ole tehtud meist sp ei ava pathi kaudu*/}
+            <NavLink activeClassName={classes.selected} to="/about">Meist</NavLink>
+            <NavLink activeClassName={classes.selected} to="/search">Otsi</NavLink>
+            <NavLink activeClassName={classes.selected} to="/register">Registreeri</NavLink>
+            {selector.jwt_token ? <NavLink activeClassName={classes.selected} to="/profile"> {`| ${selector.firstName}`}</NavLink>:<NavLink exact activeClassName={classes.selected} to="/login">Logi</NavLink>}
         </div>
     )
 }
