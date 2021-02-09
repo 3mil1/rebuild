@@ -31,7 +31,6 @@ function App() {
                             <Redirect to={'/'}/>
                         </Switch>
                     </div>
-
                     <Footer/>
                 </div>
             </div>
