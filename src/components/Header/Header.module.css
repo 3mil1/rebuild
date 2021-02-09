@@ -42,13 +42,7 @@
         display: none;
     }
 }
-
 @media (max-width: 768px) {
-    .nav {
-        display: none;
-    }
-}
-@media (max-width: 767px) {
     .header {
         position: relative;
         margin: 0 auto;

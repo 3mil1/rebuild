@@ -68,7 +68,7 @@
     width: 100%
 
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .background {
         margin: 0 auto;
         padding: 0 auto;

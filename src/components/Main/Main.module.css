@@ -61,6 +61,7 @@
 .card {
     display: flex;
     width: 100%;
+    height: 500px;
     margin-bottom: 50px;
     background: #DEFFE5;
     box-shadow: 2px 5px 4px rgba(0, 0, 0, 0.25);
@@ -71,7 +72,7 @@
 }
 .cardText h1 {
     margin-left: 10%;
-    margin-top: 40%;
+    margin-top: 35%;
     top: 50%;
 }
 .cardText p {
@@ -87,7 +88,7 @@
     flex: 1;
 }
 .cardImg img {
-    max-width: 100%;
+    width: 50%;
     height: auto;
     margin:auto;
 }
@@ -145,40 +146,6 @@
         display: block;
     }
 }
-@media (max-width: 767px) {
-    .mainContainer {
-        margin-top: -20px;
-        display: flex;
-        margin-bottom: 50px;
-        flex-basis: 100%;
-    }
-    .main {
-        width: 140px;
-        margin-left: 20px;
-
-        min-height: 100px;
-    }
-    .meiegaLeiad {
-        margin-top: 0px;
-        font-size: 55px;
-        line-height: 55px;
-        letter-spacing: 2px;
-    }
-    .mainImg {
-        width: 150px;
-        margin-right: 30px;
-
-    }
-    .mainContainer img {
-        width: 100%;
-        height: auto;
-        min-width: 200px;
-        position: relative;
-        left: -5px;
-        z-index: -1;
-    }
-}
-
 @media (max-width: 480px) {
     .mainContainer {
         margin-top: -20px;
@@ -225,10 +192,12 @@
         flex: 50%;
     }
     .cardText h1 {
+        font-size: 20px;
         margin-top: 10%;
         text-align: center;
     }
     .cardText p {
+        font-size: 10px;
         text-align: left;
         margin-left: 20px;
         margin-right: 20px;
@@ -244,5 +213,23 @@
         height: auto;
         min-width: 50px;
         position: relative;
+    }
+}
+@media (max-width: 320px) {
+    .mainContainer {
+        margin-top: -20px;
+        display: flex;
+        margin-bottom: 50px;
+        flex-basis: 90%;
+    }
+    .meiegaLeiad {
+        margin-top: 0px;
+        font-size: 30px;
+        line-height: 30px;
+        letter-spacing: 1px;
+    }
+    .mainImg {
+        width: 50px;
+        margin-right: 30px;
     }
 }
