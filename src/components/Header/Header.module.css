@@ -1,59 +1,89 @@
 .header {
     grid-area: header;
-    margin-top: 20px;
     display: grid;
-    grid-auto-rows: auto;
-    grid-template-columns: 2.3fr .7fr;
-    /*grid-template-columns: repeat(auto-fit, minmax(2fr, 2fr));*/
-    align-items: center;
-    text-align: center;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-areas:
+    "logo nav";
+    margin-top: 20px;
     height: 100%;
-
-    justify-items: start;
 }
 
-
 .logo {
+    grid-area: logo;
     width: 100%;
     height: auto;
     max-width: 189px;
 }
 
 .nav {
+    grid-area: nav;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
 }
 
 .nav a {
     font-family: "Helvetica Neue", serif;
     font-weight: 450;
+    display: flex;
     margin: 0 7px 0 7px;
     color: rgba(24, 25, 31, 1);
-    text-decoration: none
+    text-decoration: none;
+    margin-right: 20px;
+    position: relative;
 }
 
 .selected {
     font-weight: bold!important;
     color: rgba(45, 192, 150, 1)!important;
 }
-
-@media (min-width: 320px) and (max-width: 480px) {
-    .header {
-        grid-area: header;
-        margin-top: 40px;
-        align-items: center;
-        text-align: center;
-    }
-    .nav a {
+@media (max-width: 1000px) {
+    .nav {
         display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav {
+        display: none;
+    }
+}
+@media (max-width: 767px) {
+    .header {
+        position: relative;
+        margin: 0 auto;
+        height: 100%;
+        width: 100%;
     }
     .nav {
         display: none;
     }
     .logo {
-        height: auto;
+        margin-top: 20px;
+        position: fixed;
+        left: 50%;
+        margin-left: -50px;
+        height: 50px;
+        width: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        position: relative;
+        margin: 0 auto;
+        height: 100%;
         width: 100%;
-        text-align: center;
+    }
+    .nav {
+        display: none;
+    }
+    .logo {
+        margin-top: 20px;
+        position: fixed;
+        left: 50%;
+        margin-left: -50px;
+        height: 50px;
+        width: auto;
     }
 }

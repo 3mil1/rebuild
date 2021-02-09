@@ -28,7 +28,6 @@ function App() {
                         <Route exact path="/register"> <Register/> </Route>
                         <Route exact path="/search"> <Search/> </Route>
                     </div>
-
                     <Footer/>
                 </div>
             </div>
