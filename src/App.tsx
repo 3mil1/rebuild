@@ -8,7 +8,7 @@ import {Register} from "./components/Register/Register";
 import {Search} from "./components/Search/Search";
 import houses from './img/houses.png'
 import blobs from "./img/blobs.png"
-import {Route} from 'react-router-dom';
+import {Route, Switch, Redirect} from 'react-router-dom';
 import {Login} from "./components/Login/Login";
 
 function App() {
@@ -22,11 +22,14 @@ function App() {
                 <div className="main-wrapper">
                     <Header/>
                     <div className="main-wrapper-content">
-                        <Route exact path="/"> <Main/> </Route>
-                        <Route exact path="/login"><Login/></Route>
-                        <Route exact path="/profile"> <Profile/> </Route>
-                        <Route exact path="/register"> <Register/> </Route>
-                        <Route exact path="/search"> <Search/> </Route>
+                        <Switch>
+                            <Route exact path="/"> <Main/> </Route>
+                            <Route path="/login"><Login/></Route>
+                            <Route path="/profile"> <Profile/> </Route>
+                            <Route path="/register"> <Register/> </Route>
+                            <Route path="/search"> <Search/> </Route>
+                            <Redirect to={'/'}/>
+                        </Switch>
                     </div>
                     <Footer/>
                 </div>
