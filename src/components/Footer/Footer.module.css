@@ -3,37 +3,31 @@
     display: grid;
     grid-template-rows: 1fr  1fr;
     grid-auto-columns: auto;
-
 }
-
 .footerNav {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
-
 .footerNav div {
-    grid-column-start: 2;
+    justify-content: center;
+    grid-column-start: 1;
     align-items: center;
 }
-
 .footer a {
     color: rgba(81, 81, 81, 10);
     font-weight: 350;
 }
-
 .divider {
     border-bottom: 1px solid #FFF;
     background: #515151;
     opacity: 0.2;
     height: 2px;
 }
-
 .socialLinks {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-auto-rows: auto;
 }
-
 .socialLinks a {
   float: right;
 }
