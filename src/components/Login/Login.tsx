@@ -18,13 +18,17 @@ import {Visibility, VisibilityOff} from "@material-ui/icons";
 import {login} from "../../redux/auth-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {Redirect} from "react-router-dom";
-
+import Snackbar from "@material-ui/core/Snackbar";
+import Alert from '@material-ui/lab/Alert';
 
 
 export const Login = () => {
 
     const selector = useSelector((state: any) => state)
     const dispatch = useDispatch()
+
+
+
 
     const {handleSubmit, errors: fieldsErrors, control, setError} = useForm();
 
@@ -36,10 +40,8 @@ export const Login = () => {
 
     };
 
-    useEffect(() => {
-    });
 
-    if (selector.auth.jwt_token) {
+    if (selector.auth.isAuth) {
         return <Redirect to={"/profile"} />
     }
 
@@ -118,7 +120,9 @@ export const Login = () => {
                             }}
                         />
                     </FormControl>
-                    {selector.auth.error && ' Email or password is incorrect' }
+                    <Snackbar open={selector.auth.error} autoHideDuration={6000}  >
+                        <Alert severity="error"> Email or password is incorrect</Alert>
+                    </Snackbar>
                     <Button
                         type="submit"
                         fullWidth
@@ -142,7 +146,6 @@ export const Login = () => {
                     </Grid>
                 </form>
             </div>
-
         </Container>
     )
 }

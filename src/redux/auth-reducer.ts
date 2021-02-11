@@ -12,7 +12,6 @@ export type SetUserData = {
     payload: {
         userId: number | null
         firstName: string | null
-        jwt_token: string | null
         isAuth: boolean | null
     }
 }
@@ -20,24 +19,20 @@ export type SetUserData = {
 type SetError = {
     type: typeof SET_ERROR,
     payload: {
-        error: string
+        error: boolean
     }
 }
 
 type initialStateType = {
     userId: number | null
-    firstName: string | null
-    jwt_token: string | null
     isAuth: boolean | null
-    error: string
+    error: boolean | null
 }
 
 let initialState: initialStateType = {
     userId: null,
-    firstName: null,
-    jwt_token: null,
     isAuth: false,
-    error: ''
+    error: null
 }
 
 export const authReducer = (state = initialState, action: ActionsType) => {
@@ -59,42 +54,40 @@ export const authReducer = (state = initialState, action: ActionsType) => {
     return state;
 }
 
-export const setAuthUserDataAC = (userId: number | null, firstName: string | null , jwt_token: string | null , isAuth: boolean | null): SetUserData => {
+export const setAuthUserDataAC = (userId: number | null, firstName: string | null, isAuth: boolean | null): SetUserData => {
     return {
         type: SET_USER_DATA,
         payload: {
             userId,
             firstName,
-            jwt_token,
             isAuth
         }
     }
 }
-export const setErrorAC = (error: string): SetError => {
+export const setErrorAC = (error: boolean): SetError => {
     return {
         type: SET_ERROR,
         payload: {
-          error
+            error
         }
     }
 }
-//
-// export const getAuthUserData = () => (dispatch: Dispatch) => {
-//     try {
-//         return authAPI.auth()
-//             .then(response => {
-//                 if (response.data.resultCode === 0) {
-//                     let {id, email, login} = response.data.data
-//                     dispatch(setAuthUserDataAC(id, email, login, true))
-//                 }
-//             })
-//             .catch((error) => {
-//                 console.log(error.response.data.error)
-//             })
-//     } catch (error) {
-//         // console.log(error)
-//     }
-// }
+
+export const getAuthUserData = () => (dispatch: Dispatch) => {
+    try {
+        return authAPI.auth()
+            .then(response => {
+                let {data: userId, firstName} = response.data
+                dispatch(setAuthUserDataAC(userId, firstName, true))
+            })
+            .catch((error) => {
+                console.log(error.response.data.error)
+            })
+    } catch (error) {
+        // console.log(error)
+    }
+}
+
 
 export type ThunkType = ThunkAction<any, any, any, any>;
 
@@ -103,11 +96,10 @@ export const login = (email: string, password: string): ThunkType => {
         try {
             authAPI.login(email, password)
                 .then(response => {
-                    let {userId , firstName, token: jwt_token} = response.data
-                    dispatch(setAuthUserDataAC(userId , firstName, jwt_token,  true))
+                    dispatch(getAuthUserData())
                 })
                 .catch((error) => {
-                    dispatch(setErrorAC(error.response.data.error))
+                    dispatch(setErrorAC(!!error.response.data.error))
                 })
         } catch (error) {
             // console.log(error.response.data);

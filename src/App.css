@@ -50,9 +50,6 @@
     grid-area: content;
     margin-top: 40px;
     display: flex;
-
-    /*kustutada parast*/
-    min-height: 1000px;
 }
 
 .houses {

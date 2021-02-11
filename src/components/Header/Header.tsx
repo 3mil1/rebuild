@@ -29,7 +29,9 @@ export const Nav = () => {
             <NavLink activeClassName={classes.selected} to="/about">Meist</NavLink>
             <NavLink activeClassName={classes.selected} to="/search">Otsi</NavLink>
             <NavLink activeClassName={classes.selected} to="/register">Registreeri</NavLink>
-            {selector.jwt_token ? <NavLink activeClassName={classes.selected} to="/profile"> {`| ${selector.firstName}`}</NavLink>:<NavLink exact activeClassName={classes.selected} to="/login">Logi</NavLink>}
+            {selector.isAuth ? <NavLink activeClassName={classes.selected} to="/profile"> {`| ${selector.firstName}`}</NavLink>:<NavLink exact activeClassName={classes.selected} to="/login">Log in</NavLink>}
+
+
         </div>
     )
 }
