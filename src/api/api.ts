@@ -21,3 +21,10 @@ export const authAPI = {
     },
 
 }
+
+export const registerApi = {
+    register(email:string, password: string, firstName: string, lastName: string){
+        return instance.post('/register', {email, password, firstName, lastName})
+    }
+
+}
