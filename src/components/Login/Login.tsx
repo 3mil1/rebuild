@@ -28,8 +28,6 @@ export const Login = () => {
     const dispatch = useDispatch()
 
 
-
-
     const {handleSubmit, errors: fieldsErrors, control, setError} = useForm();
 
     const [togglePassword, setTogglePassword] = useState(true);
@@ -42,7 +40,7 @@ export const Login = () => {
 
 
     if (selector.auth.isAuth) {
-        return <Redirect to={"/profile"} />
+        return <Redirect to={"/profile"}/>
     }
 
     return (
@@ -120,7 +118,7 @@ export const Login = () => {
                             }}
                         />
                     </FormControl>
-                    <Snackbar open={selector.auth.error} autoHideDuration={6000}  >
+                    <Snackbar open={selector.auth.error} autoHideDuration={6000}>
                         <Alert severity="error"> Email or password is incorrect</Alert>
                     </Snackbar>
                     <Button

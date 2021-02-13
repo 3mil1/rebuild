@@ -10,13 +10,11 @@ import houses from './img/houses.png'
 import blobs from "./img/blobs.png"
 import {Route, Switch, Redirect} from 'react-router-dom';
 import {Login} from "./components/Login/Login";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {getAuthUserData} from "./redux/auth-reducer";
-import {initializeAppTC} from "./redux/app-reducer";
 
 function App() {
 
-    const isInitialized = useSelector((state: any) => state.app.isInitialized)
     const dispatch = useDispatch()
 
     useEffect(() => {

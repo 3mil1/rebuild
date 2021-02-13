@@ -5,7 +5,7 @@ import {appReducer} from "./app-reducer";
 
 
 const reducers = combineReducers({
-    app: appReducer,
+    // app: appReducer,
     auth: authReducer,
 })
 

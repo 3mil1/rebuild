@@ -1,31 +1,32 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import classes from './Register.module.css';
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Avatar from "@material-ui/core/Avatar";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
-import FormControl from "@material-ui/core/FormControl";
 import {Controller, useForm} from "react-hook-form";
 import {TextField} from "@material-ui/core";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import IconButton from "@material-ui/core/IconButton";
-import {Visibility, VisibilityOff} from "@material-ui/icons";
-import Snackbar from "@material-ui/core/Snackbar";
-import Alert from "@material-ui/lab/Alert";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
-import Checkbox from "@material-ui/core/Checkbox";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
+import {useDispatch} from "react-redux";
+import {register} from "../../redux/register-reducer";
 
 export const Register = () => {
 
-    const {handleSubmit, errors: fieldsErrors, control, setError} = useForm();
+    const {register: regHookF, handleSubmit, errors: fieldsErrors, control, watch} = useForm();
+    const dispatch = useDispatch()
 
 
-    const onSubmit = (formData: { email: string, password: string }) => {
+    const password = useRef({});
+    password.current = watch("password", "");
+
+    const [terms, setTermsErr] = useState(false)
+    const termsOfService = watch('terms');
+
+    const onSubmit = (formData: { email: string, firstName: string, lastName: string, password: string }) => {
+        termsOfService === false ? setTermsErr(true) : dispatch(register(formData.email, formData.firstName, formData.lastName, formData.password))
     };
 
 
@@ -48,10 +49,10 @@ export const Register = () => {
                                     <TextField
                                         margin="normal"
                                         id="firstName"
-                                        helperText={fieldsErrors.email ? fieldsErrors.email.message : ''}
+                                        helperText={fieldsErrors.firstName ? fieldsErrors.firstName.message : ''}
                                         variant="outlined"
                                         label="firstName"
-                                        error={!!fieldsErrors.email}
+                                        error={!!fieldsErrors.firstName}
                                         autoComplete="First Name"
                                         name="firstName"
                                         fullWidth
@@ -62,10 +63,6 @@ export const Register = () => {
                                 defaultValue=""
                                 rules={{
                                     required: 'Required',
-                                    pattern: {
-                                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                                        message: 'invalid email address'
-                                    }
                                 }}
                             />
                         </Grid>
@@ -76,10 +73,10 @@ export const Register = () => {
                                     <TextField
                                         margin="normal"
                                         id="lastName"
-                                        helperText={fieldsErrors.email ? fieldsErrors.email.message : ''}
+                                        helperText={fieldsErrors.lastName ? fieldsErrors.lastName.message : ''}
                                         variant="outlined"
                                         label="Last Name"
-                                        error={!!fieldsErrors.email}
+                                        error={!!fieldsErrors.lastName}
                                         autoComplete="Last Name"
                                         name="lastName"
                                         fullWidth
@@ -89,10 +86,6 @@ export const Register = () => {
                                 defaultValue=""
                                 rules={{
                                     required: 'Required',
-                                    pattern: {
-                                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                                        message: 'invalid email address'
-                                    }
                                 }}
                             />
                         </Grid>
@@ -143,41 +136,48 @@ export const Register = () => {
                                 control={control}
                                 defaultValue=""
                                 rules={{
-                                    required: 'Required'
+                                    required: 'Required',
+                                    pattern: {
+                                        value: /^.{4,100}$/i,
+                                        message: 'Password must have between 4 & 100 characters'
+                                    }
                                 }}
                             />
                         </Grid>
                         <Grid item xs={12}>
                             <Controller
-                                name="repeatPassword"
+                                name="confirmPassword"
                                 as={
                                     <TextField
-                                        id="repeatPassword"
+                                        id="confirmPassword"
                                         margin="normal"
                                         fullWidth
                                         type={'password'}
-                                        helperText={fieldsErrors.password ? fieldsErrors.password.message : ''}
+                                        helperText={fieldsErrors.confirmPassword ? fieldsErrors.confirmPassword.message : ''}
                                         variant="outlined"
                                         label="Korda Parool"
-                                        name="repeatPassword"
-                                        error={!!fieldsErrors.password}
+                                        name="confirmPassword"
+                                        error={!!fieldsErrors.confirmPassword}
                                     />
                                 }
                                 control={control}
                                 defaultValue=""
                                 rules={{
-                                    required: 'Required'
+                                    required: 'Required',
+                                    pattern: {
+                                        value: /^.{4,100}$/i,
+                                        message: 'Password must have between 4 & 100 characters'
+                                    },
+                                    validate: value => value === password.current || "The passwords do not match"
                                 }}
                             />
                         </Grid>
-                        {/*<Snackbar open={selector.auth.error} autoHideDuration={6000}  >*/}
-                        {/*    <Alert severity="error"> Email or password is incorrect</Alert>*/}
-                        {/*</Snackbar>*/}
                         <Grid item xs={12}>
-                            <FormControlLabel
-                                control={<Checkbox value="allowExtraEmails" color="primary"/>}
-                                label="I want to receive inspiration, marketing promotions and updates via email."
-                            />
+                            <div className={terms ? classes.checkBoxErr : ''}>
+                                <input type="checkbox" name='terms' id='terms' ref={regHookF}/>
+                                <label htmlFor="TermsOfService">TermsOfService</label>
+                            </div>
+                            {terms && <div className={classes.checkBoxTextErr}>Required</div>}
                         </Grid>
                         <Button
                             type="submit"

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import classes from './Header.module.css';
 import logo from '../../img/RebuildLogo.png'
 import {NavLink} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {logout} from "../../redux/auth-reducer";
 
 
 export const Header = () => {
@@ -19,6 +20,8 @@ export const Header = () => {
 }
 
 export const Nav = () => {
+
+    const dispatch = useDispatch()
     const selector = useSelector((state: any) => state.auth)
 
     return (
@@ -28,10 +31,11 @@ export const Nav = () => {
             {/*ei ole tehtud meist sp ei ava pathi kaudu*/}
             <NavLink activeClassName={classes.selected} to="/about">Meist</NavLink>
             <NavLink activeClassName={classes.selected} to="/search">Otsi</NavLink>
-            <NavLink activeClassName={classes.selected} to="/register">Registreeri</NavLink>
-            {selector.isAuth ? <NavLink activeClassName={classes.selected} to="/profile"> {`| ${selector.firstName}`}</NavLink>:<NavLink exact activeClassName={classes.selected} to="/login">Log in</NavLink>}
-
-
+            {selector.isAuth ? false : <NavLink activeClassName={classes.selected} to="/register">Registreeri</NavLink>}
+            {selector.isAuth
+                ? <NavLink activeClassName={classes.selected} to="/profile"> {`| ${selector.firstName}`}</NavLink>
+                : <NavLink  activeClassName={classes.selected} to="/login">Log in</NavLink>}
+            {selector.isAuth && <div onClick={() => dispatch(logout())}>LogOut</div>}
         </div>
     )
 }

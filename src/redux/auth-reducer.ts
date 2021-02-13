@@ -7,7 +7,7 @@ type ActionsType = SetUserData | SetError
 const SET_USER_DATA = 'SET_USER_DATA',
     SET_ERROR = 'SET_ERROR';
 
-export type SetUserData = {
+type SetUserData = {
     type: typeof SET_USER_DATA
     payload: {
         userId: number | null
@@ -41,7 +41,6 @@ export const authReducer = (state = initialState, action: ActionsType) => {
             return {
                 ...state,
                 ...action.payload,
-                isAuth: true
             }
         }
         case SET_ERROR : {
@@ -72,7 +71,6 @@ export const setErrorAC = (error: boolean): SetError => {
         }
     }
 }
-
 export const getAuthUserData = () => (dispatch: Dispatch) => {
     try {
         return authAPI.auth()
@@ -81,13 +79,12 @@ export const getAuthUserData = () => (dispatch: Dispatch) => {
                 dispatch(setAuthUserDataAC(userId, firstName, true))
             })
             .catch((error) => {
-                console.log(error.response.data.error)
+                console.log(error)
             })
     } catch (error) {
-        // console.log(error)
+        console.log(error)
     }
 }
-
 
 export type ThunkType = ThunkAction<any, any, any, any>;
 
@@ -99,22 +96,24 @@ export const login = (email: string, password: string): ThunkType => {
                     dispatch(getAuthUserData())
                 })
                 .catch((error) => {
+                    console.log(error)
                     dispatch(setErrorAC(!!error.response.data.error))
                 })
         } catch (error) {
-            // console.log(error.response.data);
+            console.log(error.response.data);
         }
     }
 };
 
-// export const logout = (): ThunkType => (dispatch) => {
-//     authAPI.logout()
-//         .then(response => {
-//             if (response.data.resultCode === 0) {
-//                 dispatch(setAuthUserDataAC(null, null, null, false))
-//             }
-//         })
-// }
+export const logout = (): ThunkType => (dispatch) => {
+    authAPI.logout()
+        .then(response => {
+            dispatch(setAuthUserDataAC(null, null, false))
+        })
+        .catch((error) => {
+        console.log(error.response)
+        })
+}
 
 
 

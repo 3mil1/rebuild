@@ -17,14 +17,13 @@ export const authAPI = {
         return instance.post(`auth/login`, {email, password})
     },
     logout() {
-        return instance.delete(`auth/login`)
+        return instance.get(`auth/logout`)
     },
 
 }
 
 export const registerApi = {
-    register(email:string, password: string, firstName: string, lastName: string){
-        return instance.post('/register', {email, password, firstName, lastName})
+    register(email:string, firstName: string, lastName: string, password: string,){
+        return instance.post('/register', {email, firstName, lastName, password})
     }
-
 }
