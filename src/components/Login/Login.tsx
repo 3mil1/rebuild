@@ -8,7 +8,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 import Container from "@material-ui/core/Container";
-import CssBaseline from "@material-ui/core/CssBaseline";
+/* import CssBaseline from "@material-ui/core/CssBaseline"; */
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -45,7 +45,7 @@ export const Login = () => {
 
     return (
         <Container component="main" maxWidth="xs">
-            <CssBaseline/>
+            {/*<CssBaseline/>*/}
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon/>

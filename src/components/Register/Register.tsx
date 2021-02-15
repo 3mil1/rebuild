@@ -32,7 +32,6 @@ export const Register = () => {
 
     return (
         <Container component="main" maxWidth="xs">
-            <CssBaseline/>
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
                     <PeopleAltIcon className={classes.icon}/>

@@ -56,7 +56,7 @@ export const ResultCard = () => {
                         <div className={classes.userImg}>
                             <img src={firmaPilt} alt="firmaPilt"/>
                         </div>
-                        <div className={classes.userName}>EESTI EHITUSE JA KINNISVARA GRUPP </div>
+                        <div className={classes.userName}>EESTI EHITUSE JA KINNISVARA GRUPP</div>
                         <div className={classes.userRating}>
                             <img src={emptyStar} alt="emptyStar"/>
                             <img src={emptyStar} alt="emptyStar"/>
@@ -78,7 +78,14 @@ export const ResultCard = () => {
                         </div>
                     </div>
                 </div>
-                <div>2</div>
+                <div className={classes.addedChanged}>
+                        <span>Lisatud
+                            <p>15.10.2010</p>
+                        </span>
+                        <span>Muudetud
+                            <p>15.10.2010</p>
+                        </span>
+                </div>
             </div>
             <div className={classes.description}>
                 <span>Title</span>
