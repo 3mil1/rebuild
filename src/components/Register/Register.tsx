@@ -32,7 +32,7 @@ export const Register = () => {
 
     return (
         <Container component="main" maxWidth="xs">
-            <CssBaseline/>
+            {/*<CssBaseline/>*/}
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
                     <PeopleAltIcon className={classes.icon}/>
@@ -130,7 +130,7 @@ export const Register = () => {
                                         label="Password"
                                         name="password"
                                         error={!!fieldsErrors.password}
-                                        autoComplete="current-password"
+                                        autoComplete="new-password"
                                     />
                                 }
                                 control={control}
@@ -158,6 +158,7 @@ export const Register = () => {
                                         label="Korda Parool"
                                         name="confirmPassword"
                                         error={!!fieldsErrors.confirmPassword}
+                                        autoComplete="new-password"
                                     />
                                 }
                                 control={control}

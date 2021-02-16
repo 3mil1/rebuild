@@ -1,5 +1,6 @@
 import {ThunkAction} from "redux-thunk";
 import {registerApi} from "../api/api";
+import {setError, setStatus} from "./app-reducer";
 
 const SET_REG = 'SET_REG'
 
@@ -40,7 +41,6 @@ export const registerReducer = (state = initialState, action: SetReg) => {
     }
 }
 
-
 const SetReg = (email: string, firstName: string, lastName: string, password: string, ): SetReg => {
     return {
         type: SET_REG,
@@ -56,20 +56,22 @@ const SetReg = (email: string, firstName: string, lastName: string, password: st
 export type ThunkType = ThunkAction<any, any, any, any>;
 
 export const register = (email: string, firstName: string, lastName: string, password: string): ThunkType => {
-    debugger
     return async (dispatch) => {
         try {
+            dispatch(setStatus('loading'))
             registerApi.register(email, firstName, lastName, password)
                 .then(response => {
                         response.status = 201
                         dispatch(SetReg(email, firstName, lastName, password))
+                    dispatch(setStatus('succeeded'))
                     }
                 )
                 .catch((error) => {
                     console.log(error.response.data)
+                    dispatch(setError(error.response.data))
+                    dispatch(setStatus('succeeded'))
                 })
         } catch (error) {
-
         }
     }
 }

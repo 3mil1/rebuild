@@ -1,36 +1,29 @@
-import {Dispatch} from "redux";
-import {authAPI} from "../api/api";
-
-const isInitialized: InitialStateType = {
-    isInitialized: false
+const initialState: InitialStateType = {
+    status: 'idle',
+    error: null
 }
 
-export const appReducer = (state: InitialStateType = isInitialized, action: ActionsType): InitialStateType => {
+export const appReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {
-        case  'APP/SET_IS_INITIALIZED':
-            return {...state, isInitialized: action.value}
+        case 'APP/SET_STATUS':
+            return {...state, status: action.status}
+        case 'APP/SET_ERROR':
+            return {...state, error: action.error}
         default:
             return {...state}
     }
 }
 
-export type InitialStateType = {
+export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
 
-    // true if initialized
-    isInitialized: boolean
+export  type InitialStateType = {
+    status: RequestStatusType
+    error: string | null
 }
 
-export const setAppInitializedAC = (value: boolean) => ({type: 'APP/SET_IS_INITIALIZED', value} as const)
+export const setError = (error: string | null) => ({type: 'APP/SET_ERROR', error} as const)
+export const setStatus = (status: RequestStatusType) => ({type: 'APP/SET_STATUS', status} as const)
 
-
-export const initializeAppTC = () => (dispatch: Dispatch) => {
-    authAPI.auth()
-        .then(res => {
-            dispatch(setAppInitializedAC(true))
-        })
-        .catch()
-}
-
-export type SetAppInitialized = ReturnType<typeof setAppInitializedAC>
-
-type ActionsType = SetAppInitialized
+type ActionsType =
+    | ReturnType<typeof setError>
+    | ReturnType<typeof setStatus>

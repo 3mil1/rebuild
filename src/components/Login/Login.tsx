@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import classes from './Login.module.css';
-import {authAPI} from "../../api/api";
 import {Controller, useForm} from "react-hook-form";
 import {TextField} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
@@ -8,7 +7,6 @@ import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 import Container from "@material-ui/core/Container";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -18,8 +16,6 @@ import {Visibility, VisibilityOff} from "@material-ui/icons";
 import {login} from "../../redux/auth-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {Redirect} from "react-router-dom";
-import Snackbar from "@material-ui/core/Snackbar";
-import Alert from '@material-ui/lab/Alert';
 
 
 export const Login = () => {
@@ -45,7 +41,6 @@ export const Login = () => {
 
     return (
         <Container component="main" maxWidth="xs">
-            <CssBaseline/>
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon/>
@@ -118,9 +113,6 @@ export const Login = () => {
                             }}
                         />
                     </FormControl>
-                    <Snackbar open={selector.auth.error} autoHideDuration={6000}>
-                        <Alert severity="error"> Email or password is incorrect</Alert>
-                    </Snackbar>
                     <Button
                         type="submit"
                         fullWidth

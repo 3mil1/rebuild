@@ -6,6 +6,14 @@
     padding: 34px 80px 0 80px;
 }
 
+.MuiLinearProgress-colorPrimary {
+    background-color: #FFFFFF !important;
+}
+
+.MuiLinearProgress-barColorPrimary {
+    background-color: rgba(45, 192, 150, 1) !important;
+}
+
 .main-wrapper {
 
     padding: 0 80px 0 80px;
@@ -23,19 +31,15 @@
 
     /*------------------Glass------------------*/
     height: 100%;
-    border: 3px solid #ffff;
+    /*border: 3px solid #ffff;*/
     /*background: linear-gradient(*/
     /*        to right bottom,*/
     /*        rgba(255, 255, 255, 0.7),*/
     /*        rgba(255, 255, 255, 0.3)*/
     /*);*/
+    overflow: hidden;
 
-
-    background: radial-gradient(100.91% 107.32% at 29.97% -5.17%,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.015) 75.17%,
-    rgba(255, 255, 255, 0) 100%);
-
+    background: radial-gradient(100.91% 107.32% at 29.97% -5.17%, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.015) 75.17%, rgba(255, 255, 255, 0) 100%);
 
 
     border-radius: 2rem;
@@ -44,7 +48,10 @@
     background-clip: padding-box;
 
     max-width: 1170px;
+
+
 }
+
 
 .main-wrapper-content {
     grid-area: content;
@@ -65,14 +72,18 @@
     width: 100%
 
 }
+
+
 @media (max-width: 768px) {
     .background {
         margin: 0 auto;
         padding: 0 auto;
     }
+
     .container {
         padding: 0;
     }
+
     .main-wrapper {
         padding: 0px;
         margin: 0 auto;
@@ -93,9 +104,11 @@
         margin: 0 auto;
         padding: 0 auto;
     }
+
     .container {
         padding: 0;
     }
+
     .main-wrapper {
         padding: 0px;
         margin: 0 auto;
@@ -110,5 +123,84 @@
         grid-template-columns: repeat(auto-fit, minmax(1fr, 1fr));
     }
 }
+
+
+.progressBar {
+    /*margin: -3px auto;*/
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    /*height: inherit;*/
+    /*stroke-width: 1.000em!important;*/
+    /*max-width: 1170px;*/
+    z-index: -1;
+}
+
+.Border {
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    z-index: -2;
+}
+
+
+.ProgressBarContainer {
+    max-width: 1335px;
+}
+
+.giAdMamB_0 {
+    stroke-dasharray: 6178 6180;
+    stroke-dashoffset: 6179;
+    animation: giAdMamB_draw_0 1111ms linear 0ms infinite, giAdMamB_fade 1111ms linear 0ms infinite;
+}
+
+.giAdMamB_1 {
+    stroke-dasharray: 6190 6192;
+    stroke-dashoffset: 6191;
+    animation: giAdMamB_draw_1 1111ms linear 0ms infinite, giAdMamB_fade 1111ms linear 0ms infinite;
+}
+
+@keyframes giAdMamB_draw {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes giAdMamB_fade {
+    0% {
+        stroke-opacity: 1;
+    }
+    89.21251348435814% {
+        stroke-opacity: 1;
+    }
+    100% {
+        stroke-opacity: 0;
+    }
+}
+
+@keyframes giAdMamB_draw_0 {
+    0.2157497303128371% {
+        stroke-dashoffset: 6179
+    }
+    54.15318230852212% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes giAdMamB_draw_1 {
+    27.184466019417474% {
+        stroke-dashoffset: 6191
+    }
+    81.12189859762675% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
 
 

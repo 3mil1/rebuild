@@ -4,6 +4,7 @@ import logo from '../../img/RebuildLogo.png'
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {logout} from "../../redux/auth-reducer";
+import {LinearProgress} from "@material-ui/core";
 
 
 export const Header = () => {

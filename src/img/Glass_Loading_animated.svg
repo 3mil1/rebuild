@@ -1,0 +1,49 @@
+<svg width="1546" height="4046" viewBox="0 0 1546 4046" fill="none" xmlns="http://www.w3.org/2000/svg" style="">
+    <g filter="url(#filter0_b)">
+        <path width="1538" height="4042" fill="url(#paint0_radial)"
+              d="M 44,4 L 1502,4 A 40,40,0,0,1,1542,44 L 1542,4006 A 40,40,0,0,1,1502,4046 L 44,4046 A 40,40,0,0,1,4,4006 L 4,44 A 40,40,0,0,1,44,4"
+              class="cYhWcHAO_0"></path>
+        <path width="1541.5" height="4045.5" stroke="url(#paint1_linear)" stroke-width="3.5"
+              d="M 43.25,2.25 L 1502.75,2.25 A 41,41,0,0,1,1543.75,43.25 L 1543.75,4006.75 A 41,41,0,0,1,1502.75,4047.75 L 43.25,4047.75 A 41,41,0,0,1,2.25,4006.75 L 2.25,43.25 A 41,41,0,0,1,43.25,2.25"
+              class="cYhWcHAO_1"></path>
+        <path width="1541.5" height="4045.5" stroke="url(#paint2_linear)" stroke-width="3.5"
+              d="M 43.25,2.25 L 1502.75,2.25 A 41,41,0,0,1,1543.75,43.25 L 1543.75,4006.75 A 41,41,0,0,1,1502.75,4047.75 L 43.25,4047.75 A 41,41,0,0,1,2.25,4006.75 L 2.25,43.25 A 41,41,0,0,1,43.25,2.25"
+              class="cYhWcHAO_2"></path>
+    </g>
+    <defs>
+        <filter id="filter0_b" x="-41.5" y="-41.5" width="1629" height="4133" filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+            <feGaussianBlur in="BackgroundImage" stdDeviation="21"></feGaussianBlur>
+            <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur"></feComposite>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur" result="shape"></feBlend>
+        </filter>
+        <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                        gradientTransform="translate(465 -205) rotate(73.7185) scale(4519.24 1616.92)">
+            <stop stop-color="white" stop-opacity="0"></stop>
+            <stop offset="0.751655" stop-color="white" stop-opacity="0.015"></stop>
+            <stop offset="1" stop-color="white" stop-opacity="0"></stop>
+        </radialGradient>
+        <linearGradient id="paint1_linear" x1="734.868" y1="3.99995" x2="823.687" y2="4044.89"
+                        gradientUnits="userSpaceOnUse">
+            <stop stop-color="white"></stop>
+            <stop offset="1" stop-color="white" stop-opacity="0"></stop>
+        </linearGradient>
+        <linearGradient id="paint2_linear" x1="773" y1="4" x2="773" y2="4046" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#2DC096"></stop>
+            <stop offset="1" stop-color="white" stop-opacity="0"></stop>
+        </linearGradient>
+    </defs>
+    <style data-made-with="vivus-instant">.cYhWcHAO_0{stroke-dasharray:11092
+        11094;stroke-dashoffset:11093;animation:cYhWcHAO_draw_0 3900ms linear 0ms infinite,cYhWcHAO_fade 3900ms linear
+        0ms infinite;}.cYhWcHAO_1{stroke-dasharray:11104 11106;stroke-dashoffset:11105;animation:cYhWcHAO_draw_1 3900ms
+        linear 0ms infinite,cYhWcHAO_fade 3900ms linear 0ms infinite;}.cYhWcHAO_2{stroke-dasharray:11104
+        11106;stroke-dashoffset:11105;animation:cYhWcHAO_draw_2 3900ms linear 0ms infinite,cYhWcHAO_fade 3900ms linear
+        0ms infinite;}@keyframes cYhWcHAO_draw{100%{stroke-dashoffset:0;}}@keyframes
+        cYhWcHAO_fade{0%{stroke-opacity:1;}89.74358974358975%{stroke-opacity:1;}100%{stroke-opacity:0;}}@keyframes
+        cYhWcHAO_draw_0{0%{stroke-dashoffset: 11093}51.28205128205128%{ stroke-dashoffset: 0;}100%{ stroke-dashoffset:
+        0;}}@keyframes cYhWcHAO_draw_1{12.82051282051282%{stroke-dashoffset: 11105}64.1025641025641%{ stroke-dashoffset:
+        0;}100%{ stroke-dashoffset: 0;}}@keyframes cYhWcHAO_draw_2{25.64102564102564%{stroke-dashoffset:
+        11105}76.92307692307693%{ stroke-dashoffset: 0;}100%{ stroke-dashoffset: 0;}}
+    </style>
+</svg>

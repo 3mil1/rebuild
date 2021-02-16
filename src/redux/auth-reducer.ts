@@ -1,11 +1,11 @@
 import {Dispatch} from "redux";
 import {authAPI} from "../api/api";
 import {ThunkAction} from "redux-thunk";
+import {setError, setStatus} from "./app-reducer";
 
-type ActionsType = SetUserData | SetError
+type ActionsType = SetUserData
 
-const SET_USER_DATA = 'SET_USER_DATA',
-    SET_ERROR = 'SET_ERROR';
+const SET_USER_DATA = 'SET_USER_DATA'
 
 type SetUserData = {
     type: typeof SET_USER_DATA
@@ -16,12 +16,6 @@ type SetUserData = {
     }
 }
 
-type SetError = {
-    type: typeof SET_ERROR,
-    payload: {
-        error: boolean
-    }
-}
 
 type initialStateType = {
     userId: number | null
@@ -43,12 +37,6 @@ export const authReducer = (state = initialState, action: ActionsType) => {
                 ...action.payload,
             }
         }
-        case SET_ERROR : {
-            return {
-                ...state,
-                ...action.payload
-            }
-        }
     }
     return state;
 }
@@ -63,23 +51,20 @@ export const setAuthUserDataAC = (userId: number | null, firstName: string | nul
         }
     }
 }
-export const setErrorAC = (error: boolean): SetError => {
-    return {
-        type: SET_ERROR,
-        payload: {
-            error
-        }
-    }
-}
+
 export const getAuthUserData = () => (dispatch: Dispatch) => {
     try {
+        dispatch(setStatus('loading'))
         return authAPI.auth()
             .then(response => {
                 let {data: userId, firstName} = response.data
                 dispatch(setAuthUserDataAC(userId, firstName, true))
+                dispatch(setStatus('succeeded'))
+
             })
             .catch((error) => {
                 console.log(error)
+                dispatch(setStatus('succeeded'))
             })
     } catch (error) {
         console.log(error)
@@ -96,8 +81,7 @@ export const login = (email: string, password: string): ThunkType => {
                     dispatch(getAuthUserData())
                 })
                 .catch((error) => {
-                    console.log(error)
-                    dispatch(setErrorAC(!!error.response.data.error))
+                    dispatch(setError(error.response.data.error))
                 })
         } catch (error) {
             console.log(error.response.data);
@@ -111,7 +95,7 @@ export const logout = (): ThunkType => (dispatch) => {
             dispatch(setAuthUserDataAC(null, null, false))
         })
         .catch((error) => {
-        console.log(error.response)
+            console.log(error.response)
         })
 }
 
