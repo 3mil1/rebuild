@@ -3,8 +3,13 @@ import classes from '../Posts.module.css';
 import emptyStar from '../../../img/Star_empty.svg'
 import firmaPilt from '../../../img/EhitusFirmaPilt.jpg'
 
+type PropsType = {
+    id: string
+    title: string
+    content: string
+}
 
-export const Post = () => {
+export const Post = (props: PropsType) => {
     return (
         <div className={classes.card}>
             <div className={classes.cardInfo}>
@@ -45,12 +50,9 @@ export const Post = () => {
                 </div>
             </div>
             <div className={classes.description}>
-                <span>Title</span>
+                <span>{props.title}</span>
                 <div>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Accusamus autem commodi consequatur
-                    quaerat quia similique sint. Ipsam, quaerat temporibus.
-                    Adipisci animi aperiam.
+                    {props.content}
                 </div>
             </div>
         </div>
