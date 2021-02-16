@@ -11,7 +11,7 @@ import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import {useDispatch} from "react-redux";
-import {register} from "../../redux/register-reducer";
+import {register} from "./register-reducer";
 
 export const Register = () => {
 

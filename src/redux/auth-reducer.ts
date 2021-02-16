@@ -1,7 +1,7 @@
 import {Dispatch} from "redux";
 import {authAPI} from "../api/api";
 import {ThunkAction} from "redux-thunk";
-import {setError, setStatus} from "./app-reducer";
+import {setError, setStatus} from "../app/app-reducer";
 
 type ActionsType = SetUserData
 
@@ -63,7 +63,12 @@ export const getAuthUserData = () => (dispatch: Dispatch) => {
 
             })
             .catch((error) => {
-                console.log(error)
+
+                //parandada. kukkub error kui token expired
+
+                // // if(error.response.data !== 'Please log in') {
+                //     dispatch(setError(error.response.data.error))
+                // // }
                 dispatch(setStatus('succeeded'))
             })
     } catch (error) {

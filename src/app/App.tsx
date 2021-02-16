@@ -5,7 +5,6 @@ import {Main} from "../components/Main/Main";
 import {Footer} from "../components/Footer/Footer";
 import {Profile} from "../components/Profile/Profile";
 import {Register} from "../components/Register/Register";
-import {Search} from "../components/Search/Search";
 import houses from '../img/houses.png'
 import blobs from "../img/blobs.png"
 import {Route, Switch, Redirect} from 'react-router-dom';
@@ -15,7 +14,8 @@ import {getAuthUserData} from "../redux/auth-reducer";
 import {Border, ProgressBar} from "../components/ProgressBar/ProgressBar";
 import {ErrorSnackbar} from "../components/ErrorSnackbar/ErrorSnackbar";
 import {AppRootStateType} from "../redux/store";
-import {RequestStatusType} from "../redux/app-reducer";
+import {RequestStatusType} from "./app-reducer";
+import {Posts} from "../components/Posts/Posts";
 
 function App() {
 
@@ -26,14 +26,13 @@ function App() {
         dispatch(getAuthUserData())
     }, []);
 
-//111
+
     return (
         <>
             <ErrorSnackbar/>
             <div className='background'>
                 <img className={'blobs'} src={blobs} alt="blobs"/>
                 <img className={'houses'} src={houses} alt="houses"/>
-
 
                 <div className='container'>
                     <div className="main-wrapper">
@@ -46,7 +45,7 @@ function App() {
                                 <Route path="/login"><Login/></Route>
                                 <Route path="/profile"> <Profile/> </Route>
                                 <Route path="/register"> <Register/> </Route>
-                                <Route path="/search"> <Search/> </Route>
+                                <Route path="/posts"> <Posts/> </Route>
                                 <Redirect to={'/'}/>
                             </Switch>
                         </div>

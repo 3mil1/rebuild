@@ -31,7 +31,7 @@ export const Nav = () => {
 
             {/*ei ole tehtud meist sp ei ava pathi kaudu*/}
             <NavLink activeClassName={classes.selected} to="/about">Meist</NavLink>
-            <NavLink activeClassName={classes.selected} to="/search">Otsi</NavLink>
+            <NavLink activeClassName={classes.selected} to="/posts">Otsi</NavLink>
             {selector.isAuth ? false : <NavLink activeClassName={classes.selected} to="/register">Registreeri</NavLink>}
             {selector.isAuth
                 ? <NavLink activeClassName={classes.selected} to="/profile"> {`| ${selector.firstName}`}</NavLink>

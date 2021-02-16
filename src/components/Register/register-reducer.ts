@@ -1,6 +1,6 @@
 import {ThunkAction} from "redux-thunk";
-import {registerApi} from "../api/api";
-import {setError, setStatus} from "./app-reducer";
+import {registerApi} from "../../api/api";
+import {setError, setStatus} from "../../app/app-reducer";
 
 const SET_REG = 'SET_REG'
 

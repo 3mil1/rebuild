@@ -27,3 +27,9 @@ export const registerApi = {
         return instance.post('/register', {email, firstName, lastName, password})
     }
 }
+
+export const postsApi = {
+    getPosts() {
+        return instance.get(`/ads`)
+    }
+}
