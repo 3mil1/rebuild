@@ -4,11 +4,14 @@
     height: 100%;
 }
 
+
+
 .checkBoxErr {
     border: 1px red solid!important;
     border-radius: 4px!important;
     padding-left: 9px;
 }
+
 
 .checkBoxTextErr {
     margin-left: 14px;

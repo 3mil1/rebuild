@@ -1,3 +1,7 @@
+* {
+    margin:0;
+    padding:0;
+}
 .background {
     background: linear-gradient(180deg, #E1DEF0 0%, rgba(216, 225, 229, 0) 100%), #FFFFFF;
 }
