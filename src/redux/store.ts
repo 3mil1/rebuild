@@ -8,7 +8,7 @@ import {postsReducer} from "../components/Posts/Posts-reducer";
 const reducers = combineReducers({
     app: appReducer,
     auth: authReducer,
-    post: postsReducer,
+    posts: postsReducer,
 })
 
 export const store = createStore(reducers, applyMiddleware(thunkMiddleWare))

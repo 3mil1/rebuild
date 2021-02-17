@@ -1,16 +1,21 @@
 import classes from "./Posts.module.css";
-import React from "react";
+import React, {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {getPostsData, PostsType} from "./Posts-reducer";
 import {Post} from "./Post/Post";
 import {AppRootStateType} from "../../redux/store";
-import {useSelector} from "react-redux";
 
 export const Posts = () => {
-    const selector = useSelector<AppRootStateType, {}>(state => state.post)
+    const selector1 = useSelector<AppRootStateType, Array<PostsType>>((state) => state.posts.posts)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getPostsData())
+    }, [dispatch]);
 
     return (
         <>
             <div className={classes.search}>
-
                 <div className={classes.filter}>
                     <div className={classes.filterPadding}>
                         <span>Filter</span>
@@ -37,14 +42,21 @@ export const Posts = () => {
                 </div>
                 <div className={classes.results}>
                     <div className={classes.resultsWrapper}>
-                        <Post/>
-                        <Post/>
-                        <Post/>
-                        <Post/>
+                        {selector1.map((post) => {
+                            return (
+                                <Post
+                                    key={post.id}
+                                    id={post.id}
+                                    title={post.title}
+                                    content={post.content}
+                                />
+                            )
+                        })}
                     </div>
                 </div>
-
             </div>
         </>
     )
 }
+
+
