@@ -1,5 +1,8 @@
 import {ThunkAction} from "redux-thunk";
 import {postsApi} from "../../api/api";
+
+
+
 const SET_POSTS_DATA = 'SET_POSTS_DATA'
 type ActionsType = SetPostsDataActionType
 
@@ -15,7 +18,6 @@ export type PostsType = {
     createdAt: string,
     updatedAt: string
 }
-
 
 type SetPostsDataActionType = {
     type: typeof SET_POSTS_DATA,
