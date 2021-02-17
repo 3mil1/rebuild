@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from '../Posts.module.css';
+import classes from '../Post/Post.module.css';
 import emptyStar from '../../../img/Star_empty.svg'
 import firmaPilt from '../../../img/EhitusFirmaPilt.jpg'
 
@@ -45,12 +45,8 @@ export const Post = () => {
                 </div>
             </div>
             <div className={classes.description}>
-                <span>Title</span>
+                <span></span>
                 <div>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Accusamus autem commodi consequatur
-                    quaerat quia similique sint. Ipsam, quaerat temporibus.
-                    Adipisci animi aperiam.
                 </div>
             </div>
         </div>

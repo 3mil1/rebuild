@@ -17,19 +17,19 @@ export const Posts = () => {
                         <div className={classes.checkboxes}>
                             <div className={classes.checkbox}>
                                 <input type="checkbox" name="" id=""/>
-                                <span>Esimene</span>
+                                <span>Ehitus</span>
                             </div>
                             <div className={classes.checkbox}>
                                 <input type="checkbox" name="" id=""/>
-                                <span>Esimene</span>
+                                <span>Viimistlus</span>
                             </div>
                             <div className={classes.checkbox}>
                                 <input type="checkbox" name="" id=""/>
-                                <span>Esimene</span>
+                                <span>Lammutamine</span>
                             </div>
                             <div className={classes.checkbox}>
                                 <input type="checkbox" name="" id=""/>
-                                <span>Esimene</span>
+                                <span>Värvimine</span>
                             </div>
 
                         </div>
