@@ -4,14 +4,25 @@ import {useDispatch, useSelector} from "react-redux";
 import {getPostsData, PostsType} from "./Posts-reducer";
 import {Post} from "./Post/Post";
 import {AppRootStateType} from "../../redux/store";
+import {Redirect} from "react-router-dom";
 
 export const Posts = () => {
-    const selector1 = useSelector<AppRootStateType, Array<PostsType>>((state) => state.posts.posts)
+    const posts = useSelector<AppRootStateType, Array<PostsType>>((state) => state.posts.posts)
+    const isAuth = useSelector((state: any) => state.auth.isAuth)
+    console.log(posts)
+
     const dispatch = useDispatch()
+
 
     useEffect(() => {
         dispatch(getPostsData())
     }, [dispatch]);
+
+
+
+    // if (!isAuth) {
+    //     return <Redirect to={"/login"}/>
+    // }
 
     return (
         <>
@@ -42,13 +53,16 @@ export const Posts = () => {
                 </div>
                 <div className={classes.results}>
                     <div className={classes.resultsWrapper}>
-                        {selector1.map((post) => {
+                        {posts.map((post) => {
                             return (
                                 <Post
                                     key={post.id}
                                     id={post.id}
                                     title={post.title}
+                                    tags={post.tags}
                                     content={post.content}
+                                    createdAt={post.createdAt}
+                                    updatedAt={post.updatedAt}
                                 />
                             )
                         })}

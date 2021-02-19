@@ -2,7 +2,6 @@ import {ThunkAction} from "redux-thunk";
 import {postsApi} from "../../api/api";
 
 
-
 const SET_POSTS_DATA = 'SET_POSTS_DATA'
 type ActionsType = SetPostsDataActionType
 
@@ -12,10 +11,11 @@ type InitialStateType = {
     posts: Array<PostsType>
 }
 export type PostsType = {
-    id: string,
-    title: string,
-    content: string,
-    createdAt: string,
+    id: string
+    title: string
+    tags: []
+    content: string
+    createdAt: string
     updatedAt: string
 }
 
@@ -24,7 +24,7 @@ type SetPostsDataActionType = {
     posts: Array<PostsType>
 }
 
-export const postsReducer = (state= initialState, action: ActionsType) => {
+export const postsReducer = (state = initialState, action: ActionsType) => {
     switch (action.type) {
         case SET_POSTS_DATA: {
             return {

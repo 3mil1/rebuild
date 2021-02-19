@@ -7,7 +7,10 @@ import firmaPilt from '../../../img/EhitusFirmaPilt.jpg'
 type PropsType = {
     id: string
     title: string
+    tags: []
     content: string
+    createdAt: string
+    updatedAt: string
 }
 
 export const Post = (props: PropsType) => {
@@ -30,23 +33,19 @@ export const Post = (props: PropsType) => {
                         <div className={classes.userDesc}>Profiili kirjeldus lorem lorem lorem lorem</div>
                     </div>
                     <div className={classes.hashtags}>
-                        <div className={classes.hashtag}>
-                            #1234
-                        </div>
-                        <div className={classes.hashtag}>
-                            #1234
-                        </div>
-                        <div className={classes.hashtag}>
-                            #1234
-                        </div>
+                        {props.tags.map((tag: string) =>
+                            <div className={classes.hashtag} key={tag}>
+                                #{tag}
+                            </div>
+                        )}
                     </div>
                 </div>
                 <div className={classes.addedChanged}>
                         <span>Lisatud
-                            <p>15.10.2010</p>
+                            <p>{props.createdAt}</p>
                         </span>
                     <span>Muudetud
-                            <p>15.10.2010</p>
+                            <p>{props.updatedAt}</p>
                         </span>
                 </div>
             </div>
