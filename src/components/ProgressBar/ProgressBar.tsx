@@ -1,8 +1,7 @@
 import React from 'react';
 
-export const ProgressBar = () => {
+export const ProgressBar = React.memo(function () {
     return (
-
         <>
             <svg width="1342" viewBox="0 0 1342 1797" fill="none"
                  xmlns="http://www.w3.org/2000/svg" className='progressBar'>
@@ -58,10 +57,9 @@ export const ProgressBar = () => {
         </>
 
     )
+})
 
-}
-
-export const Border = () => {
+export const Border = React.memo(function () {
     return (
         <svg width="1342" viewBox="0 0 1342 1797" fill="none" xmlns="http://www.w3.org/2000/svg"
              className='Border'>
@@ -91,5 +89,5 @@ export const Border = () => {
             </defs>
         </svg>
     )
-}
+})
 

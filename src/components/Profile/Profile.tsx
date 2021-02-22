@@ -3,7 +3,7 @@ import classes from './Profile.module.css';
 import {Redirect} from "react-router-dom";
 import {useSelector} from "react-redux";
 
-export const Profile = () => {
+export const Profile = React.memo(function () {
 
     const selector = useSelector((state: any) => state)
 
@@ -18,4 +18,4 @@ export const Profile = () => {
             </div>
         </>
     )
-}
+})

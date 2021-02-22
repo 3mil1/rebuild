@@ -6,7 +6,7 @@ import card2 from '../../img/card2.png';
 import card3 from '../../img/card3.png';
 import {Button, TextField} from "@material-ui/core";
 
-export const Main = () => {
+export const Main =React.memo(function () {
     return (
         <div className={classes.landingContainer}>
             <div className={classes.mainContainer}>
@@ -64,4 +64,4 @@ export const Main = () => {
             </div>
         </div>
     )
-}
+})

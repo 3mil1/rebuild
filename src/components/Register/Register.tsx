@@ -13,7 +13,7 @@ import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import {useDispatch} from "react-redux";
 import {register} from "./register-reducer";
 
-export const Register = () => {
+export const Register = React.memo(function () {
 
     const {register: regHookF, handleSubmit, errors: fieldsErrors, control, watch} = useForm();
     const dispatch = useDispatch()
@@ -201,4 +201,4 @@ export const Register = () => {
             </div>
         </Container>
     )
-}
+})

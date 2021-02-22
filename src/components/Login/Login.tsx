@@ -18,7 +18,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {Redirect} from "react-router-dom";
 
 
-export const Login = () => {
+export const Login = React.memo(function () {
 
     const selector = useSelector((state: any) => state)
     const dispatch = useDispatch()
@@ -138,6 +138,6 @@ export const Login = () => {
             </div>
         </Container>
     )
-}
+})
 
 

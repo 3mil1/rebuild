@@ -6,7 +6,7 @@ import {Post} from "./Post/Post";
 import {AppRootStateType} from "../../redux/store";
 import {Redirect} from "react-router-dom";
 
-export const Posts = () => {
+export const Posts = React.memo(function () {
     const posts = useSelector<AppRootStateType, Array<PostsType>>((state) => state.posts.posts)
     const isAuth = useSelector((state: any) => state.auth.isAuth)
     console.log(posts)
@@ -17,7 +17,6 @@ export const Posts = () => {
     useEffect(() => {
         dispatch(getPostsData())
     }, [dispatch]);
-
 
 
     // if (!isAuth) {
@@ -71,6 +70,6 @@ export const Posts = () => {
             </div>
         </>
     )
-}
+})
 
 

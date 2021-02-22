@@ -3,11 +3,10 @@ import classes from './Header.module.css';
 import logo from '../../img/RebuildLogo.png'
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {logout} from "../../redux/auth-reducer";
 import {ProfileMenu} from "./ProfileMenu/ProfileMenu";
 
 
-export const Header = () => {
+export const Header = React.memo(function () {
 
 
     return (
@@ -18,9 +17,9 @@ export const Header = () => {
             </header>
         </>
     )
-}
+})
 
-export const Nav = () => {
+export const Nav = React.memo(function () {
 
     const selector = useSelector((state: any) => state.auth)
 
@@ -33,11 +32,11 @@ export const Nav = () => {
             <NavLink activeClassName={classes.selected} to="/posts">Otsi</NavLink>
             {selector.isAuth ? false : <NavLink activeClassName={classes.selected} to="/register">Registreeri</NavLink>}
             {selector.isAuth
-                ?  <ProfileMenu/>
-                : <NavLink  activeClassName={classes.selected} to="/login">Log in</NavLink>}
+                ? <ProfileMenu/>
+                : <NavLink activeClassName={classes.selected} to="/login">Log in</NavLink>}
         </div>
     )
-}
+})
 
 
 
