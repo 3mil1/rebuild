@@ -1,0 +1,29 @@
+.footerNav {
+    height: 60px;
+    border: 1px solid black;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+.footerItems {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    top: 50%;
+    font-family: Helvetica Neue, serif;
+    height: 100%;
+}
+.footerItem1 {
+    top: 50%;
+    width: 100%;
+    text-align: center;
+}
+.footerItem2 {
+
+    width: 100%;
+    text-align: center;
+}
+.footerItem3 {
+
+    width: 100%;
+    text-align: center;
+}

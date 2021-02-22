@@ -3,20 +3,35 @@
     display: flex;
     margin-bottom: 200px;
     flex-basis: 100%;
+    overflow: auto;
 }
 .main {
     flex-basis: 40%;
     min-height: 100px;
 }
 .mainImg {
+    margin-top: 80px;
     flex-basis: 60%;
+    max-width: 600px;
+    position: relative;
 }
 .mainContainer img {
     width: 100%;
     height: auto;
     min-width: 350px;
 }
-
+.searchContainer {
+    background: seagreen;
+    width: 190px;
+}
+.search {
+    background: #FF455B!important;
+    border-radius: 98px!important;
+    z-index: 2!important;
+    position: absolute!important;
+    top: 60% !important;
+    right: 20% !important;
+}
 /* Oranz pealkiri */
 .meiegaLeiad {
     display: flex;
@@ -41,13 +56,6 @@
     text-align: left;
     margin-bottom: 30px;
 }
-/* .search {
-    grid-area: otsing;
-    background: #FF455B!important;
-    border-radius: 98px!important;
-}
-*/
-
 .register {
     margin-right: 25px!important;
     background-color: rgba(33, 150, 243, 1) !important;

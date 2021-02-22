@@ -16,6 +16,7 @@ import {ErrorSnackbar} from "../components/ErrorSnackbar/ErrorSnackbar";
 import {AppRootStateType} from "../redux/store";
 import {RequestStatusType} from "./app-reducer";
 import {Posts} from "../components/Posts/Posts";
+import {FooterNav} from '../components/FooterNav/FooterNav';
 
 function App() {
 
@@ -49,6 +50,7 @@ function App() {
                                 <Redirect to={'/'}/>
                             </Switch>
                         </div>
+                        <FooterNav/>
                         <Footer/>
                     </div>
                 </div>
