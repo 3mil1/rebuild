@@ -32,6 +32,10 @@
     top: 60% !important;
     right: 20% !important;
 }
+.search label {
+    padding-left: 10px!important;
+    color: white!important;
+}
 /* Oranz pealkiri */
 .meiegaLeiad {
     display: flex;
@@ -125,6 +129,24 @@
     .cardImg img {
         height: 300px;
     }
+    .search {
+        width: 150px!important;
+    }
+    .search label {
+        padding-left: 10px!important;
+    }
+}
+@media (max-width: 950px) {
+    .search {
+        top: 60% !important;
+        right: 15% !important;
+        width: 150px!important;
+        height: 40px!important;
+    }
+    .search label {
+        font-size: 12px!important;
+        padding-left: 10px!important;
+    }
 }
 @media (max-width: 880px) {
     .meiegaLeiad {
@@ -153,6 +175,9 @@
 }
 /* Tahvelarvuti vaade (iPad) */
 @media (max-width: 768px) {
+    .search {
+        display: none!important;
+    }
     .mainContainer {
         margin-top: -20px;
         display: flex;

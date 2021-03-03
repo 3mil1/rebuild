@@ -7,7 +7,7 @@ import firmaPilt from '../../../img/EhitusFirmaPilt.jpg'
 type PropsType = {
     id: string
     title: string
-    tags: []
+    tags: [any]
     content: string
     createdAt: string
     updatedAt: string

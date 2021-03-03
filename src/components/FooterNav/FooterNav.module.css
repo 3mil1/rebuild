@@ -1,10 +1,14 @@
-.footerNav {
+.bottomNav {
+    display: flex;
+    position: relative;
     height: 60px;
     border: 1px solid black;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
 }
-.footerItems {
+.bottomItems {
+    position: absolute;
+    bottom: 0;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -12,18 +16,17 @@
     font-family: Helvetica Neue, serif;
     height: 100%;
 }
-.footerItem1 {
+.bottomItem1 {
     top: 50%;
     width: 100%;
     text-align: center;
 }
-.footerItem2 {
+.bottomItem2 {
 
     width: 100%;
     text-align: center;
 }
-.footerItem3 {
-
+.bottomItem3 {
     width: 100%;
     text-align: center;
 }

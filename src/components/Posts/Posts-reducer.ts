@@ -5,7 +5,7 @@ import {postsApi} from "../../api/api";
 const SET_POSTS_DATA = 'SET_POSTS_DATA'
 type ActionsType = SetPostsDataActionType
 
-const initialState: InitialStateType = {posts: []}
+const initialState: InitialStateType = {posts: [{id: "post", title: "postitus", tags: ["midamidamidamida"], content: "misiganes", createdAt: "suva", updatedAt: "suva" }]}
 
 type InitialStateType = {
     posts: Array<PostsType>
@@ -13,7 +13,7 @@ type InitialStateType = {
 export type PostsType = {
     id: string
     title: string
-    tags: []
+    tags: [any]
     content: string
     createdAt: string
     updatedAt: string

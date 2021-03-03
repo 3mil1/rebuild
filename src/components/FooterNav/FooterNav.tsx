@@ -20,7 +20,6 @@ export const FooterNav = () => {
                 <div className={classes.footerItem2}>
                     <NavLink to="/posts"><SearchIcon/></NavLink>
                 </div>
-
                 <div className={classes.footerItem3}>
                     <NavLink to="/profile"><PersonIcon/></NavLink>
                 </div>

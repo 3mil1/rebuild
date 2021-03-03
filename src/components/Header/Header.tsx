@@ -1,9 +1,13 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import classes from './Header.module.css';
 import logo from '../../img/RebuildLogo.png'
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {ProfileMenu} from "./ProfileMenu/ProfileMenu";
+import {ProfileMenuMobile} from '../Header/ProfileMenu/ProfileMenuMobile';
+import {ProfileMenuMobileNotAuth} from '../Header/ProfileMenu/ProfileMenuMobile';
+import {ProfileMenu} from '../Header/ProfileMenu/ProfileMenu';
+import SearchIcon from '@material-ui/icons/Search';
+import HomeIcon from '@material-ui/icons/Home';
 
 
 export const Header = React.memo(function () {
@@ -12,9 +16,12 @@ export const Header = React.memo(function () {
     return (
         <>
             <header className={classes.header}>
-                <NavLink to="/"><img className={classes.logo} src={logo} alt="logo"/></NavLink>
+                <div>
+                   <NavLink to="/"><img className={classes.logo} src={logo} alt="logo"/></NavLink>
+                </div>
                 <Nav/>
             </header>
+            <BottomNav/>
         </>
     )
 })
@@ -34,6 +41,29 @@ export const Nav = React.memo(function () {
             {selector.isAuth
                 ? <ProfileMenu/>
                 : <NavLink activeClassName={classes.selected} to="/login">Log in</NavLink>}
+        </div>
+    )
+})
+
+export const BottomNav = React.memo(function () {
+
+    const selector = useSelector((state: any) => state.auth)
+
+    return (
+        <div className={classes.bottomNav}>
+            <div className={classes.bottomItems}>
+                <div className={classes.bottomItem}>
+                    <NavLink exact activeClassName={classes.selected} to="/"><HomeIcon/></NavLink>
+                </div>
+                <div className={classes.bottomItem}>
+                    <NavLink activeClassName={classes.selected} to="/posts"><SearchIcon/></NavLink>
+                </div>
+                <div className={classes.bottomItem}>
+                    {selector.isAuth
+                        ? <ProfileMenuMobile />
+                        : <ProfileMenuMobileNotAuth />}
+                </div>
+            </div>
         </div>
     )
 })
