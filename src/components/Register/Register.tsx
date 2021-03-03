@@ -15,7 +15,7 @@ import {register} from "./register-reducer";
 
 export const Register = React.memo(function () {
 
-    const {register: regHookF, handleSubmit, errors: fieldsErrors, control, watch} = useForm();
+    const {register: regHookF, handleSubmit, errors: fieldsErrors, control, watch} = useForm({mode: 'onTouched'});
     const dispatch = useDispatch()
 
 

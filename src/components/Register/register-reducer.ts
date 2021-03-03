@@ -41,7 +41,7 @@ export const registerReducer = (state = initialState, action: SetReg) => {
     }
 }
 
-const SetReg = (email: string, firstName: string, lastName: string, password: string, ): SetReg => {
+const SetReg = (email: string, firstName: string, lastName: string, password: string,): SetReg => {
     return {
         type: SET_REG,
         payload: {
@@ -63,7 +63,7 @@ export const register = (email: string, firstName: string, lastName: string, pas
                 .then(response => {
                         response.status = 201
                         dispatch(SetReg(email, firstName, lastName, password))
-                    dispatch(setStatus('succeeded'))
+                        dispatch(setStatus('succeeded'))
                     }
                 )
                 .catch((error) => {

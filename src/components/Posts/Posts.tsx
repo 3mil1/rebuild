@@ -1,21 +1,23 @@
 import classes from "./Posts.module.css";
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getPostsData, PostsType} from "./Posts-reducer";
-import {Post} from "./Post/Post";
+import {getPostsData, getTags, PostsType} from "./GetPosts-reducer";
+import {CategoriesType, Post} from "./Post/Post";
 import {AppRootStateType} from "../../redux/store";
 import {Redirect} from "react-router-dom";
+import {FormStepper} from "./AddPost/Stepper/FormStepper";
 
 export const Posts = React.memo(function () {
     const posts = useSelector<AppRootStateType, Array<PostsType>>((state) => state.posts.posts)
+    const categories = useSelector<AppRootStateType, Array<CategoriesType>>((state) => state.posts.categories)
     const isAuth = useSelector((state: any) => state.auth.isAuth)
-    console.log(posts)
 
     const dispatch = useDispatch()
 
 
     useEffect(() => {
         dispatch(getPostsData())
+        dispatch(getTags())
     }, [dispatch]);
 
 
@@ -30,23 +32,10 @@ export const Posts = React.memo(function () {
                     <div className={classes.filterPadding}>
                         <span>Filter</span>
                         <div className={classes.checkboxes}>
-                            <div className={classes.checkbox}>
+                            {categories.map((category) => <div className={classes.checkbox}>
                                 <input type="checkbox" name="" id=""/>
-                                <span>Ehitus</span>
-                            </div>
-                            <div className={classes.checkbox}>
-                                <input type="checkbox" name="" id=""/>
-                                <span>Viimistlus</span>
-                            </div>
-                            <div className={classes.checkbox}>
-                                <input type="checkbox" name="" id=""/>
-                                <span>Lammutamine</span>
-                            </div>
-                            <div className={classes.checkbox}>
-                                <input type="checkbox" name="" id=""/>
-                                <span>Värvimine</span>
-                            </div>
-
+                                <span>{category.name}</span>
+                                </div>)}
                         </div>
                     </div>
                 </div>
@@ -58,7 +47,7 @@ export const Posts = React.memo(function () {
                                     key={post.id}
                                     id={post.id}
                                     title={post.title}
-                                    tags={post.tags}
+                                    categories={post.categories}
                                     content={post.content}
                                     createdAt={post.createdAt}
                                     updatedAt={post.updatedAt}
