@@ -10,12 +10,13 @@ import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {register} from "./register-reducer";
+import {Redirect} from "react-router-dom";
 
 export const Register = React.memo(function () {
 
-    const {register: regHookF, handleSubmit, errors: fieldsErrors, control, watch} = useForm();
+    const {register: regHookF, handleSubmit, errors: fieldsErrors, control, watch} = useForm({mode: 'onTouched'});
     const dispatch = useDispatch()
 
 
@@ -28,6 +29,11 @@ export const Register = React.memo(function () {
     const onSubmit = (formData: { email: string, firstName: string, lastName: string, password: string }) => {
         termsOfService === false ? setTermsErr(true) : dispatch(register(formData.email, formData.firstName, formData.lastName, formData.password))
     };
+
+    const selector = useSelector((state: any) => state)
+    if (selector.auth.isAuth) {
+        return <Redirect to={"/profile"}/>
+    }
 
 
     return (

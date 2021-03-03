@@ -37,6 +37,7 @@ export const Nav = React.memo(function () {
             {/*ei ole tehtud meist sp ei ava pathi kaudu*/}
             <NavLink activeClassName={classes.selected} to="/about">Meist</NavLink>
             <NavLink activeClassName={classes.selected} to="/posts">Otsi</NavLink>
+            {selector.isAuth ? <NavLink activeClassName={classes.selected} to="/add">Lisa Kuulutus</NavLink> : false}
             {selector.isAuth ? false : <NavLink activeClassName={classes.selected} to="/register">Registreeri</NavLink>}
             {selector.isAuth
                 ? <ProfileMenu/>

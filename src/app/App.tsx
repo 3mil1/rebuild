@@ -16,6 +16,7 @@ import {ErrorSnackbar} from "../components/ErrorSnackbar/ErrorSnackbar";
 import {AppRootStateType} from "../redux/store";
 import {RequestStatusType} from "./app-reducer";
 import {Posts} from "../components/Posts/Posts";
+import {FormStepper} from "../components/Posts/AddPost/Stepper/FormStepper";
 
 function App() {
 
@@ -46,6 +47,7 @@ function App() {
                                 <Route path="/profile"> <Profile/> </Route>
                                 <Route path="/register"> <Register/> </Route>
                                 <Route path="/posts"> <Posts/> </Route>
+                                <Route path="/add"> <FormStepper/>  </Route>
                                 <Redirect to={'/'}/>
                             </Switch>
                         </div>

@@ -23,13 +23,19 @@ export const authAPI = {
 }
 
 export const registerApi = {
-    register(email:string, firstName: string, lastName: string, password: string,){
+    register(email: string, firstName: string, lastName: string, password: string,) {
         return instance.post('/register', {email, firstName, lastName, password})
     }
 }
 
 export const postsApi = {
     getPosts() {
-        return instance.get(`/ads`)
+        return instance.get(`/posts`)
+    },
+    getTags() {
+        return instance.get(`/categories`)
+    },
+    addPost(title: string, content: string, categories: []) {
+        return instance.post('/posts/new-post', {title, content, categories})
     }
 }

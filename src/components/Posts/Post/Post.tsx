@@ -7,10 +7,15 @@ import firmaPilt from '../../../img/EhitusFirmaPilt.jpg'
 type PropsType = {
     id: string
     title: string
-    tags: [any]
     content: string
     createdAt: string
     updatedAt: string
+    categories: CategoriesType[]
+}
+
+export type CategoriesType = {
+    id: number,
+    name: string
 }
 
 export const Post = (props: PropsType) => {
@@ -33,11 +38,12 @@ export const Post = (props: PropsType) => {
                         <div className={classes.userDesc}>Profiili kirjeldus lorem lorem lorem lorem</div>
                     </div>
                     <div className={classes.hashtags}>
-                        {props.tags.map((tag: string) =>
-                            <div className={classes.hashtag} key={tag}>
-                                #{tag}
+                        {props.categories.map((categories: CategoriesType) =>
+                            <div className={classes.hashtag} key={categories.name}>
+                                #{categories.name}
                             </div>
                         )}
+
                     </div>
                 </div>
                 <div className={classes.addedChanged}>

@@ -24,7 +24,7 @@ export const Login = React.memo(function () {
     const dispatch = useDispatch()
 
 
-    const {handleSubmit, errors: fieldsErrors, control, setError} = useForm();
+    const {handleSubmit, errors: fieldsErrors, control, setError} = useForm({mode: 'onTouched'});
 
     const [togglePassword, setTogglePassword] = useState(true);
 
