@@ -21,9 +21,9 @@ export const Posts = React.memo(function () {
     }, [dispatch]);
 
 
-    // if (!isAuth) {
-    //     return <Redirect to={"/login"}/>
-    // }
+    if (!isAuth) {
+        return <Redirect to={"/login"}/>
+    }
 
     return (
         <>

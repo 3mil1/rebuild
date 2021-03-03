@@ -2,12 +2,13 @@ import React, {useEffect} from 'react'
 import Stepper from "@material-ui/core/Stepper";
 import {Step} from "@material-ui/core";
 import StepLabel from "@material-ui/core/StepLabel";
-import {useLocation} from "react-router-dom";
+import {Redirect, useLocation} from "react-router-dom";
 import clearFormData from "./services/clearFormData";
 import {Title} from "./Title";
 import {Tags} from "./Tags";
 import {Content} from "./Content";
 import {Review} from "./Review";
+import {useSelector} from "react-redux";
 
 
 const TABS = [
@@ -34,11 +35,13 @@ const TABS = [
 ];
 
 
+
 export const FormStepper = () => {
+    const isAuth = useSelector((state: any) => state.auth.isAuth)
+
     type LocationState = {
         activeStep: number
     }
-
 
     let {state = {activeStep: 0}} = useLocation<LocationState>();
     if (state === null) {
@@ -52,6 +55,10 @@ export const FormStepper = () => {
             clearFormData();
         };
     }, []);
+
+    if (!isAuth) {
+        return <Redirect to={"/login"}/>
+    }
 
     return (
         <>
