@@ -7,7 +7,7 @@ import setFormData from "./services/setFormData";
 import TextField from "@material-ui/core/TextField";
 import FormControl from "@material-ui/core/FormControl";
 
-export const Title = () => {
+export const Title = React.memo(function () {
     const history = useHistory();
     const location = useLocation();
     const [initialValues] = useState(getFormData());
@@ -62,5 +62,5 @@ export const Title = () => {
             </Button>
         </form>
     );
-};
+})
 

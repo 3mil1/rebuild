@@ -36,7 +36,7 @@ const TABS = [
 
 
 
-export const FormStepper = () => {
+export const FormStepper = React.memo(function () {
     const isAuth = useSelector((state: any) => state.auth.isAuth)
 
     type LocationState = {
@@ -75,4 +75,4 @@ export const FormStepper = () => {
             <div>{tab.Description}</div>
         </>
     )
-}
+})

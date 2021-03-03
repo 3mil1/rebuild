@@ -9,7 +9,7 @@ import FormControl from "@material-ui/core/FormControl";
 import TextField from "@material-ui/core/TextField";
 import {Button} from "@material-ui/core";
 
-export const Content = () => {
+export const Content = React.memo(function () {
     const history = useHistory();
     const location = useLocation();
     const [initialValues] = useState(getFormData());
@@ -72,4 +72,4 @@ export const Content = () => {
             </form>
         </>
     );
-};
+})

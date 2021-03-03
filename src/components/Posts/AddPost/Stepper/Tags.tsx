@@ -11,10 +11,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../redux/store";
 import {CategoriesType} from "../../Post/Post";
 import {getTags} from "../../GetPosts-reducer";
-import {addPost} from "./AddPost-reducer";
 
 
-export const Tags = () => {
+export const Tags = React.memo(function () {
     const dispatch = useDispatch()
     const tags = useSelector<AppRootStateType, Array<CategoriesType>>((state) => state.posts.categories)
     const history = useHistory();
@@ -38,7 +37,6 @@ export const Tags = () => {
 
     const [categories, setCategories] = useState<CategoriesType[]>([]);
     const [unusedCategories, setUnusedCategories] = useState<CategoriesType[]>([]);
-
 
 
     const onSubmit = useCallback(
@@ -101,4 +99,4 @@ export const Tags = () => {
             </Button>
         </>
     );
-};
+})

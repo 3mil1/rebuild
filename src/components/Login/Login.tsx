@@ -16,6 +16,7 @@ import {Visibility, VisibilityOff} from "@material-ui/icons";
 import {login} from "../../redux/auth-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {Redirect} from "react-router-dom";
+import {ForgotPassword} from "../ForgotPassword/ForgotPassword";
 
 
 export const Login = React.memo(function () {
@@ -24,7 +25,7 @@ export const Login = React.memo(function () {
     const dispatch = useDispatch()
 
 
-    const {handleSubmit, errors: fieldsErrors, control, setError} = useForm({mode: 'onTouched'});
+    const {handleSubmit, errors: fieldsErrors, control} = useForm();
 
     const [togglePassword, setTogglePassword] = useState(true);
 
@@ -124,9 +125,7 @@ export const Login = React.memo(function () {
                     </Button>
                     <Grid container>
                         <Grid item xs>
-                            <Link href="#" variant="body2">
-                                Forgot password?
-                            </Link>
+                           <ForgotPassword/>
                         </Grid>
                         <Grid item>
                             <Link href="#" variant="body2">

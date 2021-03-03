@@ -28,7 +28,7 @@ export const Header = React.memo(function () {
 
 export const Nav = React.memo(function () {
 
-    const selector = useSelector((state: any) => state.auth)
+    const isAuth = useSelector((state: any) => state.auth.isAuth)
 
     return (
         <div className={classes.nav}>
@@ -36,10 +36,10 @@ export const Nav = React.memo(function () {
 
             {/*ei ole tehtud meist sp ei ava pathi kaudu*/}
             <NavLink activeClassName={classes.selected} to="/about">Meist</NavLink>
-            <NavLink activeClassName={classes.selected} to="/posts">Otsi</NavLink>
-            {selector.isAuth ? <NavLink activeClassName={classes.selected} to="/add">Lisa Kuulutus</NavLink> : false}
-            {selector.isAuth ? false : <NavLink activeClassName={classes.selected} to="/register">Registreeri</NavLink>}
-            {selector.isAuth
+            {isAuth ? <NavLink activeClassName={classes.selected} to="/posts">Otsi</NavLink> : false}
+            {isAuth ? <NavLink activeClassName={classes.selected} to="/add">Lisa Kuulutus</NavLink> : false}
+            {isAuth ? false : <NavLink activeClassName={classes.selected} to="/register">Registreeri</NavLink>}
+            {isAuth
                 ? <ProfileMenu/>
                 : <NavLink activeClassName={classes.selected} to="/login">Log in</NavLink>}
         </div>

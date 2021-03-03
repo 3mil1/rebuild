@@ -1,12 +1,8 @@
-import {useHistory, useLocation} from "react-router-dom";
-import React, {useCallback, useEffect, useState} from "react";
+import {useHistory} from "react-router-dom";
+import React, {useCallback, useState} from "react";
 import getFormData from "./services/getFormData";
-import {Controller, useForm} from "react-hook-form";
-import setFormData from "./services/setFormData";
 import IconButton from "@material-ui/core/IconButton";
 import {KeyboardBackspace} from "@material-ui/icons";
-import FormControl from "@material-ui/core/FormControl";
-import TextField from "@material-ui/core/TextField";
 import {Button} from "@material-ui/core";
 import {useDispatch} from "react-redux";
 import {addPost} from "./AddPost-reducer";
@@ -14,7 +10,7 @@ import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
 import {CategoriesType} from "../../Post/Post";
 
-export const Review = () => {
+export const Review = React.memo(function () {
     const dispatch = useDispatch()
     const history = useHistory();
     const [initialValues] = useState(getFormData());
@@ -57,4 +53,4 @@ export const Review = () => {
 
         </>
     );
-};
+})

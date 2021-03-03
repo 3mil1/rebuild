@@ -53,7 +53,7 @@ const SetReg = (email: string, firstName: string, lastName: string, password: st
     }
 }
 
-export type ThunkType = ThunkAction<any, any, any, any>;
+type ThunkType = ThunkAction<any, any, any, any>;
 
 export const register = (email: string, firstName: string, lastName: string, password: string): ThunkType => {
     return async (dispatch) => {

@@ -22,6 +22,12 @@ export const authAPI = {
 
 }
 
+export const forgotPasswordApi = {
+    passwordReset(email: string) {
+        return instance.post('/forgot-password', {email})
+    }
+}
+
 export const registerApi = {
     register(email: string, firstName: string, lastName: string, password: string,) {
         return instance.post('/register', {email, firstName, lastName, password})
@@ -39,3 +45,4 @@ export const postsApi = {
         return instance.post('/posts/new-post', {title, content, categories})
     }
 }
+
