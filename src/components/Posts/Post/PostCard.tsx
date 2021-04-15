@@ -1,7 +1,8 @@
 import React from 'react';
 import classes from './Post.module.css';
-import emptyStar from '../../../img/Star_empty.svg'
 import firmaPilt from '../../../img/EhitusFirmaPilt.jpg'
+import {Rating} from "@material-ui/lab";
+import {NavLink} from "react-router-dom";
 
 
 type PropsType = {
@@ -11,6 +12,7 @@ type PropsType = {
     createdAt: string
     updatedAt: string
     categories: CategoriesType[]
+    user: {id: number, firstName: string, lastName: string}
 }
 
 export type CategoriesType = {
@@ -18,7 +20,8 @@ export type CategoriesType = {
     name: string
 }
 
-export const Post = (props: PropsType) => {
+
+export const PostCard = React.memo ((props: PropsType) => {
     return (
         <div className={classes.card}>
             <div className={classes.cardInfo}>
@@ -27,23 +30,11 @@ export const Post = (props: PropsType) => {
                         <div className={classes.userImg}>
                             <img src={firmaPilt} alt="firmaPilt"/>
                         </div>
-                        <div className={classes.userName}>EESTI EHITUSE JA KINNISVARA GRUPP</div>
+                        <div className={classes.userName}>{props.user.firstName}</div>
                         <div className={classes.userRating}>
-                            <img src={emptyStar} alt="emptyStar"/>
-                            <img src={emptyStar} alt="emptyStar"/>
-                            <img src={emptyStar} alt="emptyStar"/>
-                            <img src={emptyStar} alt="emptyStar"/>
-                            <img src={emptyStar} alt="emptyStar"/>
+                            <Rating name="half-rating" defaultValue={2.5} precision={0.5}/>
                         </div>
                         <div className={classes.userDesc}>Profiili kirjeldus lorem lorem lorem lorem</div>
-                    </div>
-                    <div className={classes.hashtags}>
-                        {props.categories.map((categories: CategoriesType) =>
-                            <div className={classes.hashtag} key={categories.name}>
-                                #{categories.name}
-                            </div>
-                        )}
-
                     </div>
                 </div>
                 <div className={classes.addedChanged}>
@@ -55,12 +46,27 @@ export const Post = (props: PropsType) => {
                         </span>
                 </div>
             </div>
+            <Post categories={props.categories} id={props.id} title={props.title} content={props.content}/>
+        </div>
+    )
+})
+
+export const Post = (props: any) => {
+    return (
+        <>
+            <div className={classes.hashtags}>
+                {props.categories.map((categories: CategoriesType) =>
+                    <div className={classes.hashtag} key={categories.name}>
+                        #{categories.name}
+                    </div>
+                )}
+            </div>
             <div className={classes.description}>
-                <span>{props.title}</span>
+                <NavLink to={'/post/' + props.id}>{props.title}</NavLink>
                 <div>
                     {props.content}
                 </div>
             </div>
-        </div>
+        </>
     )
 }

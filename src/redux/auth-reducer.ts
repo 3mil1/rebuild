@@ -16,7 +16,6 @@ type SetUserData = {
     }
 }
 
-
 type initialStateType = {
     userId: number | null
     isAuth: boolean | null
@@ -57,7 +56,7 @@ export const getAuthUserData = () => (dispatch: Dispatch) => {
         dispatch(setStatus('loading'))
         return authAPI.auth()
             .then(response => {
-                let {data: userId, firstName} = response.data
+                const {userId, firstName} = response.data
                 dispatch(setAuthUserDataAC(userId, firstName, true))
                 dispatch(setStatus('succeeded'))
 

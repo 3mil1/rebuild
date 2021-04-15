@@ -4,6 +4,10 @@
 }
 .background {
     background: linear-gradient(180deg, #E1DEF0 0%, rgba(216, 225, 229, 0) 100%), #FFFFFF;
+    min-height: 1000px;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
 }
 
 .container {
@@ -46,14 +50,32 @@
     background: radial-gradient(100.91% 107.32% at 29.97% -5.17%, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.015) 75.17%, rgba(255, 255, 255, 0) 100%);
 
 
-    border-radius: 2rem;
-    backdrop-filter: blur(9px);
-    -webkit-backdrop-filter: blur(2rem);
+
+
+
     background-clip: padding-box;
 
     max-width: 1170px;
 
 
+
+    /*box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );*/
+    border-radius: 2rem;
+    /*border: 1px solid rgba( 255, 255, 255, 0.18 );*/
+}
+
+
+
+@supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    .main-wrapper {
+        -webkit-backdrop-filter: blur(15px);
+        backdrop-filter: blur(15px);
+    }
+}
+@supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+    .main-wrapper {
+        background-color: rgba(255, 255, 255, 0.80);
+    }
 }
 
 
@@ -114,7 +136,7 @@
     }
 
     .main-wrapper {
-        padding: 0px;
+        padding: 0 10px;
         margin: 0 auto;
         display: grid;
 

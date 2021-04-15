@@ -4,7 +4,8 @@ export const ProgressBar = React.memo(function () {
     return (
         <>
             <svg width="1342" viewBox="0 0 1342 1797" fill="none"
-                 xmlns="http://www.w3.org/2000/svg" className='progressBar'>
+                 xmlns="http://www.w3.org/2000/svg"
+                 className='progressBar'>
                 <g filter="url(#filter0_b)">
                     <path width="1334" height="1789" fill="url(#paint0_radial)"
                           d="

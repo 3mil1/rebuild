@@ -8,16 +8,16 @@ const instance = axios.create({
 
 export const authAPI = {
     auth() {
-        return instance.get(`auth/me`)
+        return instance.get(`/auth/me`)
             .then(response => {
                 return response
             })
     },
     login(email: string, password: string) {
-        return instance.post(`auth/login`, {email, password})
+        return instance.post(`/auth/login`, {email, password})
     },
     logout() {
-        return instance.get(`auth/logout`)
+        return instance.get(`/auth/logout`)
     },
 
 }
@@ -35,14 +35,25 @@ export const registerApi = {
 }
 
 export const postsApi = {
-    getPosts() {
-        return instance.get(`/posts`)
+    getPosts(tags: string | null, page: number) {
+        return instance.get(`/posts/${tags}?page=${page}`)
     },
     getTags() {
         return instance.get(`/categories`)
     },
     addPost(title: string, content: string, categories: []) {
         return instance.post('/posts/new-post', {title, content, categories})
+    },
+    getCertainPost(id: number) {
+        return instance.get(`/post/${id}`)
+    },
+    editPost(id: number, title: string, content: string, categories: []) {
+        return instance.post('posts/edit/' + id, {title, content, categories})
     }
 }
 
+export const userApi = {
+    getUser(id: number) {
+        return instance.get(`/user/${id}`)
+    }
+}

@@ -1,0 +1,12 @@
+api (DAL)/
+    api.ts
+components (UI)/
+    kõik komponendid, nende reducerid ja css failid.
+app/
+    app.tsx
+    app.css
+    app-reducer.ts
+redux (BLL)/
+    store.ts
+    auth-reducer.ts
+

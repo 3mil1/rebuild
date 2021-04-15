@@ -16,7 +16,7 @@ export const appReducer = (state: InitialStateType = initialState, action: Actio
 
 export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
 
-export  type InitialStateType = {
+export type InitialStateType = {
     status: RequestStatusType
     error: string | null
 }

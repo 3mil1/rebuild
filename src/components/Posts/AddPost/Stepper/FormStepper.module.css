@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.paperLeft {
+    width: 50%;
+    background-color: #EBF6FA !important;
+    padding: 30px;
+}
+
+.paperRight {
+    width: 50%;
+    padding: 30px;
+}
+
+.btn {
+    float: right;
+}

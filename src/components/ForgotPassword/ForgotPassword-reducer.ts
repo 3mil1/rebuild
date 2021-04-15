@@ -44,14 +44,15 @@ export const resetPw = (email: string): ThunkType => {
             forgotPasswordApi.passwordReset(email)
                 .then(response => {
                     console.log(response)
+                    dispatch(ResetPw(email))
                     dispatch(setStatus('succeeded'))
                 })
                 .catch((error) => {
-                    console.log(error.response)
-                    // dispatch(setError(error.response))
+                    dispatch(setError(error.response.data))
                     dispatch(setStatus('succeeded'))
                 })
         } catch (error) {
+            console.log(error)
         }
     }
 }

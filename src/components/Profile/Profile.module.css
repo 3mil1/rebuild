@@ -3,3 +3,24 @@
     background: seagreen;
     height: 100%;
 }
+
+.paper {
+    margin-bottom: 20px;
+}
+
+.profileContainer{
+    padding: 31px;
+}
+
+.profileImg{
+    width: 100px;
+    height: 100px;
+    background: #C4C4C4;
+    border-radius: 25px;
+}
+
+.rating {
+    display: flex;
+    flex-direction: column;
+
+}

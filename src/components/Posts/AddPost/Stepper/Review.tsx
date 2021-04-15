@@ -8,7 +8,7 @@ import {useDispatch} from "react-redux";
 import {addPost} from "./AddPost-reducer";
 import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
-import {CategoriesType} from "../../Post/Post";
+import {CategoriesType} from "../../Post/PostCard";
 
 export const Review = React.memo(function () {
     const dispatch = useDispatch()
@@ -18,7 +18,6 @@ export const Review = React.memo(function () {
 
     const onSubmit = useCallback(
         () => {
-            debugger
             dispatch(addPost(initialValues['Title'], initialValues['Content'], initialValues['categories']))
         },
         [initialValues]
@@ -30,10 +29,9 @@ export const Review = React.memo(function () {
 
     return (
         <>
-            <IconButton onClick={onBack}>
-                <KeyboardBackspace fontSize="inherit"/>
-            </IconButton>
-
+            <Button onClick={onBack} >
+                Back
+            </Button>
             {initialValues['Title']}
             {initialValues['Content']}
             <Paper component="ul">

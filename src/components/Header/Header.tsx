@@ -3,9 +3,9 @@ import classes from './Header.module.css';
 import logo from '../../img/RebuildLogo.png'
 import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {ProfileMenuMobile} from '../Header/ProfileMenu/ProfileMenuMobile';
-import {ProfileMenuMobileNotAuth} from '../Header/ProfileMenu/ProfileMenuMobile';
-import {ProfileMenu} from '../Header/ProfileMenu/ProfileMenu';
+import {ProfileMenuMobile} from './ProfileMenu/ProfileMenuMobile';
+import {ProfileMenuMobileNotAuth} from './ProfileMenu/ProfileMenuMobile';
+import {ProfileMenu} from './ProfileMenu/ProfileMenu';
 import SearchIcon from '@material-ui/icons/Search';
 import HomeIcon from '@material-ui/icons/Home';
 
@@ -21,7 +21,6 @@ export const Header = React.memo(function () {
                 </div>
                 <Nav/>
             </header>
-            <BottomNav/>
         </>
     )
 })

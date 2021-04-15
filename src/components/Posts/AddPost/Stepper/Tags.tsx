@@ -9,13 +9,13 @@ import Paper from "@material-ui/core/Paper";
 import Chip from "@material-ui/core/Chip";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "../../../../redux/store";
-import {CategoriesType} from "../../Post/Post";
+import {CategoriesType} from "../../Post/PostCard";
 import {getTags} from "../../GetPosts-reducer";
 
 
 export const Tags = React.memo(function () {
     const dispatch = useDispatch()
-    const tags = useSelector<AppRootStateType, Array<CategoriesType>>((state) => state.posts.categories)
+    const tags = useSelector((state: any) => state.postsPage.categories)
     const history = useHistory();
     const location = useLocation();
     const [initialValues] = useState(getFormData());
@@ -66,9 +66,9 @@ export const Tags = React.memo(function () {
 
     return (
         <>
-            <IconButton onClick={onBack}>
-                <KeyboardBackspace fontSize="inherit"/>
-            </IconButton>
+            <Button onClick={onBack} >
+                Back
+            </Button>
             <Paper component="ul">
                 {categories.map((data) => {
                     return (

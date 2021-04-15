@@ -40,9 +40,6 @@ export const Content = React.memo(function () {
 
     return (
         <>
-            <IconButton onClick={onBack}>
-                <KeyboardBackspace fontSize="inherit"/>
-            </IconButton>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <FormControl variant="outlined">
                     <Controller
@@ -66,9 +63,13 @@ export const Content = React.memo(function () {
                         }}
                     />
                 </FormControl>
+                <Button onClick={onBack} >
+                    Back
+                </Button>
                 <Button variant="contained" color="primary" type="submit">
                     Next
                 </Button>
+
             </form>
         </>
     );

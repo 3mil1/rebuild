@@ -1,7 +1,7 @@
 import {ThunkAction} from "redux-thunk";
 import {setError, setStatus} from "../../../../app/app-reducer";
 import {postsApi} from "../../../../api/api";
-import {CategoriesType} from "../../Post/Post";
+import {CategoriesType} from "../../Post/PostCard";
 
 const ADD_POST = 'ADD_POST'
 
@@ -47,7 +47,6 @@ type ThunkType = ThunkAction<any, any, any, any>;
 export const addPost = (title: string, content: string, categories: []): ThunkType => {
     return async (dispatch) => {
         try {
-            debugger
             dispatch(setStatus('loading'))
             postsApi.addPost(title, content, categories)
                 .then(response => {

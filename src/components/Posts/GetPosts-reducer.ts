@@ -1,30 +1,57 @@
 import {ThunkAction} from "redux-thunk";
 import {postsApi} from "../../api/api";
-import {CategoriesType} from "./Post/Post";
+import {CategoriesType} from "./Post/PostCard";
 
 
 const SET_POSTS_DATA = 'SET_POSTS_DATA'
 const SET_TAGS = 'SET_TAGS'
 type ActionsType = SetPostsDataActionType | SetTagsActionType
 
-const initialState: InitialStateType = {posts: [], categories: []}
+const initialState: InitialStateType = {
+    data: [],
+    categories: [],
+    current_page: null,
+    from: null,
+    next_page: null,
+    per_page: null,
+    prev_page: null,
+    to: null,
+    total: null
+}
 
 type InitialStateType = {
-    posts: Array<PostsType>
+    data: Array<PostsType>
     categories: CategoriesType[]
+    current_page: null
+    from: null
+    next_page: null
+    per_page: null
+    prev_page: null
+    to: null
+    total: null
 }
 export type PostsType = {
-    id: string
-    title: string
-    content: string
-    createdAt: string
-    updatedAt: string
+    id: string | null
+    title: string | null
+    content: string | null
+    createdAt: string | null
+    updatedAt: string | null
     categories: CategoriesType[]
+    user: {id: number | null, firstName: string | null, lastName: string | null}
 }
 
 type SetPostsDataActionType = {
     type: typeof SET_POSTS_DATA,
-    posts: Array<PostsType>
+    payload: {
+        current_page: number,
+        data: Array<PostsType>,
+        from: number,
+        next_page: number,
+        per_page: number,
+        prev_page: null | number,
+        to: number,
+        total: number
+    }
 }
 type SetTagsActionType = {
     type: typeof SET_TAGS,
@@ -37,7 +64,7 @@ export const getPostsReducer = (state = initialState, action: ActionsType) => {
         case SET_POSTS_DATA: {
             return {
                 ...state,
-                posts: action.posts
+                ...action.payload,
             }
         }
         case SET_TAGS: {
@@ -51,10 +78,19 @@ export const getPostsReducer = (state = initialState, action: ActionsType) => {
     }
 }
 
-const setPostsData = (posts: Array<PostsType>): SetPostsDataActionType => {
+const setPostsData = (data: Array<PostsType>, current_page: number, next_page: number, per_page: number, prev_page: number | null, to: number, total: number, from: number): SetPostsDataActionType => {
     return {
         type: SET_POSTS_DATA,
-        posts
+        payload: {
+            current_page: current_page,
+            data: data,
+            from: from,
+            next_page: next_page,
+            per_page: per_page,
+            prev_page: prev_page,
+            to: to,
+            total: total
+        }
     }
 }
 const setTags = (categories: CategoriesType[]): SetTagsActionType => {
@@ -66,12 +102,13 @@ const setTags = (categories: CategoriesType[]): SetTagsActionType => {
 
 export type ThunkType = ThunkAction<any, any, any, any>;
 
-export const getPostsData = (): ThunkType => {
+export const getPostsData = (page: number, tags: string | null): ThunkType => {
     return async (dispatch) => {
         try {
-            postsApi.getPosts()
+            postsApi.getPosts(tags, page)
                 .then(response => {
-                    dispatch(setPostsData(response.data))
+                    const {current_page, data, from, next_page, per_page, prev_page, to, total} = response.data
+                    dispatch(setPostsData(data, current_page, from, next_page, per_page, prev_page, to, total))
                 })
                 .catch((error) => {
                     console.log('posts error', error.response)
