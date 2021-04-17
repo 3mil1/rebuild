@@ -7,7 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import {Rating} from "@material-ui/lab";
 import {getUserData} from "./Profile-reducer";
-import {Post} from "../Posts/Post/PostCard";
+import {Post} from "../Posts/Post/Post";
 
 
 export const Profile = React.memo(function () {
@@ -67,6 +67,7 @@ export const Profile = React.memo(function () {
                                         id={data.id}
                                         title={data.title}
                                         content={data.content}
+                                        canEdit={true}
                                     />
                                 )
                             })}

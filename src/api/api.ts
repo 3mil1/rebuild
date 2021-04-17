@@ -47,8 +47,8 @@ export const postsApi = {
     getCertainPost(id: number) {
         return instance.get(`/post/${id}`)
     },
-    editPost(id: number, title: string, content: string, categories: []) {
-        return instance.post('posts/edit/' + id, {title, content, categories})
+    editPost(id: number, title: string, content: string, categories: { id: number }[]) {
+        return instance.patch('posts/edit/' + id, {title, content, categories})
     }
 }
 

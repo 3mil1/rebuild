@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Post.module.css';
 import firmaPilt from '../../../img/EhitusFirmaPilt.jpg'
 import {Rating} from "@material-ui/lab";
-import {NavLink} from "react-router-dom";
+import {Post} from "./Post";
 
 
 type PropsType = {
@@ -12,7 +12,7 @@ type PropsType = {
     createdAt: string
     updatedAt: string
     categories: CategoriesType[]
-    user: {id: number, firstName: string, lastName: string}
+    user: { id: number, firstName: string, lastName: string }
 }
 
 export type CategoriesType = {
@@ -21,7 +21,7 @@ export type CategoriesType = {
 }
 
 
-export const PostCard = React.memo ((props: PropsType) => {
+export const PostCard = React.memo((props: PropsType) => {
     return (
         <div className={classes.card}>
             <div className={classes.cardInfo}>
@@ -51,22 +51,3 @@ export const PostCard = React.memo ((props: PropsType) => {
     )
 })
 
-export const Post = (props: any) => {
-    return (
-        <>
-            <div className={classes.hashtags}>
-                {props.categories.map((categories: CategoriesType) =>
-                    <div className={classes.hashtag} key={categories.name}>
-                        #{categories.name}
-                    </div>
-                )}
-            </div>
-            <div className={classes.description}>
-                <NavLink to={'/post/' + props.id}>{props.title}</NavLink>
-                <div>
-                    {props.content}
-                </div>
-            </div>
-        </>
-    )
-}
