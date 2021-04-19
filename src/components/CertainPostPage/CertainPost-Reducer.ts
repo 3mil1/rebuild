@@ -10,7 +10,8 @@ const initialState: PostsType = {
     createdAt: null,
     updatedAt: null,
     categories: [],
-    user: {id: null, firstName: null, lastName: null}
+    user: {id: null, firstName: null, lastName: null},
+    comments: []
 }
 
 export const getCertainPostReducer = (state = initialState, action: SetCertainPostDataAC) => {
@@ -34,8 +35,9 @@ export const getCertainPost = (id: number): ThunkType => {
         try {
             postsApi.getCertainPost(id)
                 .then(response => {
-                    const {id, title, content, createdAt, updatedAt, categories} = response.data
-                    dispatch(SetCertainPostData(id, title, content, createdAt, updatedAt, categories))
+                    const {id, title, content, createdAt, updatedAt, categories} = response.data.data
+                    const comments = response.data.reviews.data
+                    dispatch(SetCertainPostData(id, title, content, createdAt, updatedAt, categories, comments))
                 })
                 .catch((error) => {
                     console.log('CPost error', error.response)
@@ -54,11 +56,12 @@ type SetCertainPostDataAC = {
         content: string,
         createdAt: string,
         updatedAt: string,
-        categories: []
+        categories: [],
+        comments: []
     }
 }
 
-const SetCertainPostData = (id: number, title: string, content: string, createdAt: string, updatedAt: string, categories: []): SetCertainPostDataAC => {
+const SetCertainPostData = (id: number, title: string, content: string, createdAt: string, updatedAt: string, categories: [], comments: []): SetCertainPostDataAC => {
     return {
         type: SET_POST,
         payload: {
@@ -67,7 +70,8 @@ const SetCertainPostData = (id: number, title: string, content: string, createdA
             content: content,
             createdAt: createdAt,
             updatedAt: updatedAt,
-            categories: categories
+            categories: categories,
+            comments
         }
     }
 }

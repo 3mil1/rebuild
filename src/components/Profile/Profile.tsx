@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import classes from './Profile.module.css';
 import {Redirect} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {Container} from "@material-ui/core";
+import {Avatar, Container} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import {Rating} from "@material-ui/lab";
@@ -16,6 +16,7 @@ export const Profile = React.memo(function () {
     const loggedUserData = useSelector((state: any) => state.getUserReducer)
     const posts = useSelector((state: any) => state.getUserReducer.posts)
 
+
     useEffect(() => {
         if (selector.userId != null) {
             dispatch(getUserData(selector.userId))
@@ -27,7 +28,6 @@ export const Profile = React.memo(function () {
         return <Redirect to={"/login"}/>
     }
 
-
     return (
         <>
             <Container maxWidth="xl">
@@ -36,9 +36,9 @@ export const Profile = React.memo(function () {
                         <Paper className={classes.paper}>
                             <Grid container spacing={3} className={classes.profileContainer}>
                                 <Grid item xs={2}>
-                                    <div className={classes.profileImg}>
-
-                                    </div>
+                                    <Avatar className={classes.profileImg} variant="rounded">
+                                        <h3>{loggedUserData.firstName[0] + loggedUserData.lastName}</h3>
+                                    </Avatar>
                                 </Grid>
                                 <Grid item xs={9}>
                                     <div>{loggedUserData.firstName}</div>

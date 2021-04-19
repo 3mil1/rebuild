@@ -7,7 +7,7 @@ const initialState: any= {
     id: null,
     email: null,
     firstName: null,
-    lastname: null,
+    lastName: null,
     posts: []
 }
 

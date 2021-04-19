@@ -38,6 +38,8 @@ export const registerReducer = (state = initialState, action: SetReg) => {
                 ...action.payload,
             }
         }
+        default:
+            return state
     }
 }
 

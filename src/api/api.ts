@@ -49,6 +49,9 @@ export const postsApi = {
     },
     editPost(id: number, title: string, content: string, categories: { id: number }[]) {
         return instance.patch('posts/edit/' + id, {title, content, categories})
+    },
+    commentPost(id: number, rating: number, review_text: string){
+        return instance.post(`/posts/${id}/add-review`, {rating, review_text})
     }
 }
 

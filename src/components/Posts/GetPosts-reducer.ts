@@ -38,6 +38,7 @@ export type PostsType = {
     updatedAt: string | null
     categories: CategoriesType[]
     user: {id: number | null, firstName: string | null, lastName: string | null}
+    comments: []
 }
 
 type SetPostsDataActionType = {

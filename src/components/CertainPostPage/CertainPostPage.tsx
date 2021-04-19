@@ -6,6 +6,7 @@ import {Container} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import {useParams} from "react-router-dom";
+import {CommentView} from "./Comments/CommentView";
 
 export const CertainPostPage = React.memo(function () {
     const CertainPost = useSelector((state: any) => state.CertainPost)
@@ -25,12 +26,16 @@ export const CertainPostPage = React.memo(function () {
                 <Grid container item xs={8} direction={'column'}>
                     <Paper style={{margin: "0px 0px 16px"}} className={classes.paper}>
                         <h1>{CertainPost.title}</h1>
+                        {/*<h5>{CertainPost.content}</h5>*/}
+                    </Paper>
+                    <Paper style={{margin: "0px 0px 16px"}} className={classes.paper}>
                         <h5>{CertainPost.content}</h5>
                     </Paper>
-                    <Paper style={{margin: "0px 0px 16px"}} className={classes.paper}>{CertainPost.title}</Paper>
                 </Grid>
                 <Grid item xs={4}>
-                    <Paper className={classes.paper}>xs=6</Paper>
+                    <Paper className={classes.paper}>
+                        <CommentView postId={CertainPost.id} comments={CertainPost.comments}/>
+                    </Paper>
                 </Grid>
             </Grid>
         </Container>

@@ -1,7 +1,6 @@
 import React, {useRef, useState} from 'react';
 import classes from './Register.module.css';
 import Container from "@material-ui/core/Container";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import {Controller, useForm} from "react-hook-form";
@@ -13,24 +12,28 @@ import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import {useDispatch, useSelector} from "react-redux";
 import {register} from "./register-reducer";
 import {Redirect} from "react-router-dom";
+import {RegConfirm} from "./RegConfirm";
 
 export const Register = React.memo(function () {
 
     const {register: regHookF, handleSubmit, errors: fieldsErrors, control, watch} = useForm({mode: 'onTouched'});
     const dispatch = useDispatch()
-
-
+    const selector = useSelector((state: any) => state)
     const password = useRef({});
     password.current = watch("password", "");
 
     const [terms, setTermsErr] = useState(false)
+    const [confirm, setConfirm] = useState(false)
     const termsOfService = watch('terms');
 
     const onSubmit = (formData: { email: string, firstName: string, lastName: string, password: string }) => {
         termsOfService === false ? setTermsErr(true) : dispatch(register(formData.email, formData.firstName, formData.lastName, formData.password))
     };
 
-    const selector = useSelector((state: any) => state)
+    // if (selector.app.status === 'confirm') {
+    //     setConfirm(true)
+    // }
+
     if (selector.auth.isAuth) {
         return <Redirect to={"/profile"}/>
     }
@@ -38,6 +41,7 @@ export const Register = React.memo(function () {
 
     return (
         <Container component="main" maxWidth="xs">
+            <RegConfirm open={confirm}/>
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
                     <PeopleAltIcon className={classes.icon}/>

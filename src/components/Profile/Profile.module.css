@@ -8,15 +8,15 @@
     margin-bottom: 20px;
 }
 
-.profileContainer{
+.profileContainer {
     padding: 31px;
 }
 
-.profileImg{
-    width: 100px;
-    height: 100px;
-    background: #C4C4C4;
-    border-radius: 25px;
+.profileImg {
+    width: 100px !important;
+    height: 100px !important;
+    /*background: #C4C4C4;*/
+    border-radius: 25px !important;
 }
 
 .rating {

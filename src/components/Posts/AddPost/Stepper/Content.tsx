@@ -54,6 +54,7 @@ export const Content = React.memo(function () {
                                 error={!!fieldsErrors.Content}
                                 name="Content"
                                 autoFocus
+                                multiline={true}
                             />
                         }
                         control={control}

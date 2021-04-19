@@ -8,6 +8,7 @@ const ADD_POST = 'ADD_POST'
 type SetPost = {
     type: typeof ADD_POST
     payload: {
+        id: number,
         title: string,
         content: string,
         categories: CategoriesType[]
@@ -15,6 +16,7 @@ type SetPost = {
 }
 
 const initialState = {
+    id: null,
     title: null,
     content: null,
     categories: null
@@ -28,13 +30,16 @@ export const addPostReducer = (state = initialState, action: SetPost) => {
                 ...action.payload
             }
         }
+        default:
+            return state
     }
 }
 
-const SetAddPost = (title: string, content: string, categories: []) => {
+const SetAddPost = (id: number, title: string, content: string, categories: []) => {
     return {
         type: ADD_POST,
         payload: {
+            id,
             title,
             content,
             categories
@@ -50,8 +55,8 @@ export const addPost = (title: string, content: string, categories: []): ThunkTy
             dispatch(setStatus('loading'))
             postsApi.addPost(title, content, categories)
                 .then(response => {
-                    if (response.status == 201) {
-                        dispatch(SetAddPost(title, content, categories))
+                    if (response.status === 201) {
+                        dispatch(SetAddPost(response.data.id, title, content, categories))
                         dispatch(setStatus('succeeded'))
                     }
                 })

@@ -1,10 +1,8 @@
-import {useHistory} from "react-router-dom";
+import {Redirect, useHistory} from "react-router-dom";
 import React, {useCallback, useState} from "react";
 import getFormData from "./services/getFormData";
-import IconButton from "@material-ui/core/IconButton";
-import {KeyboardBackspace} from "@material-ui/icons";
 import {Button} from "@material-ui/core";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {addPost} from "./AddPost-reducer";
 import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
@@ -12,24 +10,34 @@ import {CategoriesType} from "../../Post/PostCard";
 
 export const Review = React.memo(function () {
     const dispatch = useDispatch()
+    const postId = useSelector((state: any) => state.addPostReducer.id)
+
     const history = useHistory();
     const [initialValues] = useState(getFormData());
 
+    const [redirect, setRedirect] = useState(false)
 
     const onSubmit = useCallback(
         () => {
             dispatch(addPost(initialValues['Title'], initialValues['Content'], initialValues['categories']))
-        },
-        [initialValues]
+            setRedirect(true)
+        }, [initialValues]
     );
 
     const onBack = useCallback(() => {
         history.goBack();
     }, [history]);
 
+
+    if (redirect) {
+        if (postId !== null) {
+            return <Redirect to={`/post/${postId}`}/>
+        }
+    }
+
     return (
         <>
-            <Button onClick={onBack} >
+            <Button onClick={onBack}>
                 Back
             </Button>
             {initialValues['Title']}

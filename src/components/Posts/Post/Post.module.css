@@ -35,6 +35,7 @@
     column-gap: 10px;
     grid-template-columns: [img] 70px [name] auto [rating] 1fr [change] 10%;
     grid-auto-flow: row;
+    margin-bottom: 20px;
 }
 .hashtags {
     display: flex;
@@ -49,12 +50,13 @@
     margin-right: 20px;
 }
 .userImg {
-    max-width: 70px;
-    max-height: 70px;
+    width: 70px !important;
+    height: 70px !important;
     grid-row-start: 1;
     grid-column-start: 1;
     grid-row-end: 3;
     grid-column-end: 2;
+    /*margin: 0 !important;*/
 }
 .userImg > img{
     width: 70px;
