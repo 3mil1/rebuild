@@ -46,6 +46,7 @@ export const resetPw = (email: string): ThunkType => {
                     console.log(response)
                     dispatch(ResetPw(email))
                     dispatch(setStatus('succeeded'))
+                    dispatch(setStatus('confirm'))
                 })
                 .catch((error) => {
                     dispatch(setError(error.response.data))

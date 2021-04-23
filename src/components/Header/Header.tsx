@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import classes from './Header.module.css';
 import logo from '../../img/RebuildLogo.png'
 import {NavLink} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {ProfileMenuMobile} from './ProfileMenu/ProfileMenuMobile';
 import {ProfileMenuMobileNotAuth} from './ProfileMenu/ProfileMenuMobile';
 import {ProfileMenu} from './ProfileMenu/ProfileMenu';

@@ -12,11 +12,6 @@ import {useSelector} from "react-redux";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import classes from './FormStepper.module.css'
-import withStyles from "@material-ui/core/styles/withStyles";
-import StepConnector from "@material-ui/core/StepConnector";
-import makeStyles from "@material-ui/core/styles/makeStyles";
-import clsx from 'clsx';
-import {Check} from "@material-ui/icons";
 
 const TABS = [
     {
@@ -67,79 +62,15 @@ export const FormStepper = React.memo(function () {
         return <Redirect to={"/login"}/>
     }
 
-    const ColorlibConnector = withStyles({
-        alternativeLabel: {
-            top: 10,
-        },
-        active: {
-            '& $line': {
-                backgroundColor: '#69AF8A',
-                boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
-            },
-        },
-        completed: {
-            '& $line': {
-                backgroundColor: '#69AF8A',
-            },
-        },
-        line: {
-            height: 3,
-            border: 0,
-            backgroundColor: '#eaeaf0',
-            borderRadius: 1,
-        },
-    })(StepConnector);
-
-    const useColorlibStepIconStyles = makeStyles({
-        root: {
-            color: '#eaeaf0',
-            display: 'flex',
-            height: 22,
-            alignItems: 'center',
-        },
-        active: {
-            color: '#784af4',
-        },
-        circle: {
-            width: '25px',
-            height: '25px',
-            backgroundColor: '#849FE7',
-            color: '#fff',
-            borderRadius: '50%'
-        },
-        completed: {
-            color: '#69AF8A',
-            zIndex: 1,
-            fontSize: 18,
-        },
-    });
-
-
-    function ColorlibStepIcon(props: StepIconProps) {
-        const style = useColorlibStepIconStyles();
-        const {active, completed, icon} = props;
-
-        return (
-            <div
-                className={clsx(classes.root, {
-                    [style.active]: active,
-                    [style.completed]: completed,
-                })}
-            >
-                {completed ? <div className={style.circle}> <Check className={style.completed}/></div> : <div className={style.circle}>{icon}</div>}
-            </div>
-        );
-    };
-
     return (
         <Grid container>
             <Grid className={classes.container}>
                 <Paper variant="outlined" square className={classes.paperLeft}>
-                    <Stepper activeStep={state.activeStep} alternativeLabel connector={<ColorlibConnector/>}>
+                    <Stepper activeStep={state.activeStep} alternativeLabel>
                         {TABS.map(({title}, index) => {
                             return (
                                 <Step key={index}>
-                                    <StepLabel StepIconComponent={ColorlibStepIcon}>{title}</StepLabel>
+                                    <StepLabel>{title}</StepLabel>
                                 </Step>
                             );
                         })}

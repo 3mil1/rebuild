@@ -66,6 +66,7 @@ export const register = (email: string, firstName: string, lastName: string, pas
                         response.status = 201
                         dispatch(SetReg(email, firstName, lastName, password))
                         dispatch(setStatus('succeeded'))
+                        dispatch(setStatus('confirm'))
                     }
                 )
                 .catch((error) => {

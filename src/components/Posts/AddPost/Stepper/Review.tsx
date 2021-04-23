@@ -40,8 +40,8 @@ export const Review = React.memo(function () {
             <Button onClick={onBack}>
                 Back
             </Button>
-            {initialValues['Title']}
-            {initialValues['Content']}
+            <div>{initialValues['Title']}</div>
+            <div>{initialValues['Content']}</div>
             <Paper component="ul">
                 {initialValues['categories'].map((data: CategoriesType) => {
                     return (

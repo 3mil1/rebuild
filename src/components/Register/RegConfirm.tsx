@@ -5,38 +5,42 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import {useDispatch, useSelector} from "react-redux";
+import {AppRootStateType} from "../../redux/store";
+import {setStatus} from "../../app/app-reducer";
+import {useHistory} from "react-router-dom";
 
 export const RegConfirm = React.memo(function (props: any) {
-    const [open, setOpen] = React.useState(false);
-    if (props.open) {
-        setOpen(true);
-    }
+    const dispatch = useDispatch()
+    const confirmEmail = useSelector<AppRootStateType, string | null>(state => state.app.status)
+    const history = useHistory();
+
 
     const handleClose = () => {
-        setOpen(false);
+        dispatch(setStatus(null))
+        history.push("/login");
     };
+
+    const isOpen = confirmEmail === "confirm"
+
 
     return (
         <div>
             <Dialog
-                open={open}
+                open={isOpen}
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
-                <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
+                <DialogTitle id="alert-dialog-title">{"Mine postkasti"}</DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-description">
-                        Let Google help apps determine location. This means sending anonymous location data to
-                        Google, even when no apps are running.
+                       Ja vajuta lingile.
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose} color="primary">
-                        Disagree
-                    </Button>
                     <Button onClick={handleClose} color="primary" autoFocus>
-                        Agree
+                        Noice
                     </Button>
                 </DialogActions>
             </Dialog>

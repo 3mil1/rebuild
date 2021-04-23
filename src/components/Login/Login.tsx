@@ -5,7 +5,6 @@ import {TextField} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import FormControl from "@material-ui/core/FormControl";
 import Button from "@material-ui/core/Button";
-import Link from "@material-ui/core/Link";
 import Container from "@material-ui/core/Container";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
@@ -15,8 +14,10 @@ import IconButton from "@material-ui/core/IconButton";
 import {Visibility, VisibilityOff} from "@material-ui/icons";
 import {login} from "../../redux/auth-reducer";
 import {useDispatch, useSelector} from "react-redux";
-import {Redirect} from "react-router-dom";
+import {Redirect, Link as LinkRRD} from "react-router-dom";
 import {ForgotPassword} from "../ForgotPassword/ForgotPassword";
+import Link from "@material-ui/core/Link";
+
 
 
 export const Login = React.memo(function () {
@@ -125,11 +126,11 @@ export const Login = React.memo(function () {
                     </Button>
                     <Grid container>
                         <Grid item xs>
-                           <ForgotPassword/>
+                            <ForgotPassword/>
                         </Grid>
                         <Grid item>
                             <Link href="#" variant="body2">
-                                {"Don't have an account? Sign Up"}
+                                <LinkRRD to="/register">Don't have an account? Sign Up</LinkRRD>
                             </Link>
                         </Grid>
                     </Grid>

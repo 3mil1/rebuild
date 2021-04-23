@@ -10,8 +10,7 @@ import Link from "@material-ui/core/Link";
 import {resetPw} from "./ForgotPassword-reducer";
 import {useDispatch} from "react-redux";
 import {Controller, useForm} from "react-hook-form";
-import FormControl from "@material-ui/core/FormControl";
-import classes from "../Login/Login.module.css";
+import {setStatus} from "../../app/app-reducer";
 
 
 export const ForgotPassword = React.memo(function () {

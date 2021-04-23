@@ -11,12 +11,12 @@ import Link from "@material-ui/core/Link";
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import {useDispatch, useSelector} from "react-redux";
 import {register} from "./register-reducer";
-import {Redirect} from "react-router-dom";
+import {Redirect, Link as LinkRRD} from "react-router-dom";
 import {RegConfirm} from "./RegConfirm";
 
 export const Register = React.memo(function () {
 
-    const {register: regHookF, handleSubmit, errors: fieldsErrors, control, watch} = useForm({mode: 'onTouched'});
+    const {register: regHookF, handleSubmit, errors: fieldsErrors, control, watch} = useForm();
     const dispatch = useDispatch()
     const selector = useSelector((state: any) => state)
     const password = useRef({});
@@ -29,10 +29,6 @@ export const Register = React.memo(function () {
     const onSubmit = (formData: { email: string, firstName: string, lastName: string, password: string }) => {
         termsOfService === false ? setTermsErr(true) : dispatch(register(formData.email, formData.firstName, formData.lastName, formData.password))
     };
-
-    // if (selector.app.status === 'confirm') {
-    //     setConfirm(true)
-    // }
 
     if (selector.auth.isAuth) {
         return <Redirect to={"/profile"}/>
@@ -201,7 +197,7 @@ export const Register = React.memo(function () {
                         <Grid container justify="flex-end">
                             <Grid item>
                                 <Link href="#" variant="body2">
-                                    Already have an account? Sign in
+                                    <LinkRRD to="/login">Already have an account? Sign in</LinkRRD>
                                 </Link>
                             </Grid>
                         </Grid>
