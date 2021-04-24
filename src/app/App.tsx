@@ -20,7 +20,7 @@ import {FormStepper} from "../components/Posts/AddPost/Stepper/FormStepper";
 import {useSpring, animated} from 'react-spring'
 import classes from './clouds.module.css'
 import {CertainPostPage} from "../components/CertainPostPage/CertainPostPage";
-import zIndex from "@material-ui/core/styles/zIndex";
+import {PopUpMailSent} from "../components/Register/PopUpMailSent";
 
 
 const calc = (x: number, y: number) => [x - window.innerWidth / 2, y - window.innerHeight / 2]
@@ -42,6 +42,8 @@ function App() {
     return (
         <>
             <ErrorSnackbar/>
+            <PopUpMailSent/>
+
             <div className='background'>
                 <img style={{zIndex: -1}} className={'blobs'} src={blobs} alt="blobs"/>
                 <img style={{zIndex: -1}} className={'houses'} src={houses} alt="houses"/>

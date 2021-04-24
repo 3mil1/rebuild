@@ -31,6 +31,7 @@ export const ForgotPassword = React.memo(function () {
 
     const onSubmit = (formData: { email: string }) => {
         dispatch(resetPw(formData.email))
+        setOpen(false);
     }
 
     return (

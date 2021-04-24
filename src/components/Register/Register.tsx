@@ -12,7 +12,7 @@ import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import {useDispatch, useSelector} from "react-redux";
 import {register} from "./register-reducer";
 import {Redirect, Link as LinkRRD} from "react-router-dom";
-import {RegConfirm} from "./RegConfirm";
+import {TermOfService} from "./TermOFService";
 
 export const Register = React.memo(function () {
 
@@ -20,10 +20,10 @@ export const Register = React.memo(function () {
     const dispatch = useDispatch()
     const selector = useSelector((state: any) => state)
     const password = useRef({});
+    const [open, setOpen] = useState(false);
     password.current = watch("password", "");
 
     const [terms, setTermsErr] = useState(false)
-    const [confirm, setConfirm] = useState(false)
     const termsOfService = watch('terms');
 
     const onSubmit = (formData: { email: string, firstName: string, lastName: string, password: string }) => {
@@ -37,7 +37,6 @@ export const Register = React.memo(function () {
 
     return (
         <Container component="main" maxWidth="xs">
-            <RegConfirm open={confirm}/>
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
                     <PeopleAltIcon className={classes.icon}/>
@@ -181,7 +180,10 @@ export const Register = React.memo(function () {
                         <Grid item xs={12}>
                             <div className={terms ? classes.checkBoxErr : ''}>
                                 <input type="checkbox" name='terms' id='terms' ref={regHookF}/>
-                                <label htmlFor="TermsOfService">TermsOfService</label>
+                                <Button onClick={() => setOpen(!open)} color="primary" >Terms Of Service</Button>
+                                {
+                                    open && <TermOfService/>
+                                }
                             </div>
                             {terms && <div className={classes.checkBoxTextErr}>Required</div>}
                         </Grid>

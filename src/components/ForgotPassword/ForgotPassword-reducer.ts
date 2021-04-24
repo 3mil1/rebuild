@@ -43,10 +43,12 @@ export const resetPw = (email: string): ThunkType => {
             dispatch(setStatus('loading'))
             forgotPasswordApi.passwordReset(email)
                 .then(response => {
-                    console.log(response)
                     dispatch(ResetPw(email))
                     dispatch(setStatus('succeeded'))
-                    dispatch(setStatus('confirm'))
+                    debugger
+                    if (response.data.message === "Email sent!") {
+                        dispatch(setStatus('confirm'))
+                    }
                 })
                 .catch((error) => {
                     dispatch(setError(error.response.data))
