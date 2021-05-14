@@ -21,6 +21,7 @@ import {useSpring, animated} from 'react-spring'
 import classes from './clouds.module.css'
 import {CertainPostPage} from "../components/CertainPostPage/CertainPostPage";
 import {PopUpMailSent} from "../components/Register/PopUpMailSent";
+import {useHistory} from "react-router-dom";
 
 
 const calc = (x: number, y: number) => [x - window.innerWidth / 2, y - window.innerHeight / 2]
@@ -29,6 +30,10 @@ const trans2 = (x: number, y: number) => `translate3d(${-1 * (x / 8 + 35)}px,${y
 const trans3 = (x: number, y: number) => `translate3d(${y / 6 - 250}px,${x / 6 - 200}px,0)`
 
 function App() {
+    const selector = useSelector((state: any) => state)
+    const history = useHistory();
+
+
     const [props, set] = useSpring(() => ({xy: [0, 0], config: {mass: 3, tension: 1550, friction: 2040}}))
 
     const status = useSelector<AppRootStateType, RequestStatusType>((state) => state.app.status)
@@ -37,6 +42,12 @@ function App() {
     useEffect(() => {
         dispatch(getAuthUserData())
     }, [dispatch]);
+
+    useEffect(() => {
+        if (selector.auth.isAuth) {
+            history.push("/profile");
+        }
+    }, [selector.auth.isAuth])
 
 
     return (

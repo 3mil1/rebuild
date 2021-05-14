@@ -1,77 +1,96 @@
 /* Lehe konteiner */
 .mainContainer {
-    display: flex;
-    margin-bottom: 200px;
-    flex-basis: 100%;
-    overflow: auto;
+    /*overflow: hidden;*/
+    padding: 0 5rem;
+    margin: 0 auto;
+    margin-bottom: 13rem;
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr;
+
 }
+
 .main {
     flex-basis: 40%;
     min-height: 100px;
+    z-index: 1;
 }
+
 .mainImg {
-    margin-top: 80px;
     flex-basis: 60%;
     max-width: 600px;
     position: relative;
 }
+
 .mainContainer img {
-    width: 100%;
+    position: absolute;
     height: auto;
+    top: -270px;
+    left: -337px;
+    width: 508px;
     min-width: 350px;
+
 }
+
 .searchContainer {
     background: seagreen;
     width: 190px;
 }
+
 .search {
-    background: #FF455B!important;
-    border-radius: 98px!important;
-    z-index: 2!important;
-    position: absolute!important;
+    background: #FF455B !important;
+    border-radius: 98px !important;
+    z-index: 2 !important;
+    position: absolute !important;
     top: 60% !important;
     right: 20% !important;
 }
+
 .search label {
-    padding-left: 10px!important;
-    color: white!important;
+    padding-left: 10px !important;
+    color: white !important;
 }
+
 /* Oranz pealkiri */
 .meiegaLeiad {
     display: flex;
     margin-top: 130px;
     margin-bottom: 10px;
     font-family: Helvetica Neue, serif;
-    font-size: 90px;
+    font-size: 4rem;
     font-style: normal;
     font-weight: 700;
     line-height: 100px;
-    letter-spacing: 0em;
+    letter-spacing: 0;
     text-align: left;
     color: rgba(255, 114, 62, 1);
 }
+
 .subHeader {
     display: flex;
     max-width: 350px;
     font-family: Circular Std, serif;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-style: normal;
     font-weight: 400;
     text-align: left;
     margin-bottom: 30px;
 }
+
 .register {
-    margin-right: 25px!important;
+    margin-right: 25px !important;
     background-color: rgba(33, 150, 243, 1) !important;
-    color: white!important;
-    border-radius: 87px!important;
+    color: white !important;
+    border-radius: 87px !important;
 }
-.cardsContainer{
+
+.cardsContainer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     max-width: 1170px;
 }
+
 .card {
     display: flex;
     width: 100%;
@@ -81,26 +100,31 @@
     box-shadow: 2px 5px 4px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
 }
+
 .cardText {
     flex: 1;
 }
+
 .cardText h1 {
     margin-left: 10%;
     margin-top: 30%;
     top: 50%;
 }
+
 .cardText p {
     text-align: left;
     margin-left: 10%;
-    margin-right:30px;
+    margin-right: 30px;
     top: 50%;
 }
+
 .cardImg {
     display: flex;
     justify-content: center;
     align-items: center;
     flex: 1;
 }
+
 .cardImg img {
     height: 400px;
     width: auto;
@@ -111,115 +135,143 @@
     .mainContainer img {
         min-width: 280px;
     }
+
     .meiegaLeiad {
         margin-top: 50px;
         font-size: 70px;
         line-height: 80px;
     }
+
     .card {
         height: 400px;
     }
+
     .cardText h1 {
         margin-bottom: 30px;
     }
+
     .cardText p {
         margin-right: 10%;
         top: 60%;
     }
+
     .cardImg img {
         height: 300px;
     }
+
     .search {
-        width: 150px!important;
+        width: 150px !important;
     }
+
     .search label {
-        padding-left: 10px!important;
+        padding-left: 10px !important;
     }
 }
+
 @media (max-width: 950px) {
     .search {
         top: 60% !important;
         right: 15% !important;
-        width: 150px!important;
-        height: 40px!important;
+        width: 150px !important;
+        height: 40px !important;
     }
+
     .search label {
-        font-size: 12px!important;
-        padding-left: 10px!important;
+        font-size: 12px !important;
+        padding-left: 10px !important;
     }
 }
+
 @media (max-width: 880px) {
     .meiegaLeiad {
         margin-bottom: 20px;
         font-size: 50px;
         line-height: 50px;
     }
+
     .subHeader {
         font-size: 15px;
     }
+
     .card {
         height: 350px;
     }
+
     .cardImg img {
         height: 200px;
     }
+
     .cardText h1 {
         font-size: 25px;
     }
+
     .cardText p {
         font-size: 13px;
     }
+
     .howTo {
-        font-size: 10px!important;
+        font-size: 10px !important;
     }
 }
+
 /* Tahvelarvuti vaade (iPad) */
 @media (max-width: 768px) {
     .search {
-        display: none!important;
+        display: none !important;
     }
+
     .mainContainer {
         margin-top: -20px;
         display: flex;
         margin-bottom: 50px;
         flex-basis: 100%;
     }
+
     .main {
         width: 140px;
         margin-left: 10%;
         margin-right: 20px;
         min-height: 100px;
     }
+
     .meiegaLeiad {
         font-size: 60px;
         line-height: 60px;
     }
+
     .subHeader {
         margin-bottom: 15px;
     }
+
     .mainImg {
         flex-basis: 60%;
     }
+
     .mainContainer img {
         width: 100%;
         height: auto;
         min-width: 250px;
     }
+
     .howTo {
-        display: none!important;
+        display: none !important;
     }
+
     .card {
         min-height: 300px;
         width: 100%;
         height: auto;
     }
+
     .cardImg {
         flex: 1;
     }
+
     .cardImg img {
         height: 220px;
     }
 }
+
 /* Mobiilne vaade */
 @media (max-width: 480px) {
     .mainContainer {
@@ -228,24 +280,29 @@
         margin-bottom: 50px;
         flex-basis: 100%;
     }
+
     .main {
         width: 140px;
         margin-left: 20px;
         min-height: 100px;
     }
+
     .meiegaLeiad {
         margin-left: 10px;
         margin-top: 0px;
         font-size: 60px;
         line-height: 60px;
     }
+
     .subHeader {
         display: none;
     }
+
     .mainImg {
         width: 150px;
         margin-right: 30px;
     }
+
     .mainContainer img {
         width: 100%;
         height: auto;
@@ -254,80 +311,97 @@
         left: -20px;
         z-index: -1;
     }
+
     .register {
-        margin-left: 10px!important;
-        margin-right: 0px!important;
-        height: auto!important;
-        width: 100px!important;
-        font-size: 8px!important;
+        margin-left: 10px !important;
+        margin-right: 0px !important;
+        height: auto !important;
+        width: 100px !important;
+        font-size: 8px !important;
     }
+
     .card {
         width: 100%;
         height: auto;
     }
+
     .cardText h1 {
         font-size: 30px;
     }
+
     .cardText p {
         font-size: 13px;
     }
+
     .cardImg img {
         height: 200px;
     }
 }
+
 @media (max-width: 460px) {
     .meiegaLeiad {
         font-size: 50px;
         line-height: 50px;
     }
 }
+
 @media (max-width: 370px) {
     .mainContainer {
         margin-top: -20px;
         flex-basis: 90%;
     }
+
     .mainContainer img {
         width: 100%;
         height: auto;
         min-width: 160px;
     }
+
     .meiegaLeiad {
         font-size: 40px;
         line-height: 40px;
     }
+
     .mainImg {
         width: 50px;
         margin-right: 30px;
     }
 }
+
 @media (max-width: 335px) {
     .meiegaLeiad {
         margin-bottom: 10px;
         font-size: 30px;
         line-height: 30px;
     }
+
     .register {
-        width: 70px!important;
-        font-size: 7px!important;
+        width: 70px !important;
+        font-size: 7px !important;
     }
+
     .mainContainer img {
         width: 100%;
         height: auto;
         min-width: 100px;
     }
+
     .card {
         min-height: 150px;
         width: 100%;
         height: auto;
         margin-bottom: 30px;
     }
+
     .cardImg img {
         height: 100px;
     }
+
     .cardText h1 {
         font-size: 13px;
         margin-bottom: 10px;
     }
+
     .cardText p {
         font-size: 7px;
     }

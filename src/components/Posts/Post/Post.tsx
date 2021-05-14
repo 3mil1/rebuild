@@ -9,10 +9,9 @@ import {TextField} from "@material-ui/core";
 import Tooltip from "@material-ui/core/Tooltip";
 import {getTags} from "../GetPosts-reducer";
 import {useDispatch, useSelector} from "react-redux";
-import Paper from "@material-ui/core/Paper";
-import Chip from "@material-ui/core/Chip";
 import {Controller, useForm} from "react-hook-form";
 import {updatePost} from "../UpdatePost";
+import {ChoseTag} from "../AddPost/Tags/Tags";
 
 export const Post = React.memo(function (props: any) {
     const dispatch = useDispatch()
@@ -28,15 +27,6 @@ export const Post = React.memo(function (props: any) {
         setCategories(props.categories)
     }, [dispatch, props.categories]);
 
-    const handleDelete = (chipToDelete: CategoriesType) => () => {
-        setCategories((chips) => chips.filter((chip) => chip.id !== chipToDelete.id))
-        setUnusedCategories([...unusedCategories, chipToDelete]);
-    }
-
-    const onHandleDelete = (chipToDelete: CategoriesType) => () => {
-        setUnusedCategories((chips) => chips.filter((chip) => chip.id !== chipToDelete.id));
-        setCategories([...categories, chipToDelete]);
-    }
 
     const editing = () => {
         edit(true)
@@ -56,50 +46,28 @@ export const Post = React.memo(function (props: any) {
     }
 
 
-
     return (
         <>
-            {props.canEdit ?
-                canEdit ?
-                    <Tooltip title="Salvesta">
-                        <IconButton onClick={submit} type={'button'} form="submit-form"><DoneIcon/></IconButton>
-                    </Tooltip>
-                    :
-                    <Tooltip title="Muuda">
-                        <IconButton onClick={editing}><EditOutlinedIcon/></IconButton>
-                    </Tooltip>
-                : false}
+            <div style={{float: "right"}}>
+                {props.canEdit ?
+                    canEdit ?
+                        <Tooltip title="Salvesta">
+                            <IconButton onClick={submit} type={'button'} form="submit-form"><DoneIcon/></IconButton>
+                        </Tooltip>
+                        :
+                        <Tooltip title="Muuda">
+                            <IconButton onClick={editing}><EditOutlinedIcon/></IconButton>
+                        </Tooltip>
+                    : false}
+            </div>
 
             <form className={classes.form}>
                 <div className={classes.hashtags}>
                     {canEdit ?
-                        <div>
-                            <Paper component="ul">
-                                {categories.map((data) => {
-                                    return (
-                                        <li key={data.id}>
-                                            <Chip
-                                                label={data.name}
-                                                onDelete={handleDelete(data)}
-                                            />
-                                        </li>
-                                    );
-                                })}
-                            </Paper>
-                            <hr/>
-                            <Paper component="ul">
-                                {unusedCategories.map((data) => {
-                                    return (
-                                        <li key={data.id}>
-                                            <Chip
-                                                label={data.name}
-                                                onClick={onHandleDelete(data)}
-                                            />
-                                        </li>
-                                    );
-                                })}
-                            </Paper>
-                        </div>
+                        <ChoseTag categories={categories} unusedCategories={unusedCategories}
+                                  setCategories={setCategories}
+                                  setUnusedCategories={setUnusedCategories}/>
+
                         : props.categories.map((categories: CategoriesType) =>
                             <div className={classes.hashtag} key={categories.name}>
                                 #{categories.name}
@@ -129,11 +97,11 @@ export const Post = React.memo(function (props: any) {
                         />
 
                         :
-                        <NavLink to={'/post/' + props.id}>
-                            {props.title}
+                        <NavLink to={'/post/' + props.id} style={{textDecoration: "none"}}>
+                            <h2>{props.title}</h2>
                         </NavLink>
                     }
-                    <div>
+                    <div style={{marginTop: "10px"}}>
                         {canEdit ?
                             <Controller
                                 name="content"

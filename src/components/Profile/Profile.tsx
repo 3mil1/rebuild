@@ -37,7 +37,7 @@ export const Profile = React.memo(function () {
                             <Grid container spacing={3} className={classes.profileContainer}>
                                 <Grid item xs={2}>
                                     <Avatar className={classes.profileImg} variant="rounded">
-                                        <h3>{loggedUserData.firstName[0] + loggedUserData.lastName}</h3>
+                                        <h3>{loggedUserData.firstName[0] + loggedUserData.lastName[0]}</h3>
                                     </Avatar>
                                 </Grid>
                                 <Grid item xs={9}>
@@ -57,10 +57,11 @@ export const Profile = React.memo(function () {
                                 </Grid>
                             </Grid>
                         </Paper>
-                        <Paper className={classes.paper}>Tags</Paper>
-                        <Paper className={classes.paper}>
-                            {posts.map((data: any) => {
-                                return (
+                        {/*<Paper className={classes.paper}>Tags</Paper>*/}
+
+                        {posts.map((data: any) => {
+                            return (
+                                <Paper className={classes.paper}>
                                     <Post
                                         key={data.id}
                                         categories={data.categories}
@@ -69,9 +70,10 @@ export const Profile = React.memo(function () {
                                         content={data.content}
                                         canEdit={true}
                                     />
-                                )
-                            })}
-                        </Paper>
+                                </Paper>
+
+                            )
+                        })}
                     </Grid>
                     <Grid item xs={3}>
                         <Paper className={classes.paper}>xs=6</Paper>

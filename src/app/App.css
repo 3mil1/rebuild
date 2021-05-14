@@ -1,7 +1,8 @@
 * {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
+
 .background {
     background: linear-gradient(180deg, #E1DEF0 0%, rgba(216, 225, 229, 0) 100%), #FFFFFF;
     min-height: 1000px;
@@ -50,13 +51,9 @@
     background: radial-gradient(100.91% 107.32% at 29.97% -5.17%, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.015) 75.17%, rgba(255, 255, 255, 0) 100%);
 
 
-
-
-
     background-clip: padding-box;
 
     max-width: 1170px;
-
 
 
     /*box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );*/
@@ -65,16 +62,17 @@
 }
 
 
-
 @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
     .main-wrapper {
-        -webkit-backdrop-filter: blur(15px);
-        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(23px);
+        backdrop-filter: blur(23px);
     }
 }
+
 @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
     .main-wrapper {
-        background-color: rgba(255, 255, 255, 0.80);
+
+        background-color: rgba(240, 253, 255, 0.95);
     }
 }
 
@@ -103,7 +101,7 @@
 @media (max-width: 768px) {
     .background {
         margin: 0 auto;
-        padding: 0 auto;
+        padding: 0;
     }
 
     .container {
@@ -128,7 +126,7 @@
 @media (max-width: 480px) {
     .background {
         margin: 0 auto;
-        padding: 0 auto;
+        padding: 0;
     }
 
     .container {

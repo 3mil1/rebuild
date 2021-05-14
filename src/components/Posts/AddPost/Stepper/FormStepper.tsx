@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react'
 import Stepper from "@material-ui/core/Stepper";
-import {MuiThemeProvider, Step, StepIconProps} from "@material-ui/core";
+import {Step} from "@material-ui/core";
 import StepLabel from "@material-ui/core/StepLabel";
 import {Redirect, useLocation} from "react-router-dom";
 import clearFormData from "./services/clearFormData";
 import {Title} from "./Title";
-import {Tags} from "./Tags";
+import {Tags} from "../Tags/Tags";
 import {Content} from "./Content";
 import {Review} from "./Review";
 import {useSelector} from "react-redux";
@@ -75,7 +75,7 @@ export const FormStepper = React.memo(function () {
                             );
                         })}
                     </Stepper>
-                    <div>{tab.Description}</div>
+                    <div className={classes.descText}>{tab.Description}</div>
                 </Paper>
                 <Paper variant="outlined" square className={classes.paperRight}>
                     {tab && <tab.component/>}
