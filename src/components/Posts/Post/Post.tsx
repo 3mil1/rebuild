@@ -12,6 +12,9 @@ import {useDispatch, useSelector} from "react-redux";
 import {Controller, useForm} from "react-hook-form";
 import {updatePost} from "../UpdatePost";
 import {ChoseTag} from "../AddPost/Tags/Tags";
+import PostLoader from "../Post Loader/PostLoader";
+import {AppRootStateType} from "../../../redux/store";
+import {RequestStatusType, setError} from "../../../app/app-reducer";
 
 export const Post = React.memo(function (props: any) {
     const dispatch = useDispatch()
@@ -21,6 +24,8 @@ export const Post = React.memo(function (props: any) {
     const [categories, setCategories] = useState<CategoriesType[]>([]);
     const [unusedCategories, setUnusedCategories] = useState<CategoriesType[]>([]);
     const {handleSubmit, errors: fieldsErrors, control, formState: {errors}} = useForm({mode: "onBlur"});
+    const status = useSelector<AppRootStateType, RequestStatusType>((state) => state.app.status)
+
 
     useEffect(() => {
         dispatch(getTags())
@@ -35,9 +40,11 @@ export const Post = React.memo(function (props: any) {
     }
 
     const submit = () => {
-        if (Object.keys(errors).length === 0) {
+        if (Object.keys(errors).length === 0 && categories.length != 0) {
             handleSubmit(onSubmit)()
             edit(false)
+        } else {
+            dispatch(setError('Valige Taagid'))
         }
     }
 
@@ -45,88 +52,94 @@ export const Post = React.memo(function (props: any) {
         dispatch(updatePost(props.id, formData.title, formData.content, categories.map(id => ({"id": id.id})), userID))
     }
 
-
     return (
         <>
-            <div style={{float: "right"}}>
-                {props.canEdit ?
-                    canEdit ?
-                        <Tooltip title="Salvesta">
-                            <IconButton onClick={submit} type={'button'} form="submit-form"><DoneIcon/></IconButton>
-                        </Tooltip>
-                        :
-                        <Tooltip title="Muuda">
-                            <IconButton onClick={editing}><EditOutlinedIcon/></IconButton>
-                        </Tooltip>
-                    : false}
-            </div>
-
-            <form className={classes.form}>
-                <div className={classes.hashtags}>
-                    {canEdit ?
-                        <ChoseTag categories={categories} unusedCategories={unusedCategories}
-                                  setCategories={setCategories}
-                                  setUnusedCategories={setUnusedCategories}/>
-
-                        : props.categories.map((categories: CategoriesType) =>
-                            <div className={classes.hashtag} key={categories.name}>
-                                #{categories.name}
-                            </div>
-                        )}
-                </div>
-                <div className={classes.description}>
-                    {canEdit ?
-                        <Controller
-                            name="title"
-                            as={
-                                <TextField
-                                    id="title"
-                                    helperText={fieldsErrors.title ? fieldsErrors.title.message : ''}
-                                    variant="outlined"
-                                    label="Pealkiri"
-                                    error={!!fieldsErrors.title}
-                                    name="title"
-                                    autoFocus
-                                />
-                            }
-                            control={control}
-                            defaultValue={props.title}
-                            rules={{
-                                required: 'Required'
-                            }}
-                        />
-
-                        :
-                        <NavLink to={'/post/' + props.id} style={{textDecoration: "none"}}>
-                            <h2>{props.title}</h2>
-                        </NavLink>
-                    }
-                    <div style={{marginTop: "10px"}}>
-                        {canEdit ?
-                            <Controller
-                                name="content"
-                                as={
-                                    <TextField
-                                        id="content"
-                                        helperText={fieldsErrors.content ? fieldsErrors.content.message : ''}
-                                        variant="outlined"
-                                        label="Sisu"
-                                        error={!!fieldsErrors.content}
-                                        name="content"
-                                        autoFocus
-                                        multiline={true}
-                                    />
-                                }
-                                control={control}
-                                defaultValue={props.content}
-                                rules={{
-                                    required: 'Required'
-                                }}
-                            />
-                            : props.content}
+            {status === "PostLoading" ? <PostLoader profile={true}/> :
+                <>
+                    <div style={{float: "right"}}>
+                        {props.canEdit ?
+                            canEdit ?
+                                <Tooltip title="Salvesta">
+                                    <IconButton onClick={submit} type={'button'}
+                                                form="submit-form"><DoneIcon/></IconButton>
+                                </Tooltip>
+                                :
+                                <Tooltip title="Muuda">
+                                    <IconButton onClick={editing}><EditOutlinedIcon/></IconButton>
+                                </Tooltip>
+                            : false}
                     </div>
-                </div>
-            </form>
+
+                    <form className={classes.form}>
+                        <div className={classes.hashtags}>
+                            {canEdit ?
+                                <ChoseTag categories={categories} unusedCategories={unusedCategories}
+                                          setCategories={setCategories}
+                                          setUnusedCategories={setUnusedCategories}/>
+
+                                : props.categories.map((categories: CategoriesType) =>
+                                    <div className={classes.hashtag} key={categories.name}>
+                                        #{categories.name}
+                                    </div>
+                                )}
+                        </div>
+                        <div className={classes.description}>
+                            {canEdit ?
+                                <Controller
+                                    name="title"
+                                    as={
+                                        <TextField
+                                            id="title"
+                                            helperText={fieldsErrors.title ? fieldsErrors.title.message : ''}
+                                            variant="outlined"
+                                            label="Pealkiri"
+                                            error={!!fieldsErrors.title}
+                                            name="title"
+                                            autoFocus
+                                            size="small"
+                                        />
+                                    }
+                                    control={control}
+                                    defaultValue={props.title}
+                                    rules={{
+                                        required: 'Required'
+                                    }}
+                                />
+
+                                :
+                                <NavLink to={'/post/' + props.id} style={{textDecoration: "none"}}>
+                                    <h2>{props.title}</h2>
+                                </NavLink>
+                            }
+                            <div style={{marginTop: "10px"}}>
+                                {canEdit ?
+                                    <Controller
+                                        name="content"
+                                        as={
+                                            <TextField
+                                                id="content"
+                                                helperText={fieldsErrors.content ? fieldsErrors.content.message : ''}
+                                                variant="outlined"
+                                                label="Sisu"
+                                                error={!!fieldsErrors.content}
+                                                name="content"
+                                                autoFocus
+                                                multiline={true}
+                                                size="small"
+                                            />
+                                        }
+                                        control={control}
+                                        defaultValue={props.content}
+                                        rules={{
+                                            required: 'Required'
+                                        }}
+                                    />
+                                    : props.content}
+                            </div>
+                        </div>
+                    </form>
+                </>
+            }
         </>
     )
 })

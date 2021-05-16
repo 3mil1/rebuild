@@ -9,6 +9,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {CategoriesType} from "../../Post/PostCard";
 import {getTags} from "../../GetPosts-reducer";
 import classes from "./tags.module.css"
+import {setError} from "../../../../app/app-reducer";
 
 
 export const Tags = React.memo(function () {
@@ -17,6 +18,7 @@ export const Tags = React.memo(function () {
     const history = useHistory();
     const location = useLocation();
     const [initialValues] = useState(getFormData());
+    const [required, setRequired] = useState(false);
 
     const [categories, setCategories] = useState<CategoriesType[]>([]);
     const [unusedCategories, setUnusedCategories] = useState<CategoriesType[]>([]);
@@ -46,6 +48,8 @@ export const Tags = React.memo(function () {
                         activeStep: 3,
                     },
                 });
+            } else {
+                dispatch(setError("Valige palun tagid"))
             }
         },
         [history, location, initialValues, categories]
@@ -53,16 +57,18 @@ export const Tags = React.memo(function () {
 
 
     return (
-        <>
-            <Button onClick={onBack}>
-                Back
-            </Button>
+        <div>
             <ChoseTag categories={categories} unusedCategories={unusedCategories} setCategories={setCategories}
                       setUnusedCategories={setUnusedCategories}/>
-            <Button variant="contained" color="primary" type="submit" onClick={onSubmit}>
-                ülevaade
-            </Button>
-        </>
+            <div style={{display: 'flex', justifyContent: "flex-end", marginTop: "3rem"}}>
+                <Button variant="outlined" onClick={onBack} style={{marginRight: "1.5rem"}}>
+                    Tagasi
+                </Button>
+                <Button variant="outlined" color="primary" type="submit" onClick={onSubmit}>
+                    ülevaade
+                </Button>
+            </div>
+        </div>
     );
 })
 
@@ -81,35 +87,38 @@ export const ChoseTag = (props: any) => {
         props.setCategories([...props.categories, chipToDelete]);
     };
 
-
     return (
         <div className={classes.hashTags}>
-            <div style={{display: "flex"}}>
-                <Paper component="ul">
+            {(props.categories.length > 0)
+            && <h6 style={{marginBottom: '15px'}}>Valitud tagid</h6>}
+            <div style={{display: "flex", flexDirection: "column"}}>
+                <ul style={{display: "flex"}}>
                     {props.categories.map((data: Data) => {
                         return (
-                            <li key={data.id} style={{listStyleType: "none"}}>
+                            <li key={data.id} style={{listStyleType: "none", margin: "0 5px 10px 0"}}>
                                 <Chip
                                     label={data.name}
                                     onDelete={handleDelete(data)}
+                                    style={{backgroundColor: '#E8F3FA'}}
                                 />
                             </li>
                         );
                     })}
-                </Paper>
-                <hr/>
-                <Paper component="ul">
+                </ul>
+                <h6 style={{margin: '15px 0px 15px 0px'}}>Kōik tagid</h6>
+                <ul style={{display: "flex"}}>
                     {props.unusedCategories.map((data: Data) => {
                         return (
-                            <li key={data.id} style={{listStyleType: "none"}}>
+                            <li key={data.id} style={{listStyleType: "none", margin: "0 5px 10px 0"}}>
                                 <Chip
                                     label={data.name}
                                     onClick={onHandleDelete(data)}
+                                    style={{backgroundColor: "#F2F2F2"}}
                                 />
                             </li>
                         );
                     })}
-                </Paper>
+                </ul>
             </div>
         </div>
     )

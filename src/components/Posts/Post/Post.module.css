@@ -4,6 +4,7 @@
     width: 100%;
     box-shadow: 2px 5px 4px 0 rgba(0, 0, 0, 0.25);
 }
+
 .card {
     border: 1px solid rgba(228, 231, 240, 1);
     box-shadow: 2px 5px 4px 0 rgba(0, 0, 0, 0.25);
@@ -18,15 +19,19 @@
     flex-direction: column;
     justify-content: space-between;
 }
+
 .description {
+    padding: 1rem;
     border: 1px solid rgba(228, 228, 228, 1);
     border-radius: 8px;
     margin-top: 20px;
 }
+
 .cardInfo {
     display: grid;
     grid-template-columns: 75% 25%;
 }
+
 .userInfo {
     display: grid;
     /*grid-template-areas:*/
@@ -37,11 +42,13 @@
     grid-auto-flow: row;
     margin-bottom: 20px;
 }
+
 .hashtags {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
+
 .hashtag {
     background: #E1FAF3;
     border-radius: 2px;
@@ -49,6 +56,7 @@
     height: 21px;
     margin-right: 20px;
 }
+
 .userImg {
     width: 70px !important;
     height: 70px !important;
@@ -58,11 +66,13 @@
     grid-column-end: 2;
     /*margin: 0 !important;*/
 }
-.userImg > img{
+
+.userImg > img {
     width: 70px;
     height: 70px;
     object-fit: contain;
 }
+
 .userName {
     font-family: Helvetica Neue, serif;
     font-size: 0.8vw;
@@ -73,15 +83,18 @@
     grid-column: name;
     grid-row: auto;
 }
+
 .userRating {
     grid-column: rating;
     grid-row: auto;
     grid-column-end: 6;
 }
+
 .userRating > img {
     width: 1vw;
     margin-top: 10px;
 }
+
 .userDesc {
     font-family: Helvetica Neue, serif;
     font-size: 0.7vw;
@@ -91,6 +104,7 @@
     grid-column-start: 2;
     grid-column-end: 5;
 }
+
 .addedChanged {
     float: right;
     width: auto;
@@ -98,61 +112,76 @@
     justify-content: space-around;
     text-align: center;
 }
+
 .addedChanged span {
     /*margin-left: 30px;*/
     font-size: 0.6vw;
 }
+
 .leftSideInfo {
     display: grid;
-    grid-template-rows: 2fr ;
+    grid-template-rows: 2fr;
     gap: 6px;
 }
+
 @media (max-width: 1374px) {
     .filterPadding span {
         font-size: 13px;
         margin-left: 5px;
     }
+
     .userName {
         margin-top: 10px;
         font-size: 1vw;
     }
+
     .userRating > img {
         width: 15px;
         margin-top: 10px;
     }
+
     .addedChanged span {
         font-size: 10px;
     }
+
     .addedChanged div {
         font-size: 10px;
     }
+
     .hashtag {
         height: 15px;
         font-size: 10px;
     }
+
     .description {
         margin-top: 5px;
     }
+
     .description span {
         font-size: 13px;
     }
+
     .description div {
         font-size: 12px;
     }
 }
+
 @media (max-width: 1200px) {
     .userRating > img {
         width: 10px;
     }
-    .userImg > img{
+
+    .userImg > img {
         width: 50px;
         height: 50px;
     }
+
     .userInfo {
         column-gap: 5px;
         grid-template-columns: [img] 50px [name] 50% [rating] 1fr [change] 10%;
     }
 }
+
 @media (max-width: 1000px) {
     .resultsWrapper {
         display: flex;
@@ -160,6 +189,7 @@
         justify-content: center;
         align-items: center;
     }
+
     .card {
         width: 100%;
         display: flex;

@@ -1,6 +1,7 @@
 import {ThunkAction} from "redux-thunk";
 import {postsApi} from "../../api/api";
 import {CategoriesType} from "./Post/PostCard";
+import {setStatus} from "../../app/app-reducer";
 
 
 const SET_POSTS_DATA = 'SET_POSTS_DATA'
@@ -37,21 +38,21 @@ export type PostsType = {
     createdAt: string | null
     updatedAt: string | null
     categories: CategoriesType[]
-    user: {id: number | null, firstName: string | null, lastName: string | null}
+    user: { id: number | null, firstName: string | null, lastName: string | null }
     comments: []
 }
 
 type SetPostsDataActionType = {
     type: typeof SET_POSTS_DATA,
     payload: {
-        current_page: number,
-        data: Array<PostsType>,
         from: number,
-        next_page: number,
-        per_page: number,
-        prev_page: null | number,
         to: number,
-        total: number
+        per_page: number,
+        total: number,
+        current_page: number,
+        prev_page: null | number,
+        next_page: number,
+        data: Array<PostsType>,
     }
 }
 type SetTagsActionType = {
@@ -79,7 +80,7 @@ export const getPostsReducer = (state = initialState, action: ActionsType) => {
     }
 }
 
-const setPostsData = (data: Array<PostsType>, current_page: number, next_page: number, per_page: number, prev_page: number | null, to: number, total: number, from: number): SetPostsDataActionType => {
+const setPostsData = (from: number, to: number, per_page: number, total: number, current_page: number, prev_page: null | number, next_page: number, data: Array<PostsType>): SetPostsDataActionType => {
     return {
         type: SET_POSTS_DATA,
         payload: {
@@ -105,16 +106,22 @@ export type ThunkType = ThunkAction<any, any, any, any>;
 
 export const getPostsData = (page: number, tags: string | null): ThunkType => {
     return async (dispatch) => {
+        dispatch(setStatus('PostLoading'))
         try {
             postsApi.getPosts(tags, page)
                 .then(response => {
-                    const {current_page, data, from, next_page, per_page, prev_page, to, total} = response.data
-                    dispatch(setPostsData(data, current_page, from, next_page, per_page, prev_page, to, total))
+                    const {
+                        from, to, per_page, total, current_page, prev_page, next_page, data
+                    } = response.data
+                    dispatch(setPostsData(from, to, per_page, total, current_page, prev_page, next_page, data))
+                    dispatch(setStatus('succeeded'))
+
                 })
                 .catch((error) => {
                     console.log('posts error', error.response)
                     //sama moodi tuleb {} mitte string. parandada
                     // dispatch(setError(error.response.data.error))
+
                 })
         } catch (error) {
             console.log(error.response.data);

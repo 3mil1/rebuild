@@ -1,9 +1,9 @@
 import React from 'react';
 import classes from './Post.module.css';
-import firmaPilt from '../../../img/EhitusFirmaPilt.jpg'
 import {Rating} from "@material-ui/lab";
 import {Post} from "./Post";
 import {Avatar} from "@material-ui/core";
+import moment from 'moment';
 
 
 type PropsType = {
@@ -21,8 +21,14 @@ export type CategoriesType = {
     name: string
 }
 
-
 export const PostCard = React.memo((props: PropsType) => {
+
+    const date = (date: string) => {
+        const dateObj = new Date(date)
+        return moment(dateObj).format('DD-MM-YYYY')
+    }
+
+
     return (
         <div className={classes.card}>
             <div className={classes.cardInfo}>
@@ -43,10 +49,10 @@ export const PostCard = React.memo((props: PropsType) => {
                 </div>
                 <div className={classes.addedChanged}>
                         <span>Lisatud
-                            <p>{props.createdAt}</p>
+                            <p style={{marginTop: "5px"}}>{date(props.createdAt)}</p>
                         </span>
                     <span>Muudetud
-                            <p>{props.updatedAt}</p>
+                            <p style={{marginTop: "5px"}}>{date(props.updatedAt)}</p>
                         </span>
                 </div>
             </div>
@@ -54,4 +60,5 @@ export const PostCard = React.memo((props: PropsType) => {
         </div>
     )
 })
+
 

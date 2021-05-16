@@ -8,9 +8,13 @@ import {makeStyles, createStyles} from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
 import {useForm} from "react-hook-form";
 import Checkbox from '@material-ui/core/Checkbox';
+import PostLoader from "./Post Loader/PostLoader";
+import {AppRootStateType} from "../../redux/store";
+import {RequestStatusType} from "../../app/app-reducer";
 
 
 export const Posts = React.memo(function () {
+    const status = useSelector<AppRootStateType, RequestStatusType>((state) => state.app.status)
     const posts = useSelector((state: any) => state.postsPage.data)
     const categories = useSelector((state: any) => state.postsPage.categories)
     const isAuth = useSelector((state: any) => state.auth.isAuth)
@@ -61,20 +65,26 @@ export const Posts = React.memo(function () {
                 </div>
                 <div className={classes.results}>
                     <div className={classes.resultsWrapper}>
-                        {posts.map((post: any) => {
-                            return (
-                                <PostCard
-                                    key={post.id}
-                                    id={post.id}
-                                    title={post.title}
-                                    categories={post.categories}
-                                    content={post.content}
-                                    createdAt={post.createdAt}
-                                    updatedAt={post.updatedAt}
-                                    user={post.user}
-                                />
-                            )
-                        })}
+                        {status === "PostLoading" ? <>
+                                <PostLoader profile={false}/>
+                                <PostLoader profile={false}/>
+                                <PostLoader profile={false}/>
+                            </> :
+                            posts.map((post: any) => {
+                                return (
+                                    <PostCard
+                                        key={post.id}
+                                        id={post.id}
+                                        title={post.title}
+                                        categories={post.categories}
+                                        content={post.content}
+                                        createdAt={post.createdAt}
+                                        updatedAt={post.updatedAt}
+                                        user={post.user}
+                                    />
+                                )
+                            })
+                        }
                     </div>
                     <PaginationControlled tag={tag}/>
                 </div>
@@ -95,18 +105,27 @@ const useStyles = makeStyles((theme) =>
 );
 
 export const PaginationControlled = React.memo(function (props: any) {
-
+    const postPage = useSelector((state: any) => state.postsPage)
     const dispatch = useDispatch()
     const classes = useStyles();
-    const [page, setPage] = React.useState(useSelector((state: any) => state.postsPage.current_page));
+    const [page, setPage] = useState(postPage.current_page);
+
     const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
         setPage(value);
         dispatch(getPostsData(value, props.tag.join()))
     };
 
+    useEffect(() => {
+        setPage(1)
+    }, [])
+
+    const count = (total: number, perPage: number) => {
+        return Math.ceil(total / perPage)
+    }
+
     return (
         <div className={classes.root}>
-            <Pagination count={10} page={page} onChange={handleChange}/>
+            <Pagination count={count(postPage.total, postPage.per_page)} page={page} onChange={handleChange}/>
         </div>
     );
 })

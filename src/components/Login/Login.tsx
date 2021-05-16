@@ -24,18 +24,12 @@ export const Login = React.memo(function () {
 
     const selector = useSelector((state: any) => state)
     const dispatch = useDispatch()
-
-
     const {handleSubmit, errors: fieldsErrors, control} = useForm();
-
     const [togglePassword, setTogglePassword] = useState(true);
-
 
     const onSubmit = (formData: { email: string, password: string }) => {
         dispatch(login(formData.email, formData.password))
-
     };
-
 
     if (selector.auth.isAuth) {
         return <Redirect to={"/profile"}/>

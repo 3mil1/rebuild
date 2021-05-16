@@ -1,0 +1,11 @@
+.MuiStepLabel-active {
+    color: rgba(82, 82, 82, 0.87) !important;
+}
+
+.MuiStepper-horizontal {
+    background-color: rgba(255, 255, 255, 0.01) !important;
+}
+
+.MuiStepLabel-label.MuiStepLabel-completed {
+    color: #58d067 !important;
+}

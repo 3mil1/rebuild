@@ -36,35 +36,38 @@ export const Title = React.memo(function () {
 
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} style={{ padding: '0px 30px' }}>
-              <FormControl variant="outlined" fullWidth={true}>
-                  <Controller
-                      name="Title"
-                      as={
-                          <TextField
-                              margin="normal"
-                              id="firstName"
-                              helperText={fieldsErrors.Title ? fieldsErrors.Title.message : ''}
-                              variant="outlined"
-                              label="Title"
-                              error={!!fieldsErrors.Title}
-                              name="Title"
-                              autoFocus
-                              fullWidth
-                              size="small"
-                          />
-                      }
-                      control={control}
-                      defaultValue=""
-                      rules={{
-                          required: 'Required',
-                      }}
-                  />
-              </FormControl>
-              <Button variant="contained" color="primary" type="submit" className={classes.btn}>
-                  Next
-              </Button>
-        </form>
+        <>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <FormControl variant="outlined" fullWidth={true}>
+                    <Controller
+                        name="Title"
+                        as={
+                            <TextField
+                                margin="normal"
+                                id="firstName"
+                                helperText={fieldsErrors.Title ? fieldsErrors.Title.message : ''}
+                                variant="outlined"
+                                label="Pealkiri"
+                                error={!!fieldsErrors.Title}
+                                name="Title"
+                                autoFocus
+                                fullWidth
+                                size="small"
+                            />
+                        }
+                        control={control}
+                        defaultValue=""
+                        rules={{
+                            required: 'Required',
+                        }}
+                    />
+                </FormControl>
+                <Button style={{marginTop: "3rem"}} variant="outlined" color="primary" type="submit"
+                        className={classes.btn}>
+                    Edasi
+                </Button>
+            </form>
+        </>
     );
 })
 

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import classes from './Profile.module.css';
-import {Redirect} from "react-router-dom";
+import {Redirect, useHistory} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {Avatar, Container} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
@@ -15,6 +15,7 @@ export const Profile = React.memo(function () {
     const selector = useSelector((state: any) => state.auth)
     const loggedUserData = useSelector((state: any) => state.getUserReducer)
     const posts = useSelector((state: any) => state.getUserReducer.posts)
+    const history = useHistory();
 
 
     useEffect(() => {
@@ -37,7 +38,7 @@ export const Profile = React.memo(function () {
                             <Grid container spacing={3} className={classes.profileContainer}>
                                 <Grid item xs={2}>
                                     <Avatar className={classes.profileImg} variant="rounded">
-                                        <h3>{loggedUserData.firstName[0] + loggedUserData.lastName[0]}</h3>
+                                        <h3>{loggedUserData.firstName}</h3>
                                     </Avatar>
                                 </Grid>
                                 <Grid item xs={9}>
@@ -61,7 +62,7 @@ export const Profile = React.memo(function () {
 
                         {posts.map((data: any) => {
                             return (
-                                <Paper className={classes.paper}>
+                                <Paper className={classes.paper} style={{padding: '1rem'}}>
                                     <Post
                                         key={data.id}
                                         categories={data.categories}
@@ -76,7 +77,7 @@ export const Profile = React.memo(function () {
                         })}
                     </Grid>
                     <Grid item xs={3}>
-                        <Paper className={classes.paper}>xs=6</Paper>
+                        <Paper className={classes.paper}>Lisa info</Paper>
                     </Grid>
 
                 </Grid>

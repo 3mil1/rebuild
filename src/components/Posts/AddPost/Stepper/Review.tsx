@@ -5,7 +5,6 @@ import {Button} from "@material-ui/core";
 import {useDispatch, useSelector} from "react-redux";
 import {addPost} from "./AddPost-reducer";
 import Chip from "@material-ui/core/Chip";
-import Paper from "@material-ui/core/Paper";
 import {CategoriesType} from "../../Post/PostCard";
 
 export const Review = React.memo(function () {
@@ -36,27 +35,29 @@ export const Review = React.memo(function () {
     }
 
     return (
-        <>
-            <Button onClick={onBack}>
-                Back
-            </Button>
-            <div>{initialValues['Title']}</div>
-            <div>{initialValues['Content']}</div>
-            <Paper component="ul">
+        <div>
+            <h2 style={{marginBottom: '15px'}}>{initialValues['Title']}</h2>
+            <h4 style={{marginBottom: '15px'}}>{initialValues['Content']}</h4>
+            <ul style={{display: "flex", marginBottom: '15px'}}>
                 {initialValues['categories'].map((data: CategoriesType) => {
                     return (
-                        <li key={data.id}>
+                        <li key={data.id} style={{listStyleType: "none", margin: "0 5px 10px 0"}}>
                             <Chip
                                 label={data.name}
                             />
                         </li>
                     );
                 })}
-            </Paper>
-            <Button variant="contained" color="primary" type="submit" onClick={onSubmit}>
-                Postita
-            </Button>
+            </ul>
+            <div style={{display: 'flex', justifyContent: "flex-end", marginTop: "3rem"}}>
+                <Button variant="outlined" onClick={onBack} style={{marginRight: "1.5rem"}}>
+                    Tagasi
+                </Button>
+                <Button variant="outlined" color="primary" type="submit" onClick={onSubmit}>
+                    Postita
+                </Button>
+            </div>
 
-        </>
+        </div>
     );
 })

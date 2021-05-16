@@ -41,7 +41,7 @@ export const Content = React.memo(function () {
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <FormControl variant="outlined">
+                <FormControl variant="outlined" fullWidth={true}>
                     <Controller
                         name="Content"
                         as={
@@ -50,11 +50,13 @@ export const Content = React.memo(function () {
                                 id="firstName"
                                 helperText={fieldsErrors.Content ? fieldsErrors.Content.message : ''}
                                 variant="outlined"
-                                label="Content"
+                                label="Sisu"
                                 error={!!fieldsErrors.Content}
                                 name="Content"
                                 autoFocus
                                 multiline={true}
+                                rows={5}
+                                fullWidth={true}
                             />
                         }
                         control={control}
@@ -64,12 +66,14 @@ export const Content = React.memo(function () {
                         }}
                     />
                 </FormControl>
-                <Button onClick={onBack} >
-                    Back
-                </Button>
-                <Button variant="contained" color="primary" type="submit">
-                    Next
-                </Button>
+                <div style={{display: 'flex', justifyContent: "flex-end", marginTop: "3rem"}}>
+                    <Button variant="outlined" onClick={onBack} style={{marginRight: "1.5rem"}}>
+                        Tagasi
+                    </Button>
+                    <Button variant="outlined" color="primary" type="submit">
+                        Edasi
+                    </Button>
+                </div>
 
             </form>
         </>
