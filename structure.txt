@@ -8,5 +8,5 @@ app/
     app-reducer.ts
 redux (BLL)/
     store.ts
-    auth-reducer.ts
+    app-reducer.ts
 

@@ -49,20 +49,20 @@ export const Nav = React.memo(function () {
 
 export const BottomNav = React.memo(function () {
 
-    const selector = useSelector((state: any) => state.auth)
+    const isAuth = useSelector((state: any) => state.auth.isAuth)
 
     return (
         <div className={classes.bottomNav}>
             <div className={classes.bottomItems}>
                 <div className={classes.bottomItem}>
                     <NavLink exact activeClassName={classes.selected}
-                             to={selector.isAuth ? "/profile" : "/"}><HomeIcon/></NavLink>
+                             to={isAuth? "/profile" : "/"}><HomeIcon/></NavLink>
                 </div>
                 <div className={classes.bottomItem}>
                     <NavLink activeClassName={classes.selected} to="/posts"><SearchIcon/></NavLink>
                 </div>
                 <div className={classes.bottomItem}>
-                    {selector.isAuth
+                    {isAuth
                         ? <ProfileMenuMobile/>
                         : <ProfileMenuMobileNotAuth/>}
                 </div>

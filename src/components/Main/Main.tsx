@@ -1,6 +1,6 @@
 import React, {useRef} from 'react';
 import classes from './Main.module.css';
-import kustLeidaToomest from '../../img/kustLeidaToomest.png';
+import kustLeidaToomest from '../../img/heroPilt.png';
 import cardguy1 from '../../img/cardguy1.png';
 import cardguy2 from '../../img/cardguy2.png';
 import cardguy3 from '../../img/cardguy3.png';

@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getPostsData, getTags} from "./GetPosts-reducer";
 import {PostCard} from "./Post/PostCard";
-import {Redirect} from "react-router-dom";
+import {Redirect, useLocation} from "react-router-dom";
 import {makeStyles, createStyles} from '@material-ui/core/styles';
 import Pagination from '@material-ui/lab/Pagination';
 import {useForm} from "react-hook-form";
@@ -18,6 +18,7 @@ export const Posts = React.memo(function () {
     const posts = useSelector((state: any) => state.postsPage.data)
     const categories = useSelector((state: any) => state.postsPage.categories)
     const isAuth = useSelector((state: any) => state.auth.isAuth)
+    let location = useLocation();
 
 
     const {register} = useForm();
@@ -29,6 +30,8 @@ export const Posts = React.memo(function () {
         dispatch(getPostsData(1, tag.join()))
         dispatch(getTags())
     }, [dispatch, tag]);
+
+
 
     if (!isAuth) {
         return <Redirect to={"/login"}/>

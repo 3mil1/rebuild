@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import classes from './Profile.module.css';
-import {Redirect, useHistory} from "react-router-dom";
+import {Redirect} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {Avatar, Container} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
@@ -15,14 +15,12 @@ export const Profile = React.memo(function () {
     const selector = useSelector((state: any) => state.auth)
     const loggedUserData = useSelector((state: any) => state.getUserReducer)
     const posts = useSelector((state: any) => state.getUserReducer.posts)
-    const history = useHistory();
-
 
     useEffect(() => {
         if (selector.userId != null) {
             dispatch(getUserData(selector.userId))
         }
-    }, [dispatch])
+    }, [dispatch, selector.userId])
 
 
     if (!selector.isAuth) {
@@ -62,9 +60,8 @@ export const Profile = React.memo(function () {
 
                         {posts.map((data: any) => {
                             return (
-                                <Paper className={classes.paper} style={{padding: '1rem'}}>
+                                <Paper key={data.id} className={classes.paper} style={{padding: '1rem'}}>
                                     <Post
-                                        key={data.id}
                                         categories={data.categories}
                                         id={data.id}
                                         title={data.title}

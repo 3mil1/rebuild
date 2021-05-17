@@ -3,29 +3,36 @@ import {authAPI} from "../api/api";
 import {ThunkAction} from "redux-thunk";
 import {setError, setStatus} from "../app/app-reducer";
 
-type ActionsType = SetUserData
+type ActionsType = SetUserData | SetAuth
 
 const SET_USER_DATA = 'SET_USER_DATA'
+const SET_AUTH = 'SET_AUTH'
 
 type SetUserData = {
     type: typeof SET_USER_DATA
     payload: {
         userId: number | null
         firstName: string | null
-        isAuth: boolean | null
+    }
+}
+
+type SetAuth = {
+    type: typeof SET_AUTH
+    payload: {
+        isAuth: boolean,
     }
 }
 
 type initialStateType = {
     userId: number | null
-    isAuth: boolean | null
     error: boolean | null
+    isAuth: boolean
 }
 
 let initialState: initialStateType = {
     userId: null,
+    error: null,
     isAuth: false,
-    error: null
 }
 
 export const authReducer = (state = initialState, action: ActionsType) => {
@@ -36,17 +43,32 @@ export const authReducer = (state = initialState, action: ActionsType) => {
                 ...action.payload,
             }
         }
+        case SET_AUTH: {
+            return {
+                ...state,
+                ...action.payload,
+            }
+        }
+        default:
+            return state;
     }
-    return state;
 }
 
-export const setAuthUserDataAC = (userId: number | null, firstName: string | null, isAuth: boolean | null): SetUserData => {
+export const setAuthUserDataAC = (userId: number | null, firstName: string | null): SetUserData => {
     return {
         type: SET_USER_DATA,
         payload: {
             userId,
             firstName,
-            isAuth
+        }
+    }
+}
+
+export const setAuthAC = (isAuth: boolean): SetAuth => {
+    return {
+        type: SET_AUTH,
+        payload: {
+            isAuth,
         }
     }
 }
@@ -57,9 +79,9 @@ export const getAuthUserData = () => (dispatch: Dispatch) => {
         return authAPI.auth()
             .then(response => {
                 const {userId, firstName} = response.data
-                dispatch(setAuthUserDataAC(userId, firstName, true))
+                dispatch(setAuthUserDataAC(userId, firstName))
+                dispatch(setAuthAC(true))
                 dispatch(setStatus('succeeded'))
-
             })
             .catch((error) => {
 
@@ -96,7 +118,8 @@ export const login = (email: string, password: string): ThunkType => {
 export const logout = (): ThunkType => (dispatch) => {
     authAPI.logout()
         .then(response => {
-            dispatch(setAuthUserDataAC(null, null, false))
+            dispatch(setAuthUserDataAC(null, null))
+            dispatch(setAuthAC(false))
         })
         .catch((error) => {
             console.log(error.response)

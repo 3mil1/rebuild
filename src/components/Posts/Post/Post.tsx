@@ -40,10 +40,11 @@ export const Post = React.memo(function (props: any) {
     }
 
     const submit = () => {
-        if (Object.keys(errors).length === 0 && categories.length != 0) {
+        if (Object.keys(errors).length === 0 && categories.length !== 0) {
             handleSubmit(onSubmit)()
             edit(false)
-        } else {
+        } else if (categories.length === 0) {
+            // ?
             dispatch(setError('Valige Taagid'))
         }
     }
