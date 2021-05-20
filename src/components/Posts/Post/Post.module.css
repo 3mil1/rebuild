@@ -124,6 +124,11 @@
     gap: 6px;
 }
 
+
+.settings {
+    margin-bottom: 1rem;
+}
+
 @media (max-width: 1374px) {
     .filterPadding span {
         font-size: 13px;

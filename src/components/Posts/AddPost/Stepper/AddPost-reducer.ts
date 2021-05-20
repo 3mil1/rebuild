@@ -1,5 +1,5 @@
 import {ThunkAction} from "redux-thunk";
-import {setError, setStatus} from "../../../../app/app-reducer";
+import {setAlert, setStatus} from "../../../../app/app-reducer";
 import {postsApi} from "../../../../api/api";
 import {CategoriesType} from "../../Post/PostCard";
 
@@ -57,12 +57,12 @@ export const addPost = (title: string, content: string, categories: []): ThunkTy
                 .then(response => {
                     if (response.status === 201) {
                         dispatch(SetAddPost(response.data.id, title, content, categories))
+                        dispatch(setAlert("Postitatud", "success"))
                         dispatch(setStatus('succeeded'))
                     }
                 })
                 .catch((error) => {
-                    console.log(error.response.data)
-                    dispatch(setError(error.response.data))
+                    dispatch(setAlert(error.response.data, "error"))
                     dispatch(setStatus('succeeded'))
                 })
         } catch (error) {

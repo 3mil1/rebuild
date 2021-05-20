@@ -1,6 +1,6 @@
 import {ThunkAction} from "redux-thunk";
 import {postsApi} from "../../../api/api";
-import {setError} from "../../../app/app-reducer";
+import {setAlert} from "../../../app/app-reducer";
 import {getCertainPost} from "../CertainPost-Reducer";
 
 export type ThunkType = ThunkAction<any, any, any, any>;
@@ -13,7 +13,7 @@ export const SendComment = (id: number, rating: number, review_text: string): Th
                     dispatch(getCertainPost(id))
                 })
                 .catch((error) => {
-                    dispatch(setError(error.response.data.error))
+                    dispatch(setAlert(error.response.data.error, "error"))
                 })
         } catch (error) {
             console.log(error.response.data);

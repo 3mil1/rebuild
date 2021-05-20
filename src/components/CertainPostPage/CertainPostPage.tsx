@@ -24,11 +24,11 @@ export const CertainPostPage = React.memo(function () {
         <Container maxWidth="xl">
             <Grid container spacing={3}>
                 <Grid container item xs={8} direction={'column'}>
-                    <Paper style={{margin: "0px 0px 16px"}} className={classes.paper}>
-                        <h1>{CertainPost.title}</h1>
+                    <Paper style={{marginBottom: "1.5rem", padding: "1.5rem"}} className={classes.paper}>
+                        <h2>{CertainPost.title}</h2>
                         {/*<h5>{CertainPost.content}</h5>*/}
                     </Paper>
-                    <Paper style={{margin: "0px 0px 16px"}} className={classes.paper}>
+                    <Paper style={{marginBottom: "1.5rem", padding: "1.5rem"}} className={classes.paper}>
                         <h5>{CertainPost.content}</h5>
                     </Paper>
                 </Grid>

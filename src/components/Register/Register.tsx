@@ -38,12 +38,14 @@ export const Register = React.memo(function () {
     return (
         <Container component="main" maxWidth="xs">
             <div className={classes.paper}>
-                <Avatar className={classes.avatar}>
-                    <PeopleAltIcon className={classes.icon}/>
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                    Sign in
-                </Typography>
+                <div className={classes.centerFlex}>
+                    <Avatar className={classes.avatar}>
+                        <PeopleAltIcon/>
+                    </Avatar>
+                    <Typography component="h1" variant="h5">
+                        Sign in
+                    </Typography>
+                </div>
                 <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
@@ -143,7 +145,7 @@ export const Register = React.memo(function () {
                                     required: 'Required',
                                     pattern: {
                                         value: /^.{4,100}$/i,
-                                        message: 'Password must have between 4 & 100 characters'
+                                        message: 'Parool peab sisaldama 4 kuni 100 tähemärki'
                                     }
                                 }}
                             />
@@ -171,16 +173,22 @@ export const Register = React.memo(function () {
                                     required: 'Required',
                                     pattern: {
                                         value: /^.{4,100}$/i,
-                                        message: 'Password must have between 4 & 100 characters'
+                                        message: 'Parool peab sisaldama 4 kuni 100 tähemärki'
                                     },
-                                    validate: value => value === password.current || "The passwords do not match"
+                                    validate: value => value === password.current || "Paroolid ei kattu"
                                 }}
                             />
                         </Grid>
-                        <Grid item xs={12}>
-                            <div className={terms ? classes.checkBoxErr : ''}>
+                        <Grid item xs={12} style={{padding: "8px"}}>
+                            <div className={terms ? classes.checkBoxErr : ''} style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "start"
+                            }}>
+
                                 <input type="checkbox" name='terms' id='terms' ref={regHookF}/>
-                                <Button onClick={() => setOpen(!open)} color="primary" >Terms Of Service</Button>
+                                <Button style={{marginLeft: '0.5rem'}} onClick={() => setOpen(!open)} color="primary">Terms
+                                    Of Service</Button>
                                 {
                                     open && <TermOfService/>
                                 }
@@ -198,7 +206,7 @@ export const Register = React.memo(function () {
                         </Button>
                         <Grid container justify="flex-end">
                             <Grid item>
-                                <Link href="#" variant="body2">
+                                <Link variant="body2">
                                     <LinkRRD to="/login">Already have an account? Sign in</LinkRRD>
                                 </Link>
                             </Grid>

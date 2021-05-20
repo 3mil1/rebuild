@@ -17,7 +17,7 @@ export const Main = React.memo(function () {
         <div className={classes.landingContainer}>
             <div className={classes.mainContainer}>
                 <div className={classes.main}>
-                    <div className={classes.meiegaLeiad}>Meiega Leiad</div>
+                    <div className={classes.meiegaLeiad}>Meiega leiad sobiva töö ja töötaja!</div>
                     <div className={classes.subHeader}>We’ve helped over 2,500 job seekers to get into the most popular
                         tech teams.
                     </div>

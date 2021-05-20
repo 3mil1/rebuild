@@ -8,7 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import MenuList from '@material-ui/core/MenuList';
 import {makeStyles, createStyles, Theme} from '@material-ui/core/styles';
 import {useDispatch, useSelector} from "react-redux";
-import {NavLink} from "react-router-dom";
+import {NavLink, useHistory, useLocation} from "react-router-dom";
 import {logout} from "../../../redux/auth-reducer";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -30,6 +30,9 @@ export const ProfileMenu = React.memo(function () {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const anchorRef = React.useRef<HTMLButtonElement>(null);
+    const history = useHistory();
+    let location = useLocation();
+
 
     const handleToggle = () => {
         setOpen((prevOpen) => !prevOpen);
@@ -60,6 +63,9 @@ export const ProfileMenu = React.memo(function () {
         prevOpen.current = open;
     }, [open]);
 
+
+
+
     return (
         <div className={classes.root}>
             <div>
@@ -71,7 +77,8 @@ export const ProfileMenu = React.memo(function () {
                 >
                     {selector.firstName}
                 </Button>
-                <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal style={{zIndex: 1}}>
+                <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal
+                        style={{zIndex: 1}}>
                     {({TransitionProps, placement}) => (
                         <Grow
                             {...TransitionProps}
@@ -80,10 +87,17 @@ export const ProfileMenu = React.memo(function () {
                             <Paper>
                                 <ClickAwayListener onClickAway={handleClose}>
                                     <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                                        <MenuItem onClick={handleClose}><NavLink
-                                            to="/profile">Profile</NavLink></MenuItem>
-                                        <MenuItem onClick={handleClose}> {selector.isAuth &&
-                                        <div onClick={() => dispatch(logout())}>Logout</div>}</MenuItem>
+                                        <MenuItem onClick={handleClose}>
+                                            <NavLink
+                                                to="/profile">Profile
+                                            </NavLink>
+                                        </MenuItem>
+
+                                        <MenuItem onClick={handleClose}>
+                                            {selector.isAuth &&
+                                            <NavLink to={''} onClick={() => dispatch(logout())}>Logout</NavLink>
+                                            }
+                                        </MenuItem>
                                     </MenuList>
                                 </ClickAwayListener>
                             </Paper>

@@ -2,22 +2,24 @@ import {ThunkAction} from "redux-thunk";
 import {setAlert, setStatus} from "../../app/app-reducer";
 import {PasswordApi} from "../../api/api";
 
-const RESET_PASSWORD = 'RESET_PASSWORD'
+const CHANGE_PASSWORD = 'CHANGE_PASSWORD'
 
-type ResetPw = {
-    type: typeof RESET_PASSWORD
+type ChangePw = {
+    type: typeof CHANGE_PASSWORD
     payload: {
-        email: string
+        oldPassword: string
+        newPassword: string
     }
 }
 
 const initialState = {
-    email: null
+    oldPassword: null,
+    newPassword: null
 }
 
-export const resetPwReducer = (state = initialState, action: ResetPw) => {
+export const changePasswordAC = (state = initialState, action: ChangePw) => {
     switch (action.type) {
-        case RESET_PASSWORD: {
+        case CHANGE_PASSWORD: {
             return {
                 ...state,
                 ...action.payload
@@ -26,27 +28,28 @@ export const resetPwReducer = (state = initialState, action: ResetPw) => {
     }
 }
 
-const ResetPw = (email: string): ResetPw => {
+const ChangePw = (oldPassword: string, newPassword: string): ChangePw => {
     return {
-        type: RESET_PASSWORD,
+        type: CHANGE_PASSWORD,
         payload: {
-            email
+            oldPassword,
+            newPassword
         }
     }
 }
 
 type ThunkType = ThunkAction<any, any, any, any>;
 
-export const resetPw = (email: string): ThunkType => {
+export const changePassword = (oldPassword: string, newPassword: string): ThunkType => {
     return async (dispatch) => {
         try {
             dispatch(setStatus('loading'))
-            PasswordApi.passwordReset(email)
+            PasswordApi.changePassword(oldPassword, newPassword)
                 .then(response => {
-                    dispatch(ResetPw(email))
+                    dispatch(ChangePw(oldPassword, newPassword))
                     dispatch(setStatus('succeeded'))
-                    if (response.data.message === "Email sent!") {
-                        dispatch(setStatus('confirm'))
+                    if (response.data === "OK") {
+                        dispatch(setAlert('Parool Muudetud', "success" ))
                     }
                 })
                 .catch((error) => {

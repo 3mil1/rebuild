@@ -1,4 +1,4 @@
-import React, {useEffect, useLayoutEffect} from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import {BottomNav, Header} from "../components/Header/Header";
 import {Main} from "../components/Main/Main";
@@ -12,7 +12,7 @@ import {Login} from "../components/Login/Login";
 import {useDispatch, useSelector} from "react-redux";
 import {getAuthUserData} from "../redux/auth-reducer";
 import {Border, ProgressBar} from "../components/ProgressBar/ProgressBar";
-import {ErrorSnackbar} from "../components/ErrorSnackbar/ErrorSnackbar";
+import {AlertSnackbar} from "../components/AlertSnackBar/AlertSnackbar";
 import {AppRootStateType} from "../redux/store";
 import {initializeAppTC, RequestStatusType} from "./app-reducer";
 import {Posts} from "../components/Posts/Posts";
@@ -36,7 +36,7 @@ function App() {
     const [props, set] = useSpring(() => ({xy: [0, 0], config: {mass: 3, tension: 1550, friction: 2040}}))
     const status = useSelector<AppRootStateType, RequestStatusType>((state) => state.app.status)
     const dispatch = useDispatch()
-    let location = useLocation();
+    const location = useLocation()
 
     useEffect(() => {
         dispatch(initializeAppTC())
@@ -52,16 +52,14 @@ function App() {
         }
     }, [selector.auth.isAuth])
 
-
-    // if (!selector.app.isInitialized && location.pathname !== '/login' && location.pathname !== '/register' && location.pathname !== '/') {
-    //     return <InitialiseLoading/>
-    // }
+    if (!selector.app.isInitialized && location.pathname !== '/login' && location.pathname !== '/register' && location.pathname !== '/') {
+            return <InitialiseLoading/>
+    }
 
     return (
         <>
-            <ErrorSnackbar/>
+            <AlertSnackbar/>
             <PopUpMailSent/>
-
             <div className='background'>
                 <img style={{zIndex: -1}} className={'blobs'} src={blobs} alt="blobs"/>
                 <img style={{zIndex: -1}} className={'houses'} src={houses} alt="houses"/>

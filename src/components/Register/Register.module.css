@@ -5,10 +5,9 @@
 }
 
 
-
 .checkBoxErr {
-    border: 1px red solid!important;
-    border-radius: 4px!important;
+    border: 1px red solid !important;
+    border-radius: 4px !important;
     padding-left: 9px;
 }
 
@@ -18,4 +17,21 @@
     color: #f44336;
     font-size: 0.75rem;
     margin-top: 3px;
+}
+
+.avatar {
+    margin: 8px;
+    background-color: rgba(45, 192, 150, 1) !important;
+}
+
+.centerFlex {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.submit {
+    margin-bottom: 1rem !important;
 }

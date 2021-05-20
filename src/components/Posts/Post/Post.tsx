@@ -14,7 +14,7 @@ import {updatePost} from "../UpdatePost";
 import {ChoseTag} from "../AddPost/Tags/Tags";
 import PostLoader from "../Post Loader/PostLoader";
 import {AppRootStateType} from "../../../redux/store";
-import {RequestStatusType, setError} from "../../../app/app-reducer";
+import {RequestStatusType, setAlert} from "../../../app/app-reducer";
 
 export const Post = React.memo(function (props: any) {
     const dispatch = useDispatch()
@@ -44,8 +44,7 @@ export const Post = React.memo(function (props: any) {
             handleSubmit(onSubmit)()
             edit(false)
         } else if (categories.length === 0) {
-            // ?
-            dispatch(setError('Valige Taagid'))
+            dispatch(setAlert('Valige Taagid', "warning"))
         }
     }
 

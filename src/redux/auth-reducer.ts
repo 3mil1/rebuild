@@ -1,7 +1,8 @@
 import {Dispatch} from "redux";
 import {authAPI} from "../api/api";
 import {ThunkAction} from "redux-thunk";
-import {setError, setStatus} from "../app/app-reducer";
+import {setAlert, setStatus} from "../app/app-reducer";
+import {batch} from "react-redux";
 
 type ActionsType = SetUserData | SetAuth
 
@@ -79,12 +80,13 @@ export const getAuthUserData = () => (dispatch: Dispatch) => {
         return authAPI.auth()
             .then(response => {
                 const {userId, firstName} = response.data
-                dispatch(setAuthUserDataAC(userId, firstName))
-                dispatch(setAuthAC(true))
-                dispatch(setStatus('succeeded'))
+                batch(() => {
+                    dispatch(setAuthUserDataAC(userId, firstName))
+                    dispatch(setAuthAC(true))
+                    dispatch(setStatus('succeeded'))
+                })
             })
             .catch((error) => {
-
                 //parandada. kukkub error kui token expired
 
                 // // if(error.response.data !== 'Please log in') {
@@ -107,7 +109,7 @@ export const login = (email: string, password: string): ThunkType => {
                     dispatch(getAuthUserData())
                 })
                 .catch((error) => {
-                    dispatch(setError(error.response.data.error))
+                    dispatch(setAlert(error.response.data.error, "error"))
                 })
         } catch (error) {
             console.log(error.response.data);

@@ -60,10 +60,8 @@
     font-size: 4rem;
     font-style: normal;
     font-weight: 700;
-    line-height: 100px;
-    letter-spacing: 0;
     text-align: left;
-    color: rgba(255, 114, 62, 1);
+    color: #7C3EFF;
 }
 
 .subHeader {

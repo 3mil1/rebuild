@@ -19,7 +19,6 @@ import {ForgotPassword} from "../ForgotPassword/ForgotPassword";
 import Link from "@material-ui/core/Link";
 
 
-
 export const Login = React.memo(function () {
 
     const selector = useSelector((state: any) => state)
@@ -123,7 +122,7 @@ export const Login = React.memo(function () {
                             <ForgotPassword/>
                         </Grid>
                         <Grid item>
-                            <Link href="#" variant="body2">
+                            <Link variant="body2">
                                 <LinkRRD to="/register">Don't have an account? Sign Up</LinkRRD>
                             </Link>
                         </Grid>

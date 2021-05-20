@@ -8,6 +8,7 @@ import {ProfileMenuMobileNotAuth} from './ProfileMenu/ProfileMenuMobile';
 import {ProfileMenu} from './ProfileMenu/ProfileMenu';
 import SearchIcon from '@material-ui/icons/Search';
 import HomeIcon from '@material-ui/icons/Home';
+import MenuItem from "@material-ui/core/MenuItem";
 
 
 export const Header = React.memo(function () {
@@ -43,6 +44,7 @@ export const Nav = React.memo(function () {
             {isAuth
                 ? <ProfileMenu/>
                 : <NavLink activeClassName={classes.selected} to="/login">Log in</NavLink>}
+
         </div>
     )
 })

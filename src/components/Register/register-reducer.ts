@@ -1,6 +1,6 @@
 import {ThunkAction} from "redux-thunk";
 import {registerApi} from "../../api/api";
-import {setError, setStatus} from "../../app/app-reducer";
+import {setStatus} from "../../app/app-reducer";
 
 const SET_REG = 'SET_REG'
 
@@ -71,7 +71,9 @@ export const register = (email: string, firstName: string, lastName: string, pas
                 )
                 .catch((error) => {
                     console.log(error.response.data)
-                    dispatch(setError(error.response.data))
+                    console.log(error.response)
+                    console.log(error)
+                    // dispatch(setError(error.response.data))
                     dispatch(setStatus('succeeded'))
                 })
         } catch (error) {

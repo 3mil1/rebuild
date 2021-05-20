@@ -3,7 +3,7 @@ import axios from "axios";
 
 const instance = axios.create({
     withCredentials: true,
-    baseURL: `http://localhost:3000`,
+    baseURL: `http://localhost:3000/`,
 })
 
 export const authAPI = {
@@ -22,9 +22,12 @@ export const authAPI = {
 
 }
 
-export const forgotPasswordApi = {
+export const PasswordApi = {
     passwordReset(email: string) {
         return instance.post('forgot-password', {email})
+    },
+    changePassword(oldPassword: string, newPassword: string) {
+        return instance.post('/auth/change-password', {oldPassword, newPassword})
     }
 }
 
@@ -58,5 +61,8 @@ export const postsApi = {
 export const userApi = {
     getUser(id: number) {
         return instance.get(`user/${id}`)
+    },
+    userDescription(id: number, description: string) {
+        return instance.patch(`user/${id}`, {description})
     }
 }

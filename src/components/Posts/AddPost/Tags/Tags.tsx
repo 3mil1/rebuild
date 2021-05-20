@@ -9,7 +9,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {CategoriesType} from "../../Post/PostCard";
 import {getTags} from "../../GetPosts-reducer";
 import classes from "./tags.module.css"
-import {setError} from "../../../../app/app-reducer";
+import {setAlert} from "../../../../app/app-reducer";
 
 
 export const Tags = React.memo(function () {
@@ -49,7 +49,7 @@ export const Tags = React.memo(function () {
                     },
                 });
             } else {
-                dispatch(setError("Valige palun tagid"))
+                dispatch(setAlert("Valige palun tagid", "warning"))
             }
         },
         [history, location, initialValues, categories]

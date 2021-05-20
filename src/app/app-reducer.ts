@@ -2,9 +2,12 @@ import {Dispatch} from "redux";
 import {authAPI} from "../api/api";
 import {setAuthAC} from "../redux/auth-reducer";
 
+export type Severity = "success" | "info" | "warning" | "error" | undefined
+
 const initialState: InitialStateType = {
     status: 'idle',
-    error: null,
+    alert: null,
+    severity: undefined,
     isInitialized: false
 }
 
@@ -13,7 +16,7 @@ export const appReducer = (state: InitialStateType = initialState, action: Actio
         case 'APP/SET_STATUS':
             return {...state, status: action.status}
         case 'APP/SET_ERROR':
-            return {...state, error: action.error}
+            return {...state, alert: action.alert, severity: action.severity}
         case 'APP/SET-IS-INITIALIZED':
             return {...state, isInitialized: action.value}
         default:
@@ -25,26 +28,25 @@ export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed' | 'c
 
 export type InitialStateType = {
     status: RequestStatusType
-    error: string | null
+    alert: string | null
+    severity: Severity
     isInitialized: boolean
 }
 
-export const setError = (error: string | null) => ({type: 'APP/SET_ERROR', error} as const)
+export const setAlert = (alert: string | null, severity?: Severity) => ({type: 'APP/SET_ERROR', alert, severity} as const)
 export const setStatus = (status: RequestStatusType) => ({type: 'APP/SET_STATUS', status} as const)
 export const setAppInitializedAC = (value: boolean) => ({type: 'APP/SET-IS-INITIALIZED', value} as const)
 
-export const initializeAppTC = () => (dispatch: Dispatch) => {
+export const initializeAppTC = () => async (dispatch: Dispatch) => {
     authAPI.auth().then(res => {
         if (res.status === 200) {
             dispatch(setAuthAC(true))
-        } else {
-
         }
-        dispatch(setAppInitializedAC(true));
     })
+        .finally(() => dispatch(setAppInitializedAC(true)))
 }
 
 type ActionsType =
-    | ReturnType<typeof setError>
+    | ReturnType<typeof setAlert>
     | ReturnType<typeof setStatus>
     | ReturnType<typeof setAppInitializedAC>

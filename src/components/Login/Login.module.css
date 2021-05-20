@@ -12,7 +12,7 @@ h1 {
 
 .avatar {
     margin: 8px;
-    background-color: #f50057 !important;
+    background-color: rgba(45, 192, 150, 1)!important;
 }
 
 .form {

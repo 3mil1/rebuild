@@ -35,9 +35,9 @@ export const Review = React.memo(function () {
     }
 
     return (
-        <div>
-            <h2 style={{marginBottom: '15px'}}>{initialValues['Title']}</h2>
-            <h4 style={{marginBottom: '15px'}}>{initialValues['Content']}</h4>
+        <div style={{marginLeft: '0.5rem'}}>
+            <h2 style={{marginBottom: '1rem'}}>{initialValues['Title']}</h2>
+            <h4 style={{marginBottom: '1rem'}}>{initialValues['Content']}</h4>
             <ul style={{display: "flex", marginBottom: '15px'}}>
                 {initialValues['categories'].map((data: CategoriesType) => {
                     return (

@@ -3,8 +3,6 @@ import React, {useCallback, useEffect, useState} from "react";
 import getFormData from "./services/getFormData";
 import {Controller, useForm} from "react-hook-form";
 import setFormData from "./services/setFormData";
-import IconButton from "@material-ui/core/IconButton";
-import {KeyboardBackspace} from "@material-ui/icons";
 import FormControl from "@material-ui/core/FormControl";
 import TextField from "@material-ui/core/TextField";
 import {Button} from "@material-ui/core";

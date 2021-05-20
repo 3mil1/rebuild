@@ -8,22 +8,25 @@ import Paper from "@material-ui/core/Paper";
 import {Rating} from "@material-ui/lab";
 import {getUserData} from "./Profile-reducer";
 import {Post} from "../Posts/Post/Post";
+import Tooltip from "@material-ui/core/Tooltip";
+import {ProfileSettings} from "./ProfileFirstSetUp/ProfileSettings";
 
 
 export const Profile = React.memo(function () {
     const dispatch = useDispatch()
-    const selector = useSelector((state: any) => state.auth)
+    const selector = useSelector((state: any) => state)
     const loggedUserData = useSelector((state: any) => state.getUserReducer)
     const posts = useSelector((state: any) => state.getUserReducer.posts)
 
+
     useEffect(() => {
-        if (selector.userId != null) {
-            dispatch(getUserData(selector.userId))
+        if (selector.auth.userId != null) {
+            dispatch(getUserData(selector.auth.userId))
         }
-    }, [dispatch, selector.userId])
+    }, [dispatch, selector.auth.userId])
 
 
-    if (!selector.isAuth) {
+    if (!selector.auth.isAuth) {
         return <Redirect to={"/login"}/>
     }
 
@@ -40,27 +43,33 @@ export const Profile = React.memo(function () {
                                     </Avatar>
                                 </Grid>
                                 <Grid item xs={9}>
-                                    <div>{loggedUserData.firstName}</div>
-                                    <div>Lühi kirjeldus Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem
-                                        beatae consectetur deleniti dicta
+                                    <div style={{marginBottom: "1rem", marginTop: "0.5rem"}}>{loggedUserData.firstName}</div>
+                                    <div>
+                                        {loggedUserData.description && loggedUserData.description.substring(0, 100) + "..."}
                                     </div>
                                     <div className={classes.rating}>
                                         <Rating name="half-rating" defaultValue={2.5} precision={0.5}/>
                                     </div>
                                 </Grid>
-                                <Grid item xs={11}>
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, libero, quod?
-                                    At corporis ducimus esse maiores odit officia, quidem.
-                                    Assumenda consequatur dolorum error fugit hic labore minima quibusdam soluta
-                                    voluptate!
+                                <Grid item xs={1}>
+                                    <Tooltip title="Seaded" style={{float: "right"}}>
+                                        <ProfileSettings
+                                            desc={loggedUserData.description}
+                                            userId={selector.auth.userId}
+                                        />
+                                    </Tooltip>
                                 </Grid>
+                                <Grid item xs={11}>
+                                    {loggedUserData.description && loggedUserData.description}
+                                </Grid>
+
                             </Grid>
                         </Paper>
                         {/*<Paper className={classes.paper}>Tags</Paper>*/}
 
                         {posts.map((data: any) => {
                             return (
-                                <Paper key={data.id} className={classes.paper} style={{padding: '1rem'}}>
+                                <Paper key={data.id} className={classes.paper} style={{padding: '1.5rem'}}>
                                     <Post
                                         categories={data.categories}
                                         id={data.id}

@@ -13,7 +13,9 @@ type PropsType = {
     createdAt: string
     updatedAt: string
     categories: CategoriesType[]
-    user: { id: number, firstName: string, lastName: string }
+    user: {
+        id: number, firstName: string, lastName: string, description: string;
+    }
 }
 
 export type CategoriesType = {
@@ -44,7 +46,9 @@ export const PostCard = React.memo((props: PropsType) => {
                         <div className={classes.userRating}>
                             <Rating name="half-rating" defaultValue={2.5} precision={0.5}/>
                         </div>
-                        <div className={classes.userDesc}>Profiili kirjeldus lorem lorem lorem lorem</div>
+                        <div className={classes.userDesc}>
+                            {props.user.description && props.user.description.substring(0, 100)+ "..."}
+                        </div>
                     </div>
                 </div>
                 <div className={classes.addedChanged}>

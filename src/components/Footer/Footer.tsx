@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Footer.module.css'
 import {Nav} from "../Header/Header";
-import instagramSvg from '../../img/Instagram.svg'
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 
 export const Footer = () => {
@@ -16,10 +16,7 @@ export const Footer = () => {
             <div className={classes.socialLinks}>
                 <div>© 2021 ReBuild. All rights reserved</div>
                 <div>
-                    <a href=""><img src={instagramSvg} alt="instagramSvg"/></a>
-                    <a href=""><img src={instagramSvg} alt="instagramSvg"/></a>
-                    <a href=""><img src={instagramSvg} alt="instagramSvg"/></a>
-                    <a href=""><img src={instagramSvg} alt="instagramSvg"/></a>
+                    <a href="https://github.com/3mil1/rebuild/"><GitHubIcon/></a>
                 </div>
             </div>
         </div>
