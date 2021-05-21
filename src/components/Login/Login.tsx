@@ -41,7 +41,7 @@ export const Login = React.memo(function () {
                     <LockOutlinedIcon/>
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    Sign in
+                    Logi sisse
                 </Typography>
 
                 <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
@@ -68,7 +68,7 @@ export const Login = React.memo(function () {
                                 required: 'Required',
                                 pattern: {
                                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                                    message: 'invalid email address'
+                                    message: 'PALUN SSISESTA ÕIGE E-POSTI AADRESS'
                                 }
                             }}
                         />
