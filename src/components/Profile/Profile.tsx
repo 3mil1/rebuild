@@ -83,7 +83,7 @@ export const Profile = React.memo(function () {
                         })}
                     </Grid>
                     <Grid item xs={3}>
-                        <Paper className={classes.paper}>Lisa info</Paper>
+                        <Paper className={classes.paper}></Paper>
                     </Grid>
 
                 </Grid>

@@ -58,7 +58,7 @@ export const Title = React.memo(function () {
                         control={control}
                         defaultValue=""
                         rules={{
-                            required: 'Required',
+                            required: 'Kohustsulik väli',
                         }}
                     />
                 </FormControl>

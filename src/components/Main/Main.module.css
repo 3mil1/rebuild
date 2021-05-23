@@ -101,6 +101,7 @@
 
 .cardText {
     flex: 1;
+    line-height: 1.9;
 }
 
 .cardText h1 {

@@ -80,7 +80,7 @@ export const ChangeDescription = (props: any) => {
                             id="description"
                             helperText={fieldsErrors.description ? fieldsErrors.description.message : ''}
                             variant="outlined"
-                            label="Profiili kirjeldus"
+                            label="Kirjelda ennast paari lausega"
                             error={!!fieldsErrors.description}
                             name="description"
                             autoFocus
@@ -104,7 +104,7 @@ export const ChangeDescription = (props: any) => {
 
             <DialogActions>
                 <Button color="primary" type="submit">
-                    Uuenda kirjeldus
+                    Uuenda profiili
                 </Button>
             </DialogActions>
         </form>

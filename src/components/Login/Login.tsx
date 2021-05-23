@@ -54,7 +54,7 @@ export const Login = React.memo(function () {
                                     id="email"
                                     helperText={fieldsErrors.email ? fieldsErrors.email.message : ''}
                                     variant="outlined"
-                                    label="Email"
+                                    label="E-post"
                                     error={!!fieldsErrors.email}
                                     autoComplete="email"
                                     name="email"
@@ -65,10 +65,10 @@ export const Login = React.memo(function () {
                             control={control}
                             defaultValue=""
                             rules={{
-                                required: 'Required',
+                                required: 'Palun sisesta e-posti aadress',
                                 pattern: {
                                     value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                                    message: 'PALUN SSISESTA ÕIGE E-POSTI AADRESS'
+                                    message: 'Sobimatu e-posti aadress'
                                 }
                             }}
                         />
@@ -82,7 +82,7 @@ export const Login = React.memo(function () {
                                     type={togglePassword ? 'password' : 'text'}
                                     helperText={fieldsErrors.password ? fieldsErrors.password.message : ''}
                                     variant="outlined"
-                                    label="Password"
+                                    label="Salasõna"
                                     name="password"
                                     error={!!fieldsErrors.password}
                                     autoComplete="current-password"
@@ -104,7 +104,7 @@ export const Login = React.memo(function () {
                             control={control}
                             defaultValue=""
                             rules={{
-                                required: 'Required'
+                                required: 'Palun sisesta salasõna'
                             }}
                         />
                     </FormControl>
@@ -115,7 +115,7 @@ export const Login = React.memo(function () {
                         color="primary"
                         className={classes.submit}
                     >
-                        Sign In
+                        Logi sisse
                     </Button>
                     <Grid container>
                         <Grid item xs>
@@ -123,7 +123,7 @@ export const Login = React.memo(function () {
                         </Grid>
                         <Grid item>
                             <Link variant="body2">
-                                <LinkRRD to="/register">Don't have an account? Sign Up</LinkRRD>
+                                <LinkRRD to="/register">Pole veel kasutaja? Registreeri siin!</LinkRRD>
                             </Link>
                         </Grid>
                     </Grid>

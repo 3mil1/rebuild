@@ -89,13 +89,13 @@ export const ProfileMenu = React.memo(function () {
                                     <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
                                         <MenuItem onClick={handleClose}>
                                             <NavLink
-                                                to="/profile">Profile
+                                                to="/profile">Profiil
                                             </NavLink>
                                         </MenuItem>
 
                                         <MenuItem onClick={handleClose}>
                                             {selector.isAuth &&
-                                            <NavLink to={''} onClick={() => dispatch(logout())}>Logout</NavLink>
+                                            <NavLink to={''} onClick={() => dispatch(logout())}>Logi välja</NavLink>
                                             }
                                         </MenuItem>
                                     </MenuList>

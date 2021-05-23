@@ -43,7 +43,7 @@ export const Nav = React.memo(function () {
             {isAuth ? false : <NavLink activeClassName={classes.selected} to="/register">Registreeri</NavLink>}
             {isAuth
                 ? <ProfileMenu/>
-                : <NavLink activeClassName={classes.selected} to="/login">Log in</NavLink>}
+                : <NavLink activeClassName={classes.selected} to="/login">Logi sisse</NavLink>}
 
         </div>
     )

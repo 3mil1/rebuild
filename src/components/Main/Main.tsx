@@ -17,18 +17,17 @@ export const Main = React.memo(function () {
         <div className={classes.landingContainer}>
             <div className={classes.mainContainer}>
                 <div className={classes.main}>
-                    <div className={classes.meiegaLeiad}>Meiega leiad sobiva töö ja töötaja!</div>
-                    <div className={classes.subHeader}>We’ve helped over 2,500 job seekers to get into the most popular
-                        tech teams.
+                    <div className={classes.meiegaLeiad}>Meiega leiad!</div>
+                    <div className={classes.subHeader}>Läbi meie veebiplatvormi leiad endale vajaliku töömehe või töö!
                     </div>
 
                     <Link to={"/register"} style={{color: "white", textDecoration: "none"}}>
                         <Button variant="contained" className={classes.register}>
-                            Registreeru
+                            Registreeri
                         </Button>
                     </Link>
 
-                    <Button className={classes.howTo} onClick={executeScroll}>Kuidas see töötab &gt;</Button>
+                    <Button className={classes.howTo} onClick={executeScroll}>Kuidas see töötab ?</Button>
                 </div>
                 <div className={classes.mainImg}>
                     <img src={kustLeidaToomest} alt="kust leida töömeest?"/>
@@ -48,17 +47,19 @@ export const Main = React.memo(function () {
                         {/*<img className={classes.cardDoor} src={carddoor} alt="carddoor"/>*/}
                     </div>
                     <div className={classes.cardText}>
-                        <h1>Hello world</h1>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s</p>
+                        <h1>Lisa kuulutus</h1>
+                        <br/>
+                        <p><b>Otsid või pakud tööd?</b> Kuulutuse lisamiseks pane sellele tabav pealkiri, anna tööst lühiülevaade ja too välja tööga seonduvad olulised punktid.
+                            Vali enda kuulutusele sobiv teemaviide ja postita see leheküljele!
+                        </p>
                     </div>
                 </div>
 
                 <div className={classes.card}>
                     <div className={classes.cardText}>
-                        <h1>Hello world</h1>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s</p>
+                        <h1>Otsi kuulutsi</h1>
+                        <p><b>Soovid näha teiste kasutajate poolt lisatud kuulutusi? </b>
+                           Leheküljelt "Otsi" näed kõiki lisatud kuulutusi. Kuulutuste filtreerimiseks kasuta teemaviiteid.</p>
                     </div>
                     <div className={classes.cardImg}>
                         <img src={cardguy2} alt="card2"/>
@@ -70,9 +71,14 @@ export const Main = React.memo(function () {
                         <img src={cardguy3} alt="card3"/>
                     </div>
                     <div className={classes.cardText}>
-                        <h1>Hello world</h1>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s</p>
+                        <h1>Võta kasutajatega ühendust</h1>
+                        <p><b>Leidsid endale huvipakkuva kuulutuse?</b> Võta teiste kasutajatega ühendust, klikkides kuulutuse pealkirjale. Avanenud lehel
+                        saad kuulutuse omanikuga otse ühendust võtta.
+                        <br/>
+
+                            <br/>
+
+                        </p>
                     </div>
                 </div>
 

@@ -64,7 +64,7 @@ export const PopUpMailSent = React.memo(function (props: any) {
                                        classes={{
                                            root: classes.root
                                        }}>
-                        Teie postkasti varsti saabub kiri
+                        Teie e-posti aadressile on saadetud link registreerimise kinnitamiseks!
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions

@@ -37,21 +37,21 @@ export const ForgotPassword = React.memo(function () {
     return (
         <div>
             <Link href="#" variant="body2" onClick={handleClickOpen}>
-                Forgot password?
+                Unustasid salasõna?
             </Link>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Parooli Taastamine</DialogTitle>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <DialogContent>
                         <DialogContentText>
-                            Palun sisesta oma email ja me saadame sulle kirja parooli taastumisega.
+                        Palun sisesta oma registreeritud e-posti aadress. Saadame Sulle e-postile uue parooli!
                         </DialogContentText>
                         <Controller
                             name="email"
                             as={
                                 <TextField
                                     helperText={fieldsErrors.email ? fieldsErrors.email.message : ''}
-                                    label="Email"
+                                    label="E-post"
                                     error={!!fieldsErrors.email}
                                     autoComplete="email"
                                     name="email"

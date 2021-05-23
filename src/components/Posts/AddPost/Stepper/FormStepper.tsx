@@ -22,27 +22,24 @@ const TABS = [
     {
         component: Title,
         title: "Pealkiri",
-        Description: 'Let\'s start with a strong headline.\n' +
-            'This helps your job post stand out to the right candidates. It’s the first thing they’ll see, so make it count!',
-        SecondDescription: 'Desc 1'
+        Description: 'Alustame tugeva pealkirjaga! ' +
+            'See aitab Sinu postitusel silma paista ja õigete inimesteni jõuda - pane see enda kasuks tööle!',
+        SecondDescription: ''
     },
     {
         component: Content,
         title: "Sisu",
-        Description: 'Desc 2',
-        SecondDescription: 'Desc 2'
+        Description: 'Anna lühiülevaade Sinu poolt pakutavast tööst. Kirjelda töö iseloomu ning seda, mida on kliendil vaja teada!'
     },
     {
         component: Tags,
-        title: "Tagid",
-        Description: 'Desc 3',
-        SecondDescription: 'Valige oskused(tagid) välja'
+        title: "Teemaviited",
+        Description: 'Vali sobiv teemaviide, mis sobib kirjeldama just Sinu tööd!'
     },
     {
         component: Review,
         title: "Ülevaade",
-        Description: 'Desc 4',
-        SecondDescription: 'Desc 4'
+        Description: 'Vaata oma kuulutus üle! Kui kõik on korras, vajuta "Postita"!'
     },
 ];
 
