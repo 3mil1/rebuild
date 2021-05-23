@@ -43,7 +43,7 @@ export const Register = React.memo(function () {
                         <PeopleAltIcon/>
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        Sign in
+                        Konto loomine
                     </Typography>
                 </div>
                 <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
@@ -57,7 +57,7 @@ export const Register = React.memo(function () {
                                         id="firstName"
                                         helperText={fieldsErrors.firstName ? fieldsErrors.firstName.message : ''}
                                         variant="outlined"
-                                        label="firstName"
+                                        label="Eesnimi"
                                         error={!!fieldsErrors.firstName}
                                         autoComplete="First Name"
                                         name="firstName"
@@ -68,7 +68,7 @@ export const Register = React.memo(function () {
                                 control={control}
                                 defaultValue=""
                                 rules={{
-                                    required: 'Required',
+                                    required: 'Kohustuslik väli',
                                 }}
                             />
                         </Grid>
@@ -81,7 +81,7 @@ export const Register = React.memo(function () {
                                         id="lastName"
                                         helperText={fieldsErrors.lastName ? fieldsErrors.lastName.message : ''}
                                         variant="outlined"
-                                        label="Last Name"
+                                        label="Perekonnanimi"
                                         error={!!fieldsErrors.lastName}
                                         autoComplete="Last Name"
                                         name="lastName"
@@ -91,7 +91,7 @@ export const Register = React.memo(function () {
                                 control={control}
                                 defaultValue=""
                                 rules={{
-                                    required: 'Required',
+                                    required: 'Kohustuslik väli',
                                 }}
                             />
                         </Grid>
@@ -104,7 +104,7 @@ export const Register = React.memo(function () {
                                         id="email"
                                         helperText={fieldsErrors.email ? fieldsErrors.email.message : ''}
                                         variant="outlined"
-                                        label="Email"
+                                        label="E-post"
                                         error={!!fieldsErrors.email}
                                         autoComplete="email"
                                         name="email"
@@ -114,10 +114,10 @@ export const Register = React.memo(function () {
                                 control={control}
                                 defaultValue=""
                                 rules={{
-                                    required: 'Required',
+                                    required: 'Kohustuslik väli',
                                     pattern: {
                                         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                                        message: 'invalid email address'
+                                        message: 'Sobimatu e-posti aadress'
                                     }
                                 }}
                             />
@@ -133,7 +133,7 @@ export const Register = React.memo(function () {
                                         type={'password'}
                                         helperText={fieldsErrors.password ? fieldsErrors.password.message : ''}
                                         variant="outlined"
-                                        label="Password"
+                                        label="Salasõna"
                                         name="password"
                                         error={!!fieldsErrors.password}
                                         autoComplete="new-password"
@@ -142,10 +142,10 @@ export const Register = React.memo(function () {
                                 control={control}
                                 defaultValue=""
                                 rules={{
-                                    required: 'Required',
+                                    required: 'Kohustuslik väli',
                                     pattern: {
                                         value: /^.{4,100}$/i,
-                                        message: 'Parool peab sisaldama 4 kuni 100 tähemärki'
+                                        message: 'Salasõna peab sisaldama vähemalt 4 tähemärki'
                                     }
                                 }}
                             />
@@ -161,7 +161,7 @@ export const Register = React.memo(function () {
                                         type={'password'}
                                         helperText={fieldsErrors.confirmPassword ? fieldsErrors.confirmPassword.message : ''}
                                         variant="outlined"
-                                        label="Korda Parool"
+                                        label="Korda salasõna"
                                         name="confirmPassword"
                                         error={!!fieldsErrors.confirmPassword}
                                         autoComplete="new-password"
@@ -170,12 +170,12 @@ export const Register = React.memo(function () {
                                 control={control}
                                 defaultValue=""
                                 rules={{
-                                    required: 'Required',
+                                    required: 'Kohustuslik väli',
                                     pattern: {
                                         value: /^.{4,100}$/i,
-                                        message: 'Parool peab sisaldama 4 kuni 100 tähemärki'
+                                        message: 'Salasõna peab olema vähemalt 4 tähemärki'
                                     },
-                                    validate: value => value === password.current || "Paroolid ei kattu"
+                                    validate: value => value === password.current || "Sisestatud salasõnad on erinevad"
                                 }}
                             />
                         </Grid>
@@ -187,13 +187,12 @@ export const Register = React.memo(function () {
                             }}>
 
                                 <input type="checkbox" name='terms' id='terms' ref={regHookF}/>
-                                <Button style={{marginLeft: '0.5rem'}} onClick={() => setOpen(!open)} color="primary">Terms
-                                    Of Service</Button>
+                                <Button style={{marginLeft: '0.5rem'}} onClick={() => setOpen(!open)} color="primary">Olen lugenud ja nõustun kasutajatingimustega</Button>
                                 {
                                     open && <TermOfService/>
                                 }
                             </div>
-                            {terms && <div className={classes.checkBoxTextErr}>Required</div>}
+                            {terms && <div className={classes.checkBoxTextErr}>Palun tutvu kasutajatingimustega!</div>}
                         </Grid>
                         <Button
                             type="submit"
@@ -207,7 +206,7 @@ export const Register = React.memo(function () {
                         <Grid container justify="flex-end">
                             <Grid item>
                                 <Link variant="body2">
-                                    <LinkRRD to="/login">Already have an account? Sign in</LinkRRD>
+                                    <LinkRRD to="/login">Sul on juba konto? <b>Logi sisse</b></LinkRRD>
                                 </Link>
                             </Grid>
                         </Grid>
