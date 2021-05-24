@@ -44,7 +44,7 @@ export const Post = React.memo(function (props: any) {
             handleSubmit(onSubmit)()
             edit(false)
         } else if (categories.length === 0) {
-            dispatch(setAlert('Valige Taagid', "warning"))
+            dispatch(setAlert('Valige sobivad teemaviited!', "warning"))
         }
     }
 
@@ -102,7 +102,7 @@ export const Post = React.memo(function (props: any) {
                                     control={control}
                                     defaultValue={props.title}
                                     rules={{
-                                        required: 'Required'
+                                        required: 'Kohustuslik väli'
                                     }}
                                 />
 
@@ -131,7 +131,7 @@ export const Post = React.memo(function (props: any) {
                                         control={control}
                                         defaultValue={props.content}
                                         rules={{
-                                            required: 'Required'
+                                            required: 'Kohustuslik väli'
                                         }}
                                     />
                                     : props.content}

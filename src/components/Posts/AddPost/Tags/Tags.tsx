@@ -49,7 +49,7 @@ export const Tags = React.memo(function () {
                     },
                 });
             } else {
-                dispatch(setAlert("Valige palun tagid", "warning"))
+                dispatch(setAlert("Valige sobivad teemaviited!", "warning"))
             }
         },
         [history, location, initialValues, categories]
