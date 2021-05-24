@@ -52,7 +52,7 @@ function App() {
         }
     }, [selector.auth.isAuth])
 
-    if (!selector.app.isInitialized && location.pathname !== '/login' && location.pathname !== '/register' && location.pathname !== '/') {
+    if (!selector.app.isInitialized && location.pathname !== '/login' && location.pathname !== '/register' ) {
             return <InitialiseLoading/>
     }
 

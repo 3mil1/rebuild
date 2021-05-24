@@ -53,12 +53,21 @@ export const Title = React.memo(function () {
                                 autoFocus
                                 fullWidth
                                 size="small"
+                                onBlur={(e: any) => setValue("description", e.target.value.trim())}
                             />
                         }
                         control={control}
                         defaultValue=""
                         rules={{
                             required: 'Kohustsulik väli',
+                            minLength: {
+                                value: 4,
+                                message: "Liiga lühike kirjeldus"
+                            },
+                            maxLength: {
+                                value: 255,
+                                message: "Liiga pikk kirjeldus"
+                            }
                         }}
                     />
                 </FormControl>

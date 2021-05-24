@@ -50,7 +50,7 @@ export const ProfileSettings = (props: any) => {
 
                     <div className={classes.description}>
                         <h3 className={classes.settings}>
-                            Salasõna muutmine
+                            Parooli muutmine
                         </h3>
                         <ChangePassword CloseModal={handleClose}/>
                     </div>
@@ -62,7 +62,7 @@ export const ProfileSettings = (props: any) => {
 };
 
 export const ChangeDescription = (props: any) => {
-    const {handleSubmit, errors: fieldsErrors, control} = useForm({mode: "onBlur"});
+    const {handleSubmit, errors: fieldsErrors, control, setValue} = useForm({mode: "onBlur"});
     const dispatch = useDispatch()
 
     const onSubmit = (formData: { description: string }) => {
@@ -87,17 +87,26 @@ export const ChangeDescription = (props: any) => {
                             multiline={true}
                             rows={5}
                             fullWidth={true}
-
+                            onBlur={(e: any) => setValue("description", e.target.value.trim())}
                         />
                     }
                     control={control}
                     defaultValue={props.defaultValue && props.defaultValue}
                     rules={{
                         required: 'Kohustustlik',
-                        pattern: {
-                            value: /^.{4,255}$/i,
-                            message: 'Kirjelduse pikkus 4 kuni 255 tähemärki'
+                        // pattern: {
+                        //     value: /^.{4,255}$/i,
+                        //     message: 'Liiga pikk kirjeldus'
+                        // },
+                        minLength: {
+                            value: 4,
+                            message: "Liiga lühike kirjeldus"
                         },
+                        maxLength: {
+                            value: 255,
+                            message: "Liiga pikk kirjeldus"
+                        }
+
                     }}
                 />
             </div>
@@ -134,7 +143,7 @@ export const ChangePassword = (props: any) => {
                             id="oldPassword"
                             helperText={fieldsErrors.oldPassword ? fieldsErrors.oldPassword.message : ''}
                             variant="outlined"
-                            label="Eksisteeriv salasõna"
+                            label="Eksisteeriv parool"
                             error={!!fieldsErrors.oldPassword}
                             name="oldPassword"
                             size="small"
@@ -156,7 +165,7 @@ export const ChangePassword = (props: any) => {
                                 id="newPassword"
                                 helperText={fieldsErrors.newPassword ? fieldsErrors.newPassword.message : ''}
                                 variant="outlined"
-                                label="Uus salasõna"
+                                label="Uus Parool"
                                 error={!!fieldsErrors.newPassword}
                                 name="newPassword"
                                 size="small"
@@ -171,7 +180,7 @@ export const ChangePassword = (props: any) => {
                             required: 'Kohustustlik',
                             pattern: {
                                 value: /^.{4,100}$/i,
-                                message: 'Salasõna peab olema vähemalt 4 tähemärki'
+                                message: 'Parool peab sisaldama 4 kuni 100 tähemärki'
                             }
                         }}
                     />
@@ -184,7 +193,7 @@ export const ChangePassword = (props: any) => {
                                 id="repeatNewPassword"
                                 helperText={fieldsErrors.repeatNewPassword ? fieldsErrors.repeatNewPassword.message : ''}
                                 variant="outlined"
-                                label="Korda uut salasõna"
+                                label="Korda Uus Parool"
                                 error={!!fieldsErrors.repeatNewPassword}
                                 name="repeatNewPassword"
                                 size="small"
@@ -199,7 +208,7 @@ export const ChangePassword = (props: any) => {
                             required: 'Kohustustlik',
                             pattern: {
                                 value: /^.{4,100}$/i,
-                                message: 'Salasõna peab olema vähemalt 4 tähemärki'
+                                message: 'Parool peab sisaldama 4 kuni 100 tähemärki'
                             },
                             validate: value => value === newPassword.current || "Paroolid ei kattu"
                         }}
@@ -209,7 +218,7 @@ export const ChangePassword = (props: any) => {
 
             <DialogActions>
                 <Button color="primary" type="submit">
-                    Uuenda salasõna
+                    Uuenda Parool
                 </Button>
             </DialogActions>
         </form>

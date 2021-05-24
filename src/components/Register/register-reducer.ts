@@ -1,7 +1,6 @@
 import {ThunkAction} from "redux-thunk";
 import {registerApi} from "../../api/api";
-import {setStatus} from "../../app/app-reducer";
-import {setAlert} from "../../../src/app/app-reducer";
+import {setAlert, setStatus} from "../../app/app-reducer";
 
 const SET_REG = 'SET_REG'
 

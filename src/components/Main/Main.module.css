@@ -23,6 +23,7 @@
 }
 
 .mainContainer img {
+    z-index: -1;
     position: absolute;
     height: auto;
     top: -270px;

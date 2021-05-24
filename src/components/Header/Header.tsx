@@ -33,7 +33,7 @@ export const Nav = React.memo(function () {
 
     return (
         <div className={classes.nav}>
-            {isAuth ? false : <NavLink exact activeClassName={classes.selected} to="/">Avaleht</NavLink>}
+            {<NavLink exact activeClassName={classes.selected} to="/">Avaleht</NavLink>}
 
             {/*ei ole tehtud meist sp ei ava pathi kaudu*/}
             {/*<NavLink activeClassName={classes.selected} to="/about">Meist</NavLink>*/}

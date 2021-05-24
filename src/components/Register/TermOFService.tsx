@@ -3,6 +3,7 @@ import Dialog, {DialogProps} from '@material-ui/core/Dialog';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import {Button, DialogActions} from "@material-ui/core";
 
 export const TermOfService = (props: any) => {
     const [open, setOpen] = React.useState(true);
@@ -61,6 +62,14 @@ Andmeid kogutakse kasutajakogemuse parandamiseks ning optimeerimiseks. Selle kau
 
                     </DialogContentText>
                 </DialogContent>
+                <DialogActions>
+                    {/*<Button onClick={handleClose} color="primary">*/}
+                    {/*    Disagree*/}
+                    {/*</Button>*/}
+                    <Button onClick={handleClose} color="primary">
+                        Sulge
+                    </Button>
+                </DialogActions>
             </Dialog>
         </div>
     );
