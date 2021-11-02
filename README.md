@@ -2,4 +2,5 @@
 Тhe project was implemented for the thesis
 
 
-![Screenshot 2021-06-09 at 11 13 53](https://user-images.githubusercontent.com/42414197/139902528-f5e29772-0491-4c26-b01f-7b7266c9c418.png)
+
+![2021-11-02_18-18-34](https://user-images.githubusercontent.com/42414197/139904402-f424c34b-8445-4097-8ae7-dfe7d64560b2.png)
